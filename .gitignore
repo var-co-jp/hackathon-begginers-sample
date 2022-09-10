@@ -131,3 +131,5 @@ dmypy.json
 #仮想環境
 /flask-hack
 /.python-version
+/Pipfile
+/Pipfile.lock
