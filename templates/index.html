@@ -1,21 +1,21 @@
 {% extends 'base.html' %} {% block title %}
 <title>home</title>
 {% endblock %} {% block body %}
-    <div class="main-container threadpage">
+    <div class="main-container channelpage">
       <img src="{{ url_for('static',filename='img/cat-gif-unscreen.gif') }}" id="gif" />
       <div class="bg-img"></div>
       <div class="main-content">
-          <div class="thread-title">
-          <h1>スレッド一覧</h1>
-          <button id="add-thread-btn">チャンネル追加</button>
+          <div class="channel-title">
+          <h1>チャンネル一覧</h1>
+          <button id="add-channel-btn">チャンネル追加</button>
         </div>
         <div class="pagination-container">
           <p id="prev"><</li>
           <ul class="pagination"></ul>
           <p id="next">></p>
         </div>
-        <ul class="thread-box"></ul>
-        {% include 'modal.html' %}
+        <ul class="channel-box"></ul>
+        {% include 'modal/add-channel.html' %}
       </div>
     </div>
 {% endblock %}

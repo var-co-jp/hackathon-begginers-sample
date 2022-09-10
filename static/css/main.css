@@ -1,4 +1,4 @@
-.threadpage {
+.channelpage {
   display: flex;
   flex-direction: column;
 }
@@ -43,21 +43,21 @@
   align-items: center;
 }
 
-.thread-title {
+.channel-title {
   display: flex;
   gap: 24px;
 }
 
-.thread-title button {
+.channel-title button {
   margin: 30px 0;
   background-color: var(--navy);
 }
 
-.thread-title button:hover {
+.channel-title button:hover {
   background-color: var(--carbon);
 }
 
-.thread-box {
+.channel-box {
   background-color: transparent;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -68,7 +68,7 @@
   padding: 1rem;
 }
 
-.thread-box li {
+.channel-box li {
   list-style: none;
   margin-bottom: 5px;
   padding-bottom: 5px;
@@ -77,7 +77,7 @@
   box-sizing: border-box;
 }
 
-.thread-box li:hover {
+.channel-box li:hover {
   border-bottom: 1px solid lightgrey;
   padding-bottom: 4px;
   cursor: pointer;
@@ -126,14 +126,14 @@
   .main-content {
     width: 90vw;
   }
-  .thread-title {
+  .channel-title {
     flex-direction: column;
     gap: 0;
   }
-  .thread-title h1 {
+  .channel-title h1 {
     text-align: center;
   }
-  .thread-box {
+  .channel-box {
     width: 100%;
   }
 }
@@ -142,13 +142,13 @@
   .main-content {
     width: 70vw;
   }
-  .thread-title {
+  .channel-title {
     flex-direction: column;
   }
-  .thread-title h1 {
+  .channel-title h1 {
     text-align: center;
   }
-  .thread-box {
+  .channel-box {
     width: 80%;
   }
 }
@@ -157,11 +157,11 @@
   .main-content {
     width: 70vw;
   }
-  .thread-title {
+  .channel-title {
     flex-direction: row;
     justify-content: space-around;
   }
-  .thread-box {
+  .channel-box {
     width: 80%;
   }
 }
