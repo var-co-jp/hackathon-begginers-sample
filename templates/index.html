@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Sawarabi+Mincho&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="navigation">
+      <ul>
+        <li class="list active">
+          <a href="#">
+            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+            <span class="title">ホーム</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="#">
+            <span class="icon"
+              ><ion-icon name="person-circle-outline"></ion-icon
+            ></span>
+            <span class="title">個人情報</span>
+          </a>
+        </li>
+        <li class="list">
+          <a href="#">
+            <span class="icon"
+              ><ion-icon name="log-out-outline"></ion-icon
+            ></span>
+            <span class="title">サインアウト</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-container threadpage">
+      <img src="./img/cat-gif-unscreen.gif" id="gif" />
+      <div class="bg-img"></div>
+      <div class="main-content">
+        <!-- モバイル用ヘッダー -->
+          <ion-icon name="menu-outline" id="burger-icon"></ion-icon>
+          <ion-icon name="close-outline" id="burger-close-icon"></ion-icon>
+          <div id="mobile-header">
+            <ul>
+              <li>ホーム</li>
+              <li>サインアウト</li>
+            </ul>
+          </div>
+          <!-- モバイル用ヘッダーここまで -->
+          <div class="thread-title">
+          <h1>スレッド一覧</h1>
+          <button id="add-thread-btn">チャンネル追加</button>
+        </div>
+        <div class="pagination-container">
+          <p id="prev"><</li>
+          <ul class="pagination"></ul>
+          <p id="next">></p>
+        </div>
+        <ul class="thread-box"></ul>
+        <!-- モーダル -->
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5>フレンドを追加しよう</h5>
+              <img src="./img/cat-on-bar.gif" id="modal-gif" />
+              <span class="modalClose">×</span>
+            </div>
+            <div class="modal-body">
+              <p>合言葉を入力</p>
+                  <input type="text" placeholder="合言葉" id="search-bar">
+              <button id="search-btn">フレンドを探す</button>
+            </div>
+          </div>
+        </div>
+        <!-- モーダルここまで -->
+      </div>
+    </div>
+    <script src="./js/pagenation.js" type="text/javascript"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="./js/sidebar.js" type="text/javascript"></script>
+    <script src="./js/addThreadModal.js" type="text/javascript"></script>
+  </body>
+</html>
