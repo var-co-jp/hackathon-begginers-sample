@@ -1,17 +1,17 @@
-<div id="modal" class="modal">
+<div id="add-channel-modal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
       <h5>フレンドを追加しよう</h5>
       <img
         src="{{ url_for('static',filename='img/cat-on-bar.gif') }}"
-        id="modal-gif"
+        class="modal-gif"
       />
-      <span class="modalClose">×</span>
+      <span class="modalClose" id="add-page-close-btn">×</span>
     </div>
     <div class="modal-body">
       <p>合言葉を入力</p>
       <input type="text" placeholder="合言葉" id="search-bar" />
-      <button id="search-btn">フレンドを探す</button>
+      <button id="add-channel-confirmation-btn">フレンドを探す</button>
     </div>
   </div>
 </div>

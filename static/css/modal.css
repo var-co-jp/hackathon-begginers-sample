@@ -79,7 +79,7 @@
   width: 32px;
 }
 
-#modal-gif {
+.modal-gif {
   position: absolute;
   z-index: 2;
   top: -66px;
