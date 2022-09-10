@@ -1,35 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>signup</title>
-    <link
-      rel="stylesheet"
-      href="{{url_for('static',filename='css/styles.css')}}"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Kanit:wght@900&family=Sawarabi+Mincho&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="registration-wrapper signup">
-      <div class="registration-main signup-main">
-        SIGNUP
-        <div class="half-circle pink">
-          <form class="registration-form" method="post">
-            <h1 class="registration-title">SIGN UP</h1>
-            <input type="text" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <input type="password" placeholder="Password Confirmation" />
-            <button class="pink">SIGN UP</button>
-          </form>
-        </div>
-      </div>
+{% extends 'registration/registration-base.html' %} {% block title %}
+<title>signup</title>
+{% endblock %} {% block body %}
+<div class="registration-wrapper signup">
+  <div class="registration-main signup-main">
+    SIGNUP
+    <div class="half-circle pink">
+      <form class="registration-form" method="post">
+        <h1 class="registration-title">SIGN UP</h1>
+        <input type="text" placeholder="Email" />
+        <input type="password" placeholder="Password" />
+        <input type="password" placeholder="Password Confirmation" />
+        <button class="pink">SIGN UP</button>
+      </form>
     </div>
-  </body>
-</html>
+  </div>
+</div>
+{% endblock %}

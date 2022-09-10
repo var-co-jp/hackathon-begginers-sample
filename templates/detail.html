@@ -1,94 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>home</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Sawarabi+Mincho&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <!-- <div class="wrapper"> -->
-    <div class="navigation">
-      <ul>
-        <li class="list active">
-          <a href="#">
-            <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-            <span class="title">ホーム</span>
-          </a>
-        </li>
-        <li class="list">
-          <a href="#">
-            <span class="icon"
-              ><ion-icon name="person-circle-outline"></ion-icon
-            ></span>
-            <span class="title">個人情報</span>
-          </a>
-        </li>
-        <li class="list">
-          <a href="#">
-            <span class="icon"
-              ><ion-icon name="log-out-outline"></ion-icon
-            ></span>
-            <span class="title">サインアウト</span>
-          </a>
-        </li>
-      </ul>
+{% extends 'base.html' %} {% block title %}
+<title>chatroom</title>
+{% endblock %} {% block body %}
+<div class="main-container">
+  <img
+    src="{{ url_for('static',filename='img/cat-gif-unscreen.gif') }}"
+    id="gif"
+  />
+  <div class="chat-box">
+    <div class="chat-header">mouse</div>
+    <div class="message-area">
+      <div><p class="box box-left">メッセージ1</p></div>
+      <div><p class="box box-right">メッセージ2</p></div>
+      <div><p class="box box-left">メッセージ3</p></div>
+      <div><p class="box box-right">メッセージ4</p></div>
+      <div><p class="box box-left">メッセージ5</p></div>
+      <div><p class="box box-right">メッセージ6</p></div>
+      <div><p class="box box-left">メッセージ7</p></div>
+      <div><p class="box box-right">メッセージ8</p></div>
+      <div><p class="box box-left">メッセージ9</p></div>
+      <div><p class="box box-right">メッセージ10</p></div>
+      <div><p class="box box-left">メッセージ11</p></div>
     </div>
-    <div class="main-container">
-      <img src="./img/cat-gif-unscreen.gif" id="gif" />
-      <div class="chat-box">
-        <div class="chat-header">mouse</div>
-        <div class="message-area">
-          <div><p class="box box-left">メッセージ1</p></div>
-          <div><p class="box box-right">メッセージ2</p></div>
-          <div><p class="box box-left">メッセージ3</p></div>
-          <div><p class="box box-right">メッセージ4</p></div>
-          <div><p class="box box-left">メッセージ5</p></div>
-          <div><p class="box box-right">メッセージ6</p></div>
-          <div><p class="box box-left">メッセージ7</p></div>
-          <div><p class="box box-right">メッセージ8</p></div>
-          <div><p class="box box-left">メッセージ9</p></div>
-          <div><p class="box box-right">メッセージ10</p></div>
-          <div><p class="box box-left">メッセージ11</p></div>
-        </div>
-        <div class="typing-box-wrapper">
-          <form class="typing-box">
-            <textarea name="message" id="message"></textarea>
-          </form>
-        </div>
-      </div>
-      <!-- <div class="bg-img"></div> -->
+    <div class="typing-box-wrapper">
+      <form class="typing-box">
+        <textarea name="message" id="message"></textarea>
+      </form>
     </div>
-    <!-- </div> -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-    <script>
-      const list = document.querySelectorAll(".list");
-      console.log(list);
-      function activeLink() {
-        list.forEach((item) =>
-          // console.log(item);
-          item.classList.remove("active")
-        );
-        this.classList.add("active");
-      }
-
-      list.forEach((item) => {
-        item.addEventListener("click", activeLink);
-      });
-    </script>
-  </body>
-</html>
+  </div>
+</div>
+{% endblock %}
