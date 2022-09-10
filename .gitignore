@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#仮想環境
+/flask-hack
+/.python-version
