@@ -1,7 +1,9 @@
-from flask import Flask, render_template
-
+from flask import * 
+import flask_login
+from models import dbConnect 
 
 app = Flask(__name__)
+
 
 @app.route('/signup')
 def signup():
@@ -11,7 +13,6 @@ def signup():
 def login():
     return render_template('registration/login.html')
 
-
 @app.route('/index')
 def index():
     return render_template('index.html')
@@ -20,5 +21,11 @@ def index():
 def detail():
     return render_template('detail.html')
 
+@app.route('/db')
+def testDbConnection():
+    channels = dbConnect.getChannelAll()
+
+    return render_template('hello.html', title='データベースのテスト', channels=channels)
+    
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

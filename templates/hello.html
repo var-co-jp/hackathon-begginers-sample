@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% block content %}
+    <h3>チャンネル一覧</h3>
+        <ul>
+            {% for channel in channels %}
+            <li>{{ channel.name}} : {{ channel.abstract }}</li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+</body>
+</html>
