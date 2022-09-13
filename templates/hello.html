@@ -6,10 +6,10 @@
 </head>
 <body>
     {% block content %}
-    <h3>ユーザー一覧</h3>
+    <h3>チャンネル一覧</h3>
         <ul>
-            {% for user in users %}
-            <li>{{ user.user_name}} : {{ user.email }}</li>
+            {% for channel in channels %}
+            <li>{{ channel.name}} : {{ channel.abstract }}</li>
             {% endfor %}
         </ul>
     {% endblock %}

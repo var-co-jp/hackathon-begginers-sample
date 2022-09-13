@@ -1,14 +1,8 @@
 from flask import * 
-import pymysql
 import flask_login
+from models import dbConnect 
 
 app = Flask(__name__)
-
-
-
-app.route("/")
-def jump():
-    return redirect("/login")
 
 
 @app.route('/signup')
@@ -29,23 +23,9 @@ def detail():
 
 @app.route('/db')
 def testDbConnection():
-    db = pymysql.connect(
-        host="localhost",
-        db="chatapp",
-        user="testuser",
-        password="testuser",
-        charset="utf8",
-        cursorclass=pymysql.cursors.DictCursor
-        )
-    cur = db.cursor()
-    sql = "select * from users;"
-    cur.execute(sql)
-    users = cur.fetchall()
+    channels = dbConnect.getChannelAll()
 
-    cur.close()
-    db.close()
-
-    return render_template('hello.html', title='データベースのテスト', users=users)
+    return render_template('hello.html', title='データベースのテスト', channels=channels)
     
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
