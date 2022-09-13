@@ -11,6 +11,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  z-index: 5;
 }
 
 #burger-icon:hover,
@@ -21,13 +22,12 @@
 
 #burger-close-icon {
   display: none;
-  z-index: 2;
 }
 
 #mobile-header {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 4;
   left: 0;
   top: 0;
   height: 100%;
