@@ -1,21 +1,3 @@
-const channels = [
-  { id: 1, name: "RareTECH" },
-  { id: 2, name: "mouseの会" },
-  { id: 3, name: "アニメを語ろう" },
-  { id: 4, name: "クソ漫画はこちら" },
-  { id: 5, name: "RareTECH" },
-  { id: 6, name: "RareTECH" },
-  { id: 7, name: "RareTECH" },
-  { id: 8, name: "RareTECH" },
-  { id: 9, name: "RareTECH" },
-  { id: 10, name: "RareTECH" },
-  { id: 11, name: "RareTECH" },
-  { id: 12, name: "RareTECH" },
-  { id: 13, name: "RareTECH" },
-  { id: 14, name: "RareTECH" },
-  { id: 15, name: "RareTECH" },
-];
-
 const pagination = () => {
   // 初期設定
   let page = 1; // 今何ページ目にいるか
