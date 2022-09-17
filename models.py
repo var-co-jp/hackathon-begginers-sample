@@ -16,9 +16,9 @@ class dbConnect:
         cur.execute(sql)
         channels = cur.fetchall()
 
-        return channels
         cur.close()
         conn.close()
+        return channels
 
     def getMessageAll():
         cur = conn.cursor()
@@ -26,6 +26,6 @@ class dbConnect:
         cur.execute(sql)
         messages = cur.fetchall()
 
-        return messages
         cur.close()
         conn.close()
+        return messages
