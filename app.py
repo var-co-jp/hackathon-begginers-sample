@@ -1,6 +1,6 @@
 from flask import * 
 import flask_login
-from models import dbConnect 
+from models import dbConnect
 
 app = Flask(__name__)
 
