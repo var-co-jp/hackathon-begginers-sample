@@ -76,9 +76,11 @@
   margin-bottom: 10px;
   line-height: 70px;
   width: 100%;
+  padding-bottom: 1px;
 }
 
 .registration-form input:hover {
+  padding-bottom: 0;
   border-bottom: 1px lightgrey solid;
 }
 
@@ -88,6 +90,20 @@
 
 button {
   margin-right: 0;
+}
+
+.switch-register-mode {
+  color: grey;
+  line-height: 45px;
+  font-size: smaller;
+  margin-top: 2rem;
+  padding-bottom: 1px;
+}
+
+.switch-register-mode:hover {
+  color: var(--carbon);
+  border-bottom: 1px solid var(--carbon);
+  padding-bottom: 0;
 }
 
 @media only screen and (min-width: 640px) and (max-width: 1023px) {
