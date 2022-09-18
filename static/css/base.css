@@ -37,6 +37,12 @@ textarea {
   resize: none;
   height: 100%;
   width: 100%;
+  letter-spacing: 0.1em;
+  font-size: 16px;
+}
+
+input {
+  letter-spacing: 0.1em;
 }
 
 li {
