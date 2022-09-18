@@ -25,8 +25,10 @@ def add_channel():
     dbConnect.addChannel(channel_name, channel_description)
     return redirect('/')
 
-@app.route('/detail')
-def detail():
+@app.route('/detail/<channel_id>')
+def detail(channel_id):
+    channel_id = channel_id
+    print(channel_id)
     return render_template('detail.html')
 
 @app.route('/db')
