@@ -15,7 +15,8 @@ def login():
 
 @app.route('/index')
 def index():
-    return render_template('index.html')
+    channels = dbConnect.getChannelAll()
+    return render_template('index.html', channels=channels)
 
 @app.route('/detail')
 def detail():

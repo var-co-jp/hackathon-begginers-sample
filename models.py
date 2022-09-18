@@ -26,6 +26,6 @@ class dbConnect:
         cur.execute(sql)
         messages = cur.fetchall()
 
-        return messages
         cur.close()
         conn.close()
+        return messages

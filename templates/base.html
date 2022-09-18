@@ -18,7 +18,7 @@
   </head>
   <body>
     {% include 'sidebar.html'%} {% include 'mobile-header.html'%} {% block body
-    %} {% endblock %}
+    %} {% endblock %} {% block script %} {% endblock %}
     <script
       src="{{url_for('static',filename='js/pagenation.js')}}"
       type="text/javascript"
