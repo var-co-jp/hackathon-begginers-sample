@@ -46,7 +46,8 @@ def testDbConnection():
 
 @app.route('/message', methods=['GET'])
 def hello():
-    messages = dbConnect.getMessageAll()
+    cid = 1
+    messages = dbConnect.getMessageAll(cid)
     return render_template('hello.html', messages=messages)
 
 # TODO
@@ -55,12 +56,12 @@ def hello():
 @app.route('/message', methods=['POST'])
 def message():
     message = request.form.get('message')
-    cid = request.form.get('channel_id')
+    # cid = request.form.get('channel_id')
+    cid = 1
     # このuid変数にsessionのuidをセット
     uid = '1'
-    dbConnect.createMessage(message, uid, cid)
-    messages = dbConnect.getMessageAll()
-    return render_template('hello.html', messages=messages)
+    dbConnect.createMessage(uid, cid, message)
+    return redirect('/message')
     
 if __name__ == '__main__':
     app.run(debug=True)

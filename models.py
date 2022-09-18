@@ -41,10 +41,10 @@ class dbConnect:
         cur.close()
         return messages
 
-    def createMessage(message, uid, cid):
+    def createMessage(uid, cid, message):
         cur = conn.cursor()
         sql = "INSERT INTO messages(uid, cid, message) VALUES(%s, %s, %s)"
-        cur.execute(sql, (message, uid, cid))
+        cur.execute(sql, (uid, cid, message))
         conn.commit()
         cur.close()
     
