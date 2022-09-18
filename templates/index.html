@@ -25,4 +25,12 @@
 <script type="text/javascript">
   const channels = JSON.parse('{{ channels|tojson }}')
 </script>
+<script
+src="{{url_for('static',filename='js/pagenation.js')}}"
+type="text/javascript"
+></script>
+<script
+src="{{url_for('static',filename='js/modal.js')}}"
+type="text/javascript"
+></script>
 {% endblock %}

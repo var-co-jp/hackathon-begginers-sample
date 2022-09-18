@@ -34,7 +34,6 @@ const pagination = () => {
       const url = `/detail/${item.id}`;
       a.innerText = item.name;
       a.setAttribute("href", url);
-      console.log(url);
       li.appendChild(a);
       ul.appendChild(li);
     });
