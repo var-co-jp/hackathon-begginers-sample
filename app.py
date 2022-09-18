@@ -1,6 +1,6 @@
-from flask import * 
+from flask import *
 import flask_login
-from models import dbConnect 
+from models import dbConnect
 
 app = Flask(__name__)
 
@@ -13,10 +13,17 @@ def signup():
 def login():
     return render_template('registration/login.html')
 
-@app.route('/index')
+@app.route('/')
 def index():
     channels = dbConnect.getChannelAll()
     return render_template('index.html', channels=channels)
+
+@app.route('/', methods=['POST'])
+def add_channel():
+    channel_name = request.form.get('channel-title')
+    channel_description = request.form.get('channel-description')
+    dbConnect.addChannel(channel_name, channel_description)
+    return redirect('/')
 
 @app.route('/detail')
 def detail():
