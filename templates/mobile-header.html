@@ -2,7 +2,13 @@
 <ion-icon name="close-outline" id="burger-close-icon"></ion-icon>
 <div id="mobile-header">
   <ul>
-    <li>ホーム</li>
+    <li class="page-links">
+      <a href="{{ url_for('index') }}">
+        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+        <span class="title">チャンネル一覧</span>
+      </a>
+    </li>
+
     <li>サインアウト</li>
   </ul>
 </div>

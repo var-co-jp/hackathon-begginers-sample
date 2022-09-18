@@ -50,6 +50,14 @@
   cursor: pointer;
 }
 
+#mobile-header li a {
+  color: var(--carbon);
+}
+
+#mobile-header li a:hover {
+  color: var(--dark_pink);
+}
+
 @media screen and (max-width: 639px) {
   /* #burger-icon {
     display: block;
