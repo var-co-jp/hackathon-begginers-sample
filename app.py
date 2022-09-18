@@ -56,12 +56,20 @@ def hello():
 @app.route('/message', methods=['POST'])
 def message():
     message = request.form.get('message')
+    channel_id = request.form.get('channel_id')
+    print(message, channel_id)
     # cid = request.form.get('channel_id')
     cid = 1
     # このuid変数にsessionのuidをセット
     uid = '1'
     dbConnect.createMessage(uid, cid, message)
-    return redirect('/message')
+
+    channel = dbConnect.getOneChannel(channel_id)
+    messages = dbConnect.getMessageAll(channel_id)
+    # 後でsessionのuidに書き換え
+    uid = '1'
+
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
     
 if __name__ == '__main__':
     app.run(debug=True)

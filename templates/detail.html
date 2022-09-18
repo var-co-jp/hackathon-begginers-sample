@@ -24,10 +24,12 @@
       {% endif %}
     </div>
     <div class="typing-box-wrapper">
-      <form class="typing-box">
+      <form class="typing-box" action="/message" method="POST">
         <textarea name="message" id="message"></textarea>
-        <input type="hidden" value="{{ channel_id }}" />
-        <button type="submit"></button>
+        <input type="hidden" name="channel_id" value="{{ channel.id }}" />
+        <button type="submit" id="add-message-btn">
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </button>
       </form>
     </div>
   </div>
