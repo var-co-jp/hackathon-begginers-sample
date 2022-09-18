@@ -17,7 +17,15 @@ class dbConnect:
         channels = cur.fetchall()
         cur.close()
         return channels
-        # conn.close()
+
+
+    def getOneChannel(cid):
+        cur = conn.cursor()
+        sql = "select * from channels where id=%s;"
+        cur.execute(sql, (cid))
+        channel = cur.fetchone()
+        cur.close()
+        return channel
 
     def addChannel(newChannelName, newChannelDescription):
         cur = conn.cursor()
@@ -25,18 +33,25 @@ class dbConnect:
         cur.execute(sql, (newChannelName, newChannelDescription))
         conn.commit()
 
-    def getMessageAll():
+    def getMessageAll(cid):
         cur = conn.cursor()
-        sql = "select * from messages;"
-        cur.execute(sql)
+        sql = "select * from messages where cid=%s;"
+        cur.execute(sql, (cid))
         messages = cur.fetchall()
         cur.close()
         return messages
-        
-    
-    def createMessage(message):
+
+    def createMessage(message, uid, cid):
         cur = conn.cursor()
-        sql = "INSERT INTO messages(uid, cid, message) VALUES('1', 1, %s)"
-        cur.execute(sql, (message))
+        sql = "INSERT INTO messages(uid, cid, message) VALUES(%s, %s, %s)"
+        cur.execute(sql, (message, uid, cid))
         conn.commit()
         cur.close()
+    
+    # def getUser(uid):
+    #     cur = conn.cursor()
+    #     sql = "select * from users where uid=%s;"
+    #     cur.execute(sql, (uid))
+    #     messages = cur.fetchone()
+    #     cur.close()
+    #     return messages
