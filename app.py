@@ -34,6 +34,18 @@ def testDbConnection():
     channels = dbConnect.getChannelAll()
 
     return render_template('hello.html', title='データベースのテスト', channels=channels)
+
+@app.route('/message', methods=['GET'])
+def hello():
+    messages = dbConnect.getMessageAll()
+    return render_template('hello.html', messages=messages)
+
+@app.route('/message', methods=['POST'])
+def message():
+    message = request.form.get('message')
+    dbConnect.createMessage(message)
+    messages = dbConnect.getMessageAll()
+    return render_template('hello.html', messages=messages)
     
 if __name__ == '__main__':
     app.run(debug=True)

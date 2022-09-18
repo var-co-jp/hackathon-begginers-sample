@@ -30,7 +30,13 @@ class dbConnect:
         sql = "select * from messages;"
         cur.execute(sql)
         messages = cur.fetchall()
-
         cur.close()
-        conn.close()
         return messages
+        
+    
+    def createMessage(message):
+        cur = conn.cursor()
+        sql = "INSERT INTO messages(uid, cid, message) VALUES('1', 1, %s)"
+        cur.execute(sql, (message))
+        conn.commit()
+        cur.close()
