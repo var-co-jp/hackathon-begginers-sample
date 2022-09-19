@@ -59,6 +59,68 @@
   justify-content: center;
 }
 
+.error404or500 {
+  margin-top: 20px;
+}
+
+.error-description p {
+  margin: 10px auto;
+}
+
 .error-btn a {
   color: var(--snow);
+}
+
+.error-gif {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+
+/* 500, 400ページ */
+
+.error-num {
+  font-size: 6em;
+  font-weight: 900;
+}
+
+.eye {
+  background: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  height: 100px;
+  position: relative;
+  width: 100px;
+}
+
+.eye::after {
+  background: #000;
+  border-radius: 50%;
+  bottom: 56.1px;
+  content: " ";
+  height: 33px;
+  position: absolute;
+  right: 33px;
+  width: 33px;
+}
+
+@media screen and (max-width: 440px) {
+  .error-num {
+    font-size: 5em;
+    font-weight: 900;
+  }
+  .eye {
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    height: 90px;
+    position: relative;
+    width: 90px;
+  }
+  .error-description {
+    margin-top: 20px;
+  }
+  .error-description p {
+    margin: 10px auto;
+  }
 }
