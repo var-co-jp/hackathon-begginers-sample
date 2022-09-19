@@ -46,6 +46,10 @@ def message():
     dbConnect.createMessage(message)
     messages = dbConnect.getMessageAll()
     return render_template('hello.html', messages=messages)
-    
+
+@app.route('/error')
+def show_error():
+    return render_template('error/error.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
