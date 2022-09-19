@@ -71,5 +71,22 @@ def message():
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
     
+@app.route('/error')
+def show_error():
+    return render_template('error/error.html')
+
+@app.errorhandler(404)
+def show_error404(error):
+    return render_template('error/404.html')
+
+@app.errorhandler(500)
+def show_error500(error):
+    return render_template('error/500.html')
+
+# テスト表示用
+@app.route('/error500')
+def test_show_error500():
+    return render_template('error/500.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
