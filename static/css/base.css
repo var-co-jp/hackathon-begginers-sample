@@ -66,6 +66,14 @@ button {
   margin: 16px auto;
 }
 
+.basic-btn {
+  background-color: var(--navy);
+}
+
+.basic-btn:hover {
+  background-color: var(--carbon);
+}
+
 button.pink {
   background-color: var(--baby_pink);
 }
