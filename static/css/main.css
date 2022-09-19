@@ -61,7 +61,6 @@
   background-color: transparent;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  /* border: 2px solid var(--snow); */
   min-height: 50%;
   display: flex;
   flex-direction: column;
@@ -81,6 +80,14 @@
   border-bottom: 1px solid lightgrey;
   padding-bottom: 4px;
   cursor: pointer;
+}
+
+.channel-box li a {
+  color: grey;
+}
+
+.channel-box li a:hover {
+  color: var(--dark_pink);
 }
 
 .pagination-container,

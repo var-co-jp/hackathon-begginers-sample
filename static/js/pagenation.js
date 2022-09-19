@@ -29,8 +29,12 @@ const pagination = () => {
     const last = page * STEP;
     channels.forEach((item, i) => {
       if (i < first - 1 || i > last - 1) return;
+      let a = document.createElement("a");
       let li = document.createElement("li");
-      li.innerText = item.name;
+      const url = `/detail/${item.id}`;
+      a.innerText = item.name;
+      a.setAttribute("href", url);
+      li.appendChild(a);
       ul.appendChild(li);
     });
   };

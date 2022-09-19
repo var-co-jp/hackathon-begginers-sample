@@ -25,9 +25,18 @@ def add_channel():
     dbConnect.addChannel(channel_name, channel_description)
     return redirect('/')
 
-@app.route('/detail')
-def detail():
-    return render_template('detail.html')
+# uidもmessageと一緒に返す
+@app.route('/detail/<channel_id>')
+def detail(channel_id):
+    channel_id = channel_id
+    channel = dbConnect.getOneChannel(channel_id)
+    messages = dbConnect.getMessageAll(channel_id)
+    # 後でsessionのuidに書き換え
+    uid = '1'
+
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+
+
 
 @app.route('/db')
 def testDbConnection():
@@ -37,16 +46,31 @@ def testDbConnection():
 
 @app.route('/message', methods=['GET'])
 def hello():
-    messages = dbConnect.getMessageAll()
+    cid = 1
+    messages = dbConnect.getMessageAll(cid)
     return render_template('hello.html', messages=messages)
 
+# TODO
+# 各メッセージにuidをつける
+# sessionからuser_idを取り出してcreateMessageに引数で渡す
 @app.route('/message', methods=['POST'])
 def message():
     message = request.form.get('message')
-    dbConnect.createMessage(message)
-    messages = dbConnect.getMessageAll()
-    return render_template('hello.html', messages=messages)
+    channel_id = request.form.get('channel_id')
+    print(message, channel_id)
+    # cid = request.form.get('channel_id')
+    cid = 1
+    # このuid変数にsessionのuidをセット
+    uid = '1'
+    dbConnect.createMessage(uid, cid, message)
 
+    channel = dbConnect.getOneChannel(channel_id)
+    messages = dbConnect.getMessageAll(channel_id)
+    # 後でsessionのuidに書き換え
+    uid = '1'
+
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    
 @app.route('/error')
 def show_error():
     return render_template('error/error.html')
