@@ -5,20 +5,31 @@
     <title>メッセージ投稿</title>
 </head>
 <body>
-    {% block content %}
-    <h3>一覧</h3>
-    <ul>
-    {% for message in messages %}
-        <li>{{ message.message}}</li>
-    {% endfor %}
-    </ul>
-    {% endblock %}
-    <h3>投稿</h3>
-    <form action="/message" method="POST">
+    
+    <h3>サインアップ</h3>
+    <form action="/signup" method="POST">
         <div>
         <label>
-            投稿内容
-            <input type="text" name="message">
+            名前
+            <input type="text" name="name">
+        </label>
+        </div>
+        <div>
+        <label>
+            email
+            <input type="text" name="email">
+        </label>
+        </div>
+        <div>
+        <label>
+            パスワード1
+            <input type="text" name="password1">
+        </label>
+        </div>
+        <div>
+        <label>
+            パスワード2
+            <input type="text" name="password2">
         </label>
         </div>
         <button type="submit">送信</button>

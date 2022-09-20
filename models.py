@@ -1,4 +1,6 @@
 import pymysql
+from user import User
+
 
 conn = pymysql.connect(
         host="localhost",
@@ -10,11 +12,19 @@ conn = pymysql.connect(
         )
 
 class dbConnect:
-    def createUser(User):
+    def createUser(user):
         cur = conn.cursor()
-        sql = "insert into users (name, email, password) values (%s, %s, %s);"
-        cur.execute(sql, (User.name, User.email, User.password))
+        sql = "insert into users (uid, user_name, email, password) values (%s, %s, %s, %s);"
+        cur.execute(sql, (user.uid, user.name, user.email, user.password))
         conn.commit()
+
+    def getUserId(name):
+        cur = conn.cursor()
+        sql = 'SELECT id FROM users WHERE name = %s'
+        cur.execute(sql, name)
+        id = cur.fetchone()
+        cur.close
+        return id
 
     def getChannelAll():
         cur = conn.cursor()
