@@ -25,10 +25,10 @@
     </div>
     <div class="typing-box-wrapper">
       <form class="typing-box" action="/message" method="POST">
-        <textarea name="message" id="message"></textarea>
+        <textarea name="message" id="message" autofocus></textarea>
         <input type="hidden" name="channel_id" value="{{ channel.id }}" />
         <button type="submit" id="add-message-btn">
-          <ion-icon name="add-circle-outline"></ion-icon>
+          <ion-icon name="paper-plane"></ion-icon>
         </button>
       </form>
     </div>
