@@ -1,13 +1,51 @@
-from flask import *
+from flask import Flask, request, redirect, render_template, session, flash
 import flask_login
 from models import dbConnect
+from user import User
+from datetime import timedelta
+import hashlib
+import uuid
+
 
 app = Flask(__name__)
+app.secret_key = 'secret_key'
+app.permanent_session_lifetime = timedelta(minutes=3)
 
 
 @app.route('/signup')
 def signup():
-    return render_template('registration/signup.html')
+    # return render_template('registration/signup.html')
+    return render_template('hello.html')
+
+@app.route('/signup', methods=['POST'])
+def userSignup():
+    #フロントからの情報を受け取る
+    name = request.form.get('name')
+    email = request.form.get('email')
+    password1 = request.form.get('password1')
+    password2 = request.form.get('password2')
+
+    #送られてきた値が空かどうか？二つのパスワードはあっているか？問題なければそのまま進む
+    if name == '' or email =='' or password1 == '' or password2 == '':
+        flash('空のフォームがあるようです')
+    elif password1 != password2:
+        flash('二つのパスワードの値が違っています')
+    else:
+        #パスワードを暗号化して変数に格納
+        uid = uuid.uuid4()
+        password = hashlib.sha256(password1.encode('utf-8')).hexdigest()
+        #Userクラスのインスタンスを作成
+        user = User(uid, name, email, password)
+        #modelsにデータを送る
+        dbConnect.createUser(user)
+        #セッションの確率
+        session.permanent = True
+        session['uid'] = uid
+        #問題なければindex.htmlへとばす
+        return redirect('/')
+    return redirect('/hello')
+
+    
 
 @app.route('/login')
 def login():
