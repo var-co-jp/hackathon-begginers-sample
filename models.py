@@ -10,6 +10,12 @@ conn = pymysql.connect(
         )
 
 class dbConnect:
+    def createUser(User):
+        cur = conn.cursor()
+        sql = "insert into users (name, email, password) values (%s, %s, %s);"
+        cur.execute(sql, (User.name, User.email, User.password))
+        conn.commit()
+
     def getChannelAll():
         cur = conn.cursor()
         sql = "select * from channels;"
