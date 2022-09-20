@@ -60,6 +60,7 @@
   color: grey;
   font-size: 45px;
   margin-bottom: 0;
+  margin: 0;
 }
 
 .registration-form {
@@ -74,7 +75,7 @@
   border: none;
   outline: none;
   margin-bottom: 10px;
-  line-height: 70px;
+  line-height: 50px;
   width: 100%;
   padding-bottom: 1px;
 }
@@ -85,6 +86,7 @@
 }
 
 .registration-form input:focus {
+  padding-bottom: 0;
   border-bottom: 1px grey solid;
 }
 
@@ -96,7 +98,7 @@ button {
   color: grey;
   line-height: 45px;
   font-size: smaller;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   padding-bottom: 1px;
 }
 
@@ -104,6 +106,17 @@ button {
   color: var(--carbon);
   border-bottom: 1px solid var(--carbon);
   padding-bottom: 0;
+}
+
+.flashes {
+  line-height: 40px;
+  margin-top: 0;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  /* width: 100%; */
+  text-align: center;
+  font-size: 18px;
 }
 
 @media only screen and (min-width: 640px) and (max-width: 1023px) {

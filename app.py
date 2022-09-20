@@ -14,8 +14,7 @@ app.permanent_session_lifetime = timedelta(minutes=3)
 
 @app.route('/signup')
 def signup():
-    # return render_template('registration/signup.html')
-    return render_template('hello.html')
+    return render_template('registration/signup.html')
 
 @app.route('/signup', methods=['POST'])
 def userSignup():
@@ -43,7 +42,7 @@ def userSignup():
         session['uid'] = uid
         #問題なければindex.htmlへとばす
         return redirect('/')
-    return redirect('/hello')
+    return redirect('/signup')
 
     
 

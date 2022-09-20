@@ -10,7 +10,9 @@
         <input type="text" placeholder="Email" />
         <input type="password" placeholder="Password" />
         <button class="green">LOG IN</button>
-        <a class="switch-register-mode" href="#">Already have an account?</a>
+        <a class="switch-register-mode" href="{{ url_for('signup') }}"
+          >Not registered yet?</a
+        >
       </form>
     </div>
   </div>
