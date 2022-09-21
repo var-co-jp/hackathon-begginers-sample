@@ -51,6 +51,7 @@ li {
 
 a {
   text-decoration: none;
+  color: var(--snow);
 }
 
 input:hover,

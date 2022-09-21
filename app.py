@@ -9,7 +9,7 @@ import uuid
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
-app.permanent_session_lifetime = timedelta(minutes=1)
+app.permanent_session_lifetime = timedelta(minutes=10)
 
 
 @app.route('/signup')
@@ -102,6 +102,11 @@ def detail(channel_id):
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
+@app.route('/delete/<cid>')
+def delete_channel(cid):
+    #　ここにdeleteの処理追加
+    
+    return 'ok'
 
 @app.route('/message', methods=['GET'])
 def hello():
@@ -115,10 +120,10 @@ def hello():
 def message():
     message = request.form.get('message')
     channel_id = request.form.get('channel_id')
-    print(message, channel_id)
-
     uid = session.get('uid')
-    dbConnect.createMessage(uid, channel_id, message)
+
+    if message:
+        dbConnect.createMessage(uid, channel_id, message)
 
     channel = dbConnect.getOneChannel(channel_id)
     messages = dbConnect.getMessageAll(channel_id)
