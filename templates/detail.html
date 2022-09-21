@@ -14,21 +14,24 @@
       {% endif %}
     </div>
     <div class="message-area">
-      {% if messages|length > 0 %} {% for message in messages %} {% if
-      message.uid == uid %}
-      <div><p class="box box-right">{{ message.message }}</p></div>
+      {% if messages|length > 0 %}
+        {% for message in messages %}
+          {% if message.uid == uid %}
+            <div><p class="box box-right">{{ message.message }}</p></div>
+          {% else %}
+            <div><p class="box box-left">{{ message.message }}</p></div>
+          {% endif %}
+        {% endfor %}
       {% else %}
-      <div><p class="box box-left">{{ message.message }}</p></div>
-      {% endif %} {% endfor %} {% else %}
-      <div><p>まだメッセージがありません</p></div>
+        <div><p>まだメッセージがありません</p></div>
       {% endif %}
     </div>
     <div class="typing-box-wrapper">
       <form class="typing-box" action="/message" method="POST">
-        <textarea name="message" id="message"></textarea>
+        <textarea name="message" id="message" autofocus></textarea>
         <input type="hidden" name="channel_id" value="{{ channel.id }}" />
         <button type="submit" id="add-message-btn">
-          <ion-icon name="add-circle-outline"></ion-icon>
+          <ion-icon name="paper-plane"></ion-icon>
         </button>
       </form>
     </div>

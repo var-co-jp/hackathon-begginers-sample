@@ -103,7 +103,7 @@
   bottom: 0;
   width: calc(100vw - 70px);
   height: 15vh;
-  background-color: rgba(77, 164, 156, 0.65);
+  background-color: rgba(211, 211, 211, 0.75);
   background-size: contain;
   border-top: 3px solid black;
   display: flex;
@@ -115,9 +115,11 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   height: 80%;
-  width: 90%;
+  width: 80%;
   margin: auto;
   position: relative;
+  background-color: var(--snow);
+  border-radius: 16px;
 }
 
 .typing-box textarea {
@@ -125,7 +127,8 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   width: 100%;
-  padding-left: 2rem;
+  padding: 4px 55px 4px 12px;
+  border-radius: 16px;
 }
 
 .typing-box textarea:focus {
@@ -135,24 +138,24 @@
 #add-message-btn {
   position: absolute;
   background-color: var(--carbon);
-  height: 30px;
-  width: 30px;
-  line-height: 30px;
+  height: 40px;
+  width: 40px;
+  line-height: 47px;
   padding: 0;
   margin: 0;
-  bottom: 0;
-  right: 0;
+  bottom: 8px;
+  right: 8px;
 }
 
 #add-message-btn ion-icon {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 #gif {
   z-index: 100;
   position: fixed;
   bottom: 0;
-  left: 10px;
+  left: 20px;
 }
 
 @media screen and (max-width: 550px) {
