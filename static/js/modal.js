@@ -7,7 +7,6 @@ const addPageButtonClose = document.getElementById("add-page-close-btn");
 const deletePageButtonClose = document.getElementById("delete-page-close-btn");
 
 const addChannelBtn = document.getElementById("add-channel-btn");
-const deleteChannelBtn = document.getElementById("delete-channel-btn");
 
 const addChannelConfirmBtn = document.getElementById(
   "add-channel-confirmation-btn"
@@ -20,10 +19,6 @@ const deleteChannelConfirmBtn = document.getElementById(
 // <button id="add-channel-btn">チャンネル追加</button>ボタンがクリックされた時
 addChannelBtn.addEventListener("click", () => {
   modalOpen("add");
-});
-// <button id="delete-channel-btn">削除</button>ボタンがクリックされた時
-deleteChannelBtn.addEventListener("click", () => {
-  modalOpen("delete");
 });
 
 function modalOpen(mode) {
@@ -64,8 +59,6 @@ addChannelConfirmBtn.addEventListener("click", addChannel);
 function addChannel() {
   // バックエンドにチャンネル登録しに行く処理
 }
-
-console.log(deleteChannelConfirmBtn);
 
 // チャンネル削除ボタンが押された時
 deleteChannelConfirmBtn.addEventListener("click", deleteChannel);

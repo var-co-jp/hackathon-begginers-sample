@@ -154,6 +154,10 @@
   .channel-box {
     width: 100%;
   }
+  .channel-box li a,
+  .channel-delete-btn {
+    font-size: 16px;
+  }
 }
 
 @media only screen and (min-width: 640px) and (max-width: 1023px) {
@@ -168,6 +172,10 @@
   }
   .channel-box {
     width: 80%;
+  }
+  .channel-box li a,
+  .channel-delete-btn {
+    font-size: 16px;
   }
 }
 

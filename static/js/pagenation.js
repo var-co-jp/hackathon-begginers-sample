@@ -37,10 +37,17 @@ const pagination = () => {
       li.appendChild(a);
       //// もしチャンネル作成者uidとuidが同じだったら削除ボタンを追加
       const deleteButton = document.createElement("button");
-      deleteButton.value = item.id;
       deleteButton.innerText = "削除";
       deleteButton.classList.add("channel-delete-btn");
       li.appendChild(deleteButton);
+      deleteButton.addEventListener("click", () => {
+        modalOpen("delete");
+        const confirmationButtonLink = document.getElementById(
+          "delete-confirm-link"
+        ); // aタグ
+        const url = `/delete/${item.id}`;
+        confirmationButtonLink.setAttribute("href", url);
+      });
       /////
       ul.appendChild(li);
     });
