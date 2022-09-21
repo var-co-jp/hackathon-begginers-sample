@@ -29,12 +29,19 @@ const pagination = () => {
     const last = page * STEP;
     channels.forEach((item, i) => {
       if (i < first - 1 || i > last - 1) return;
-      let a = document.createElement("a");
-      let li = document.createElement("li");
+      const a = document.createElement("a");
+      const li = document.createElement("li");
       const url = `/detail/${item.id}`;
       a.innerText = item.name;
       a.setAttribute("href", url);
       li.appendChild(a);
+      //// もしチャンネル作成者uidとuidが同じだったら削除ボタンを追加
+      const deleteButton = document.createElement("button");
+      deleteButton.value = item.id;
+      deleteButton.innerText = "削除";
+      deleteButton.classList.add("channel-delete-btn");
+      li.appendChild(deleteButton);
+      /////
       ul.appendChild(li);
     });
   };
