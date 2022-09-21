@@ -9,7 +9,7 @@ import uuid
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
-app.permanent_session_lifetime = timedelta(days=30)
+app.permanent_session_lifetime = timedelta(minutes=1)
 
 
 @app.route('/signup')
@@ -77,7 +77,11 @@ def logout():
 
 @app.route('/')
 def index():
-    channels = dbConnect.getChannelAll()
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        channels = dbConnect.getChannelAll()
     return render_template('index.html', channels=channels)
 
 @app.route('/', methods=['POST'])
