@@ -70,15 +70,17 @@
 .channel-box li {
   list-style: none;
   margin-bottom: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 3px;
   padding-right: 16px;
-  margin-left: auto;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .channel-box li:hover {
   border-bottom: 1px solid lightgrey;
-  padding-bottom: 4px;
+  padding-bottom: 2px;
   cursor: pointer;
 }
 
@@ -88,6 +90,15 @@
 
 .channel-box li a:hover {
   color: var(--dark_pink);
+}
+
+.channel-delete-btn {
+  margin: 0;
+  padding: 0.2em 3em;
+}
+
+.channel-delete-btn:hover {
+  background-color: var(--carbon);
 }
 
 .pagination-container,
@@ -143,6 +154,10 @@
   .channel-box {
     width: 100%;
   }
+  .channel-box li a,
+  .channel-delete-btn {
+    font-size: 16px;
+  }
 }
 
 @media only screen and (min-width: 640px) and (max-width: 1023px) {
@@ -157,6 +172,10 @@
   }
   .channel-box {
     width: 80%;
+  }
+  .channel-box li a,
+  .channel-delete-btn {
+    font-size: 16px;
   }
 }
 

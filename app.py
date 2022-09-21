@@ -98,6 +98,11 @@ def detail(channel_id):
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
+@app.route('/delete/<cid>')
+def delete_channel(cid):
+    #　ここにdeleteの処理追加
+    
+    return 'ok'
 
 @app.route('/message', methods=['GET'])
 def hello():
