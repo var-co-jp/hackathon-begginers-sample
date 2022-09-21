@@ -23,6 +23,7 @@
 {% block script %}
 <script type="text/javascript">
   const channels = JSON.parse('{{ channels|tojson }}')
+  const uid = JSON.parse('{{ uid|tojson }}')
 </script>
 <script
 src="{{url_for('static',filename='js/pagenation.js')}}"

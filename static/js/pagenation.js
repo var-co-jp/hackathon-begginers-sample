@@ -27,6 +27,7 @@ const pagination = () => {
 
     const first = (page - 1) * STEP + 1;
     const last = page * STEP;
+    console.log(uid);
     channels.forEach((item, i) => {
       if (i < first - 1 || i > last - 1) return;
       const a = document.createElement("a");
@@ -36,6 +37,7 @@ const pagination = () => {
       a.setAttribute("href", url);
       li.appendChild(a);
       //// もしチャンネル作成者uidとuidが同じだったら削除ボタンを追加
+      console.log(item.uid);
       const deleteButton = document.createElement("button");
       deleteButton.innerText = "削除";
       deleteButton.classList.add("channel-delete-btn");
