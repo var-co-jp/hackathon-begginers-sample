@@ -18,13 +18,39 @@ class dbConnect:
         cur.execute(sql, (user.uid, user.name, user.email, user.password))
         conn.commit()
 
-    def getUserId(name):
+
+    def getUserId(email):
         cur = conn.cursor()
-        sql = 'SELECT id FROM users WHERE name = %s'
-        cur.execute(sql, name)
+        sql = "SELECT id FROM users WHERE email=%s;"
+        cur.execute(sql, (email))
         id = cur.fetchone()
         cur.close
         return id
+    
+    def getUser(email):
+        cur = conn.cursor()
+        sql = "SELECT * FROM users WHERE email=%s;"
+        cur.execute(sql, (email))
+        user = cur.fetchone()
+        cur.close
+        return user
+    
+    # def getUserEmail(password):
+    #     cur = conn.cursor()
+    #     sql = 'SELECT email FROM users WHERE password = %s'
+    #     cur.execute(sql, password)
+    #     email = cur.fetchone()
+    #     cur.close
+    #     return email
+    
+    # def getUserPassword(email):
+    #     cur = conn.cursor()
+    #     sql = 'SELECT password FROM users WHERE email = %s'
+    #     cur.execute(sql, email)
+    #     password = cur.fetchone()
+    #     cur.close
+    #     return password
+
 
     def getChannelAll():
         cur = conn.cursor()
