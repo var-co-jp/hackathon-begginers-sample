@@ -82,7 +82,7 @@ def index():
         return redirect('/login')
     else:
         channels = dbConnect.getChannelAll()
-    return render_template('index.html', channels=channels)
+    return render_template('index.html', channels=channels, uid=uid)
 
 @app.route('/', methods=['POST'])
 def add_channel():
