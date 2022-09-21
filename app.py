@@ -9,7 +9,7 @@ import uuid
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
-app.permanent_session_lifetime = timedelta(minutes=3)
+app.permanent_session_lifetime = timedelta(days=30)
 
 
 @app.route('/signup')
@@ -37,8 +37,6 @@ def userSignup():
         user = User(uid, name, email, password)
         #modelsにデータを送る
         dbConnect.createUser(user)
-        #セッションの確率
-        session.permanent = True
         session['uid'] = uid
         #問題なければindex.htmlへとばす
         return redirect('/')
@@ -49,6 +47,33 @@ def userSignup():
 @app.route('/login')
 def login():
     return render_template('registration/login.html')
+
+@app.route('/login', methods=['POST'])
+def userLogin():
+    #パラメーターを受け取る
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    #値が空かどうかの精査をする。空であればloginへ
+    if email =='' or password == '':
+        flash('空のフォームがあるようです')
+    else:
+        user = dbConnect.getUser(email)
+        if user is None:
+            flash('このユーザーは存在しません')
+        else:
+            hashPassword = hashlib.sha256(password.encode('utf-8')).hexdigest()
+            if hashPassword != user["password"]:
+                flash('パスワードが間違っています！')
+            else:
+                session['uid'] = user["uid"]
+                return redirect('/')
+    return redirect('/login')
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect('/login')
 
 @app.route('/')
 def index():
@@ -73,13 +98,6 @@ def detail(channel_id):
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
-
-
-@app.route('/db')
-def testDbConnection():
-    channels = dbConnect.getChannelAll()
-
-    return render_template('hello.html', title='データベースのテスト', channels=channels)
 
 @app.route('/message', methods=['GET'])
 def hello():
