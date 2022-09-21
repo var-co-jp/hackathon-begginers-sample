@@ -9,7 +9,7 @@ import uuid
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
-app.permanent_session_lifetime = timedelta(days=30)
+app.permanent_session_lifetime = timedelta(minutes=1)
 
 
 @app.route('/signup')
@@ -77,7 +77,11 @@ def logout():
 
 @app.route('/')
 def index():
-    channels = dbConnect.getChannelAll()
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    else:
+        channels = dbConnect.getChannelAll()
     return render_template('index.html', channels=channels)
 
 @app.route('/', methods=['POST'])
@@ -94,7 +98,7 @@ def detail(channel_id):
     channel = dbConnect.getOneChannel(channel_id)
     messages = dbConnect.getMessageAll(channel_id)
     # 後でsessionのuidに書き換え
-    uid = '1'
+    uid = session.get('uid')
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
@@ -111,23 +115,18 @@ def hello():
     return render_template('hello.html', messages=messages)
 
 # TODO
-# 各メッセージにuidをつける
 # sessionからuser_idを取り出してcreateMessageに引数で渡す
 @app.route('/message', methods=['POST'])
 def message():
     message = request.form.get('message')
     channel_id = request.form.get('channel_id')
     print(message, channel_id)
-    # cid = request.form.get('channel_id')
-    cid = 1
-    # このuid変数にsessionのuidをセット
-    uid = '1'
-    dbConnect.createMessage(uid, cid, message)
+
+    uid = session.get('uid')
+    dbConnect.createMessage(uid, channel_id, message)
 
     channel = dbConnect.getOneChannel(channel_id)
     messages = dbConnect.getMessageAll(channel_id)
-    # 後でsessionのuidに書き換え
-    uid = '1'
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
     
