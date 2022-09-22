@@ -38,7 +38,8 @@ const pagination = () => {
       //// もしチャンネル作成者uidとuidが同じだったら削除ボタンを追加
       const deleteButton = document.createElement("button");
       deleteButton.innerText = "削除";
-      deleteButton.classList.add("channel-delete-btn");
+      deleteButton.classList.add("basic-btn");
+      deleteButton.classList.add("smaller-btn");
       li.appendChild(deleteButton);
       deleteButton.addEventListener("click", () => {
         modalOpen("delete");

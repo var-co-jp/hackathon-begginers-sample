@@ -2,11 +2,9 @@
 
 const addChannelModal = document.getElementById("add-channel-modal");
 const deleteChannelModal = document.getElementById("delete-channel-modal");
-const updateChannelModal = document.getElementById("");
 
 const addPageButtonClose = document.getElementById("add-page-close-btn");
 const deletePageButtonClose = document.getElementById("delete-page-close-btn");
-const updatePageButtonClose = document.getElementById("update-page-close-btn");
 
 const addChannelBtn = document.getElementById("add-channel-btn");
 
@@ -40,9 +38,6 @@ addPageButtonClose.addEventListener("click", () => {
 deletePageButtonClose.addEventListener("click", () => {
   modalClose("delete");
 });
-updatePageButtonClose.addEventListener("click", () => {
-  modalClose("update");
-});
 
 function modalClose(mode) {
   if (mode === "add") {
@@ -62,16 +57,4 @@ function outsideClose(e) {
   } else if (e.target == deleteChannelModal) {
     deleteChannelModal.style.display = "none";
   }
-}
-
-// チャンネル登録ボタンが押された時
-addChannelConfirmBtn.addEventListener("click", addChannel);
-function addChannel() {
-  // バックエンドにチャンネル登録しに行く処理
-}
-
-// チャンネル削除ボタンが押された時
-deleteChannelConfirmBtn.addEventListener("click", deleteChannel);
-function deleteChannel() {
-  // バックエンドにチャンネルを削除しに行く処理
 }
