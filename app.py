@@ -37,7 +37,8 @@ def userSignup():
         user = User(uid, name, email, password)
         #modelsにデータを送る
         dbConnect.createUser(user)
-        session['uid'] = uid
+        UserId = str(uid)
+        session['uid'] = UserId
         #問題なければindex.htmlへとばす
         return redirect('/')
     return redirect('/signup')
@@ -85,25 +86,39 @@ def index():
 
 @app.route('/', methods=['POST'])
 def add_channel():
-    uid = session.get("uid")
+    uid = session.get('uid')
+    print(uid)
     if uid is None:
         return redirect('/login')
-
     channel_name = request.form.get('channel-title')
     channel_description = request.form.get('channel-description')
-    dbConnect.addChannel(channel_name, channel_description, uid)
+    dbConnect.addChannel(uid, channel_name, channel_description)
     return redirect('/')
+
 
 @app.route('/update_channel', methods=['POST'])
 def update_channel():
     cid = request.form.get('cid')
     return 'update'
 
+
 @app.route('/delete/<cid>')
 def delete_channel(cid):
-    #　ここにdeleteの処理追加
-    
-    return 'ok'
+    uid = session.get("uid")
+    print(uid)
+    if uid is None:
+        return redirect('/login')
+    else:
+        channel = dbConnect.getChannelById(cid)
+        print(channel["uid"] == uid)
+        if channel["uid"] != uid:
+            flash('チャンネルは作成者のみ削除可能です')
+            return redirect ('/')
+        else:
+            dbConnect.deleteChannel(cid)
+            channels = dbConnect.getChannelAll()
+            return render_template('index.html', channels=channels, uid=uid)
+
 
 # uidもmessageと一緒に返す
 @app.route('/detail/<cid>')
@@ -137,7 +152,7 @@ def add_message():
     if message:
         dbConnect.createMessage(uid, channel_id, message)
 
-    channel = dbConnect.getOneChannel(channel_id)
+    channel = dbConnect.getChannelById(channel_id)
     messages = dbConnect.getMessageAll(channel_id)
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
@@ -154,7 +169,7 @@ def delete_message():
     if message_id:
         dbConnect.deleteMessage(message_id)
 
-    channel = dbConnect.getOneChannel(cid)
+    channel = dbConnect.getChannelById(cid)
     messages = dbConnect.getMessageAll(cid)
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
