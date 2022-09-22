@@ -5,6 +5,7 @@ from util.user import User
 from datetime import timedelta
 import hashlib
 import uuid
+import re
 
 
 app = Flask(__name__)
@@ -24,23 +25,28 @@ def userSignup():
     password1 = request.form.get('password1')
     password2 = request.form.get('password2')
 
-    #送られてきた値が空かどうか？二つのパスワードはあっているか？問題なければそのまま進む
+    pattern = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+
     if name == '' or email =='' or password1 == '' or password2 == '':
         flash('空のフォームがあるようです')
     elif password1 != password2:
         flash('二つのパスワードの値が違っています')
+    elif re.match(pattern, email) is None:
+        flash('正しいメールアドレスの形式ではありません')
     else:
-        #パスワードを暗号化して変数に格納
         uid = uuid.uuid4()
         password = hashlib.sha256(password1.encode('utf-8')).hexdigest()
-        #Userクラスのインスタンスを作成
         user = User(uid, name, email, password)
-        #modelsにデータを送る
-        dbConnect.createUser(user)
-        UserId = str(uid)
-        session['uid'] = UserId
-        #問題なければindex.htmlへとばす
-        return redirect('/')
+        user_name= dbConnect.getUserName(email)
+        user_email= dbConnect.getUserEmail(name)
+
+        if user_name == name or user_email == email:
+            flash('既に登録されているようです')
+        elif user_name == None and user_email == None:
+            dbConnect.createUser(user)
+            UserId = str(uid)
+            session['uid'] = UserId
+            return redirect('/')
     return redirect('/signup')
 
 
@@ -91,9 +97,14 @@ def add_channel():
     if uid is None:
         return redirect('/login')
     channel_name = request.form.get('channel-title')
-    channel_description = request.form.get('channel-description')
-    dbConnect.addChannel(uid, channel_name, channel_description)
-    return redirect('/')
+    channel = dbConnect.getChannelByName(channel_name)
+    if channel == None:
+        channel_description = request.form.get('channel-description')
+        dbConnect.addChannel(uid, channel_name, channel_description)
+        return redirect('/')
+    else:
+        error = '既に同じチャンネルが存在しています'
+        return render_template('error/error.html', error_message=error)
 
 
 @app.route('/update_channel', methods=['POST'])
@@ -184,10 +195,6 @@ def delete_message():
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
-
-@app.route('/error')
-def show_error():
-    return render_template('error/error.html')
 
 @app.errorhandler(404)
 def show_error404(error):
