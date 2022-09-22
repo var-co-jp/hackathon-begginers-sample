@@ -85,27 +85,35 @@ def index():
 
 @app.route('/', methods=['POST'])
 def add_channel():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+
     channel_name = request.form.get('channel-title')
     channel_description = request.form.get('channel-description')
-    dbConnect.addChannel(channel_name, channel_description)
+    dbConnect.addChannel(channel_name, channel_description, uid)
     return redirect('/')
 
-# uidもmessageと一緒に返す
-@app.route('/detail/<channel_id>')
-def detail(channel_id):
-    channel_id = channel_id
-    channel = dbConnect.getOneChannel(channel_id)
-    messages = dbConnect.getMessageAll(channel_id)
-    # 後でsessionのuidに書き換え
-    uid = session.get('uid')
-
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+@app.route('/update_channel/<cid>')
+def update_channel(cid):
+    return 'update'
 
 @app.route('/delete/<cid>')
 def delete_channel(cid):
     #　ここにdeleteの処理追加
     
     return 'ok'
+
+# uidもmessageと一緒に返す
+@app.route('/detail/<cid>')
+def detail(cid):
+    cid = cid
+    channel = dbConnect.getChannelById(cid)
+    messages = dbConnect.getMessageAll(cid)
+    # 後でsessionのuidに書き換え
+    uid = session.get('uid')
+
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
 @app.route('/message', methods=['GET'])
 def show_message():
