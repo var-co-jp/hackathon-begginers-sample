@@ -65,18 +65,15 @@ class dbConnect:
         cur.execute(sql, (uid, newChannelName, newChannelDescription))
         conn.commit()
         cur.close()
-    
 
-    def getChannelByName(channel_name):
+    def updateChannel(uid, newChannelName, newChannelDescription, cid):
         conn = DB.getConnection()
         cur = conn.cursor()
-        sql = "select * from channels where name=%s;"
-        cur.execute(sql, (channel_name))
-        channel = cur.fetchone()
+        sql = "UPDATE channels SET uid=%s, name=%s, abstract=%s WHERE id=%s;"
+        cur.execute(sql, (uid, newChannelName, newChannelDescription, cid))
+        conn.commit()
         cur.close()
-        return channel
 
-        
     #deleteチャンネル関数
     def deleteChannel(cid):
         conn = DB.getConnection()
