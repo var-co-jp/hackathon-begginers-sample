@@ -94,7 +94,7 @@ def add_channel():
     dbConnect.addChannel(channel_name, channel_description, uid)
     return redirect('/')
 
-@app.route('/update_channel')
+@app.route('/update_channel', methods=['POST'])
 def update_channel():
     cid = request.form.get('cid')
     return 'update'
