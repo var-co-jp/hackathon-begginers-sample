@@ -13,10 +13,22 @@
       <p id="chatroom-description">{{ channel.abstract }}</p>
       {% endif %}
     </div>
-    <div id="message-area">
+    <div class="message-area">
       {% if messages|length > 0 %} {% for message in messages %} {% if
       message.uid == uid %}
-      <div><p class="box box-right">{{ message.message }}</p></div>
+      <div class="my-messages">
+        <p class="box box-right">{{ message.message }}</p>
+        <form action="/delete_message" method="POST">
+          <input type="hidden" value="{{ channel.id }}" name="channel_id" />
+          <button
+            class="delete-message-btn"
+            name="message_id"
+            value="{{ message.id }}"
+          >
+            <ion-icon name="trash-bin-outline"></ion-icon>
+          </button>
+        </form>
+      </div>
       {% else %}
       <div><p class="box box-left">{{ message.message }}</p></div>
       {% endif %} {% endfor %} {% else %}

@@ -49,6 +49,25 @@
   gap: 2rem;
 }
 
+.my-messages {
+  display: flex;
+}
+
+.delete-message-btn {
+  background-color: var(--carbon);
+  height: 40px;
+  width: 40px;
+  line-height: 47px;
+  padding: 0;
+  margin: 0;
+  bottom: 8px;
+  right: 8px;
+}
+
+.delete-message-btn ion-icon {
+  font-size: 1rem;
+}
+
 .box {
   position: relative;
   width: 60%;

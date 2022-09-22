@@ -9,7 +9,7 @@ import uuid
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
-app.permanent_session_lifetime = timedelta(minutes=10)
+app.permanent_session_lifetime = timedelta(minutes=60)
 
 
 @app.route('/signup')
@@ -42,7 +42,6 @@ def userSignup():
         return redirect('/')
     return redirect('/signup')
 
-    
 
 @app.route('/login')
 def login():
@@ -112,7 +111,7 @@ def delete_channel(cid):
     return 'ok'
 
 @app.route('/message', methods=['GET'])
-def hello():
+def show_message():
     cid = 1
     messages = dbConnect.getMessageAll(cid)
     return render_template('hello.html', messages=messages)
@@ -120,10 +119,13 @@ def hello():
 # TODO
 # sessionからuser_idを取り出してcreateMessageに引数で渡す
 @app.route('/message', methods=['POST'])
-def message():
+def add_message():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+
     message = request.form.get('message')
     channel_id = request.form.get('channel_id')
-    uid = session.get('uid')
 
     if message:
         dbConnect.createMessage(uid, channel_id, message)
@@ -132,7 +134,25 @@ def message():
     messages = dbConnect.getMessageAll(channel_id)
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
-    
+
+@app.route('/delete_message', methods=['POST'])
+def delete_message():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+
+    message_id = request.form.get('message_id')
+    cid = request.form.get('channel_id')
+    print(message_id)
+    if message_id:
+        dbConnect.deleteMessage(message_id)
+
+    channel = dbConnect.getOneChannel(cid)
+    messages = dbConnect.getMessageAll(cid)
+
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+
+
 @app.route('/error')
 def show_error():
     return render_template('error/error.html')
