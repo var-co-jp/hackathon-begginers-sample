@@ -52,8 +52,8 @@ class dbConnect:
             cur = conn.cursor()
             sql = "SELECT email FROM users WHERE user_name=%s;"
             cur.execute(sql, (name))
-            id = cur.fetchone()
-            return id
+            email = cur.fetchone()
+            return email
         except Exception as e:
             print(e + 'が発生しています')
             return None
