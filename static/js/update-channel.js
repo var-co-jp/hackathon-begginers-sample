@@ -1,18 +1,16 @@
-const chatHeader = document.getElementById("chat-header");
-
 const updateButton = document.getElementById("channel-update");
+const updateChannelModal = document.getElementById("update-channel-modal");
+const updatePageButtonClose = document.getElementById("update-page-close-btn");
 
 const updateChannel = () => {
   if (uid !== channel.uid) {
     return;
   } else {
-    console.log("same");
     modalOpen("update");
-    const confirmationButtonLink = document.getElementById(
-      "update-confirm-link"
-    ); // aタグ
-    const url = `/update-channel`;
-    confirmationButtonLink.setAttribute("href", url);
   }
 };
 updateButton.addEventListener("click", updateChannel);
+
+updatePageButtonClose.addEventListener("click", () => {
+  modalClose("update");
+});

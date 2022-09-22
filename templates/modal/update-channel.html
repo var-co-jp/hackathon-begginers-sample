@@ -8,7 +8,7 @@
       />
       <span class="modalClose" id="update-page-close-btn">×</span>
     </div>
-    <form class="modal-body" action="/delete-channel" method="POST">
+    <form class="modal-body" action="/update_channel" method="POST">
       <input
         type="text"
         placeholder="チャンネル名"
@@ -22,9 +22,7 @@
         name="channel-description"
       />
       <input type="hidden" name='cid' value='{{ cid }}'>
-      <a id="update-confirm-link">
-        <button id="update-channel-confirmation-btn">変更</button>
-      </a>
+        <button>変更</button>
     </form>
   </div>
 </div>

@@ -10,18 +10,17 @@
     />
     <div class="chat-box">
       <div id="chat-header">
-      <p>{{ uid }}</p>
-      <p>{{ channel.id }}</p>
         <!-- もしuidとチャンネル作成者が同じならタイトル、説明を編集可能にする -->
-          <p id="chatroom-name">{{ channel.name }}</p>
-          {% if channel.abstract is not none %}
-            <p id="chatroom-description">{{ channel.abstract }}</p>
-          {% endif %}
-          {% if uid == channel.uid %}
-            <button id='channel-update'>編集</button>
-          {% endif %}
+        <p id="chatroom-name">{{ channel.name }}</p>
+        {% if channel.abstract is not none %}
+          <p id="chatroom-description">{{ channel.abstract }}</p>
+        {% endif %}
+        {% if uid == channel.uid %}
+          <button id='channel-update' class="basic-btn smaller-btn">編集</button>
+          {% include 'modal/update-channel.html' %}
+        {% endif %}
       </div>
-      <div class="message-area">
+      <div id="message-area">
         {% if messages|length > 0 %}
           {% for message in messages %}
             {% if message.uid == uid %}
@@ -69,6 +68,10 @@
   ></script>
   <script
     src="{{url_for('static',filename='js/update-channel.js')}}"
+    type="text/javascript"
+  ></script>
+  <script
+    src="{{url_for('static',filename='js/modal.js')}}"
     type="text/javascript"
   ></script>
 {% endblock %}
