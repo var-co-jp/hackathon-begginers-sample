@@ -48,6 +48,15 @@ class dbConnect:
         channel = cur.fetchone()
         cur.close()
         return channel
+    
+    def getChannelByName(channel_name):
+        conn = DB.getConnection()
+        cur = conn.cursor()
+        sql = "select * from channels where name=%s;"
+        cur.execute(sql, (channel_name))
+        channel = cur.fetchone()
+        cur.close()
+        return channel
 
     def addChannel(uid, newChannelName, newChannelDescription):
         conn = DB.getConnection()
