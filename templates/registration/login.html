@@ -1,27 +1,31 @@
-{% extends 'registration/base.html' %} {% block title %}
-<title>login</title>
-{% endblock %} {% block body %}
-<div class="registration-wrapper login">
-  <div class="registration-main login-main">
-    LOGIN
-    <div class="half-circle green">
-      <form class="registration-form" method="post">
-        <h1 class="registration-title">LOG IN</h1>
-        <input type="text" placeholder="Email" name="email" />
-        <input type="password" placeholder="Password" name="password" />
-        <button class="green">LOG IN</button>
-        {% with messages = get_flashed_messages() %} {% if messages %}
-        <ul class="flashes">
-          {% for message in messages %}
-          <li>{{ message }}</li>
-          {% endfor %}
-        </ul>
-        {% endif %} {% endwith %}
-        <a class="switch-register-mode" href="{{ url_for('signup') }}">
-          Not registered yet?
-        </a>
-      </form>
+{% extends 'registration/base.html' %}
+{% block title %}
+  <title>login</title>
+{% endblock %}
+{% block body %}
+  <div class="registration-wrapper login">
+    <div class="registration-main login-main">
+      LOGIN
+      <div class="half-circle green">
+        <form class="registration-form" method="post">
+          <h1 class="registration-title">LOG IN</h1>
+          <input type="text" placeholder="Email" name="email" />
+          <input type="password" placeholder="Password" name="password" />
+          <button class="green">LOG IN</button>
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul class="flashes">
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          {% endwith %}
+          <a class="switch-register-mode" href="{{ url_for('signup') }}">
+            Not registered yet?
+          </a>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 {% endblock %}

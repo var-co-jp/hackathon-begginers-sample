@@ -40,12 +40,20 @@ class dbConnect:
         cur.close()
         return channels
 
-
-    def getOneChannel(cid):
+    def getChannelById(cid):
         conn = DB.getConnection()
         cur = conn.cursor()
         sql = "select * from channels where id=%s;"
         cur.execute(sql, (cid))
+        channel = cur.fetchone()
+        cur.close()
+        return channel
+
+    def getChannelByName(channel_name):
+        conn = DB.getConnection()
+        cur = conn.cursor()
+        sql = "select * from channels where name=%s;"
+        cur.execute(sql, (channel_name))
         channel = cur.fetchone()
         cur.close()
         return channel

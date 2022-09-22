@@ -92,15 +92,6 @@
   color: var(--dark_pink);
 }
 
-.channel-delete-btn {
-  margin: 0;
-  padding: 0.2em 3em;
-}
-
-.channel-delete-btn:hover {
-  background-color: var(--carbon);
-}
-
 .pagination-container,
 .pagination {
   display: flex;
@@ -154,8 +145,7 @@
   .channel-box {
     width: 100%;
   }
-  .channel-box li a,
-  .channel-delete-btn {
+  .channel-box li a {
     font-size: 16px;
   }
 }
@@ -173,8 +163,7 @@
   .channel-box {
     width: 80%;
   }
-  .channel-box li a,
-  .channel-delete-btn {
+  .channel-box li a {
     font-size: 16px;
   }
 }
