@@ -85,12 +85,3 @@ class dbConnect:
         cur.execute(sql, (message_id))
         conn.commit()
         cur.close()
-
-    # def getUser(uid):
-    #     cur = conn.cursor()
-    #     sql = "select * from users where uid=%s;"
-    #     cur.execute(sql, (uid))
-    #     messages = cur.fetchone()
-    #     cur.close()
-    #     return messages
-
