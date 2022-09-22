@@ -109,8 +109,18 @@ def add_channel():
 
 @app.route('/update_channel', methods=['POST'])
 def update_channel():
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+
     cid = request.form.get('cid')
-    return 'update'
+    channel_name = request.form.get('channel-title')
+    channel_description = request.form.get('channel-description')
+
+    res = dbConnect.updateChannel(uid, channel_name, channel_description, cid)
+    channel = dbConnect.getChannelById(cid)
+    messages = dbConnect.getMessageAll(cid)
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
 
 @app.route('/delete/<cid>')

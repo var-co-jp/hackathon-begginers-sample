@@ -150,6 +150,15 @@ class dbConnect:
             return channel
 
 
+    def updateChannel(uid, newChannelName, newChannelDescription, cid):
+        conn = DB.getConnection()
+        cur = conn.cursor()
+        sql = "UPDATE channels SET uid=%s, name=%s, abstract=%s WHERE id=%s;"
+        cur.execute(sql, (uid, newChannelName, newChannelDescription, cid))
+        conn.commit()
+        cur.close()
+
+
     #deleteチャンネル関数
     def deleteChannel(cid):
         try: 
