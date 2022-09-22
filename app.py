@@ -106,6 +106,13 @@ def detail(channel_id):
     messages = dbConnect.getMessageAll(channel_id)
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
+
+@app.route('/update_channel', methods=['POST'])
+def update_channel():
+    cid = request.form.get('cid')
+    return 'update'
+
+
 @app.route('/delete/<cid>')
 def delete_channel(cid):
     uid = session.get("uid")
@@ -123,6 +130,18 @@ def delete_channel(cid):
             channels = dbConnect.getChannelAll()
             return render_template('index.html', channels=channels, uid=uid)
 
+
+# uidもmessageと一緒に返す
+@app.route('/detail/<cid>')
+def detail(cid):
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
+    cid = cid
+    channel = dbConnect.getChannelById(cid)
+    messages = dbConnect.getMessageAll(cid)
+
+    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
 @app.route('/message', methods=['GET'])
 def show_message():

@@ -9,7 +9,7 @@
   padding-left: 10px;
 }
 
-.chat-header {
+#chat-header {
   background-color: var(--baby_pink);
   height: 8vh;
   width: calc(100vw - 70px);
@@ -189,7 +189,7 @@
   }
 
   .typing-box-wrapper,
-  .chat-header {
+  #chat-header {
     width: 100%;
   }
 
