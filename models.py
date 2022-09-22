@@ -8,12 +8,13 @@ class dbConnect:
         sql = "insert into users (uid, user_name, email, password) values (%s, %s, %s, %s);"
         cur.execute(sql, (user.uid, user.name, user.email, user.password))
         conn.commit()
+        cur.close()
 
 
     def getUserId(email):
         conn = DB.getConnection()
         cur = conn.cursor()
-        sql = "SELECT id FROM users WHERE email=%s;"
+        sql = "SELECT uid FROM users WHERE email=%s;"
         cur.execute(sql, (email))
         id = cur.fetchone()
         cur.close
@@ -50,13 +51,22 @@ class dbConnect:
         return channel
 
 
-    def addChannel(newChannelName, newChannelDescription):
+    def addChannel(uid, newChannelName, newChannelDescription):
         conn = DB.getConnection()
         cur = conn.cursor()
-        sql = "insert into channels (name, abstract) values (%s, %s);"
-        cur.execute(sql, (newChannelName, newChannelDescription))
+        sql = "insert into channels (uid, name, abstract) values (%s, %s, %s);"
+        cur.execute(sql, (uid, newChannelName, newChannelDescription))
         conn.commit()
-
+        cur.close()
+    
+    #deleteチャンネル関数
+    def deleteChannel(cid):
+        conn = DB.getConnection()
+        cur = conn.cursor()
+        sql = "DELETE FROM channels WHERE id=%s;"
+        cur.execute(sql, (cid))
+        conn.commit()
+        cur.close()
 
     def getMessageAll(cid):
         conn = DB.getConnection()
@@ -85,3 +95,4 @@ class dbConnect:
         cur.execute(sql, (message_id))
         conn.commit()
         cur.close()
+    

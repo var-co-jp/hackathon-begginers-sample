@@ -37,7 +37,8 @@ def userSignup():
         user = User(uid, name, email, password)
         #modelsにデータを送る
         dbConnect.createUser(user)
-        session['uid'] = uid
+        UserId = str(uid)
+        session['uid'] = UserId
         #問題なければindex.htmlへとばす
         return redirect('/')
     return redirect('/signup')
@@ -85,9 +86,13 @@ def index():
 
 @app.route('/', methods=['POST'])
 def add_channel():
+    uid = session.get('uid')
+    print(uid)
+    if uid is None:
+        return redirect('/login')
     channel_name = request.form.get('channel-title')
     channel_description = request.form.get('channel-description')
-    dbConnect.addChannel(channel_name, channel_description)
+    dbConnect.addChannel(uid, channel_name, channel_description)
     return redirect('/')
 
 # uidもmessageと一緒に返す
@@ -99,16 +104,25 @@ def detail(channel_id):
     channel_id = channel_id
     channel = dbConnect.getOneChannel(channel_id)
     messages = dbConnect.getMessageAll(channel_id)
-    # 後でsessionのuidに書き換え
-    uid = session.get('uid')
-
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
 @app.route('/delete/<cid>')
 def delete_channel(cid):
-    #　ここにdeleteの処理追加
-    
-    return 'ok'
+    uid = session.get("uid")
+    print(uid)
+    if uid is None:
+        return redirect('/login')
+    else:
+        channel = dbConnect.getOneChannel(cid)
+        print(channel["uid"] == uid)
+        if channel["uid"] != uid:
+            flash('チャンネルは作成者のみ削除可能です')
+            return redirect ('/')
+        else:
+            dbConnect.deleteChannel(cid)
+            channels = dbConnect.getChannelAll()
+            return render_template('index.html', channels=channels, uid=uid)
+
 
 @app.route('/message', methods=['GET'])
 def show_message():
