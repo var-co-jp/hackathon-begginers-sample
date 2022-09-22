@@ -39,8 +39,7 @@ class dbConnect:
         cur.close()
         return channels
 
-
-    def getOneChannel(cid):
+    def getChannelById(cid):
         conn = DB.getConnection()
         cur = conn.cursor()
         sql = "select * from channels where id=%s;"
@@ -49,12 +48,20 @@ class dbConnect:
         cur.close()
         return channel
 
-
-    def addChannel(newChannelName, newChannelDescription):
+    def getChannelByName(channel_name):
         conn = DB.getConnection()
         cur = conn.cursor()
-        sql = "insert into channels (name, abstract) values (%s, %s);"
-        cur.execute(sql, (newChannelName, newChannelDescription))
+        sql = "select * from channels where name=%s;"
+        cur.execute(sql, (channel_name))
+        channel = cur.fetchone()
+        cur.close()
+        return channel
+
+    def addChannel(newChannelName, newChannelDescription, uid):
+        conn = DB.getConnection()
+        cur = conn.cursor()
+        sql = "insert into channels (name, abstract, uid) values (%s, %s, %s);"
+        cur.execute(sql, (newChannelName, newChannelDescription, uid))
         conn.commit()
 
 

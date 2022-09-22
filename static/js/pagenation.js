@@ -55,7 +55,6 @@ const pagination = () => {
       ul.appendChild(li);
     });
   };
-
   // pagination内で現在選択されているページの番号に色を付ける
   const colorPaginationNum = () => {
     // <ul class="pagination"></ul>内の<li></li>を全て取得し、配列に入れる

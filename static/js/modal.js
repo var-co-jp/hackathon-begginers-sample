@@ -26,6 +26,8 @@ function modalOpen(mode) {
     addChannelModal.style.display = "block";
   } else if (mode === "delete") {
     deleteChannelModal.style.display = "block";
+  } else if (mode === "update") {
+    updateChannelModal.style.display = "block";
   }
 }
 
@@ -36,11 +38,14 @@ addPageButtonClose.addEventListener("click", () => {
 deletePageButtonClose.addEventListener("click", () => {
   modalClose("delete");
 });
+
 function modalClose(mode) {
   if (mode === "add") {
     addChannelModal.style.display = "none";
   } else if (mode === "delete") {
     deleteChannelModal.style.display = "none";
+  } else if (mode === "update") {
+    updateChannelModal.style.display = "none";
   }
 }
 
@@ -52,16 +57,4 @@ function outsideClose(e) {
   } else if (e.target == deleteChannelModal) {
     deleteChannelModal.style.display = "none";
   }
-}
-
-// チャンネル登録ボタンが押された時
-addChannelConfirmBtn.addEventListener("click", addChannel);
-function addChannel() {
-  // バックエンドにチャンネル登録しに行く処理
-}
-
-// チャンネル削除ボタンが押された時
-deleteChannelConfirmBtn.addEventListener("click", deleteChannel);
-function deleteChannel() {
-  // バックエンドにチャンネルを削除しに行く処理
 }
