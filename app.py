@@ -94,8 +94,9 @@ def add_channel():
     dbConnect.addChannel(channel_name, channel_description, uid)
     return redirect('/')
 
-@app.route('/update_channel/<cid>')
-def update_channel(cid):
+@app.route('/update_channel')
+def update_channel():
+    cid = request.form.get('cid')
     return 'update'
 
 @app.route('/delete/<cid>')
@@ -107,11 +108,12 @@ def delete_channel(cid):
 # uidもmessageと一緒に返す
 @app.route('/detail/<cid>')
 def detail(cid):
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
     cid = cid
     channel = dbConnect.getChannelById(cid)
     messages = dbConnect.getMessageAll(cid)
-    # 後でsessionのuidに書き換え
-    uid = session.get('uid')
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
