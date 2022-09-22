@@ -93,6 +93,9 @@ def add_channel():
 # uidもmessageと一緒に返す
 @app.route('/detail/<channel_id>')
 def detail(channel_id):
+    uid = session.get("uid")
+    if uid is None:
+        return redirect('/login')
     channel_id = channel_id
     channel = dbConnect.getOneChannel(channel_id)
     messages = dbConnect.getMessageAll(channel_id)

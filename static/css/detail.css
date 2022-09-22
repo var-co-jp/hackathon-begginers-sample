@@ -35,7 +35,7 @@
 
 /* メッセージエリア */
 
-.message-area {
+#message-area {
   min-height: 100vh;
   width: 100%;
   padding-top: calc(8vh + 10px);
@@ -202,14 +202,8 @@
   }
 }
 
-/* @media only screen and (min-width: 640px) and (max-width: 1023px) {
-  .chat-box {
-    width: 75%;
+@media only screen and (min-width: 640px) {
+  .box {
+    width: 40%;
   }
 }
-
-@media screen and (min-width: 1024px) {
-  .chat-box {
-    width: 60%;
-  }
-}  */
