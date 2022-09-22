@@ -95,19 +95,6 @@ def add_channel():
     dbConnect.addChannel(uid, channel_name, channel_description)
     return redirect('/')
 
-
-# uidもmessageと一緒に返す
-@app.route('/detail/<channel_id>')
-def detail(channel_id):
-    uid = session.get("uid")
-    if uid is None:
-        return redirect('/login')
-    channel_id = channel_id
-    channel = dbConnect.getOneChannel(channel_id)
-    messages = dbConnect.getMessageAll(channel_id)
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
-
-
 @app.route('/delete/<cid>')
 def delete_channel(cid):
     uid = session.get("uid")
