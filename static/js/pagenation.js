@@ -27,6 +27,7 @@ const pagination = () => {
 
     const first = (page - 1) * STEP + 1;
     const last = page * STEP;
+    console.log(uid);
     channels.forEach((item, i) => {
       if (i < first - 1 || i > last - 1) return;
       const a = document.createElement("a");
@@ -36,24 +37,24 @@ const pagination = () => {
       a.setAttribute("href", url);
       li.appendChild(a);
       //// もしチャンネル作成者uidとuidが同じだったら削除ボタンを追加
-      const deleteButton = document.createElement("button");
-      deleteButton.innerText = "削除";
-      deleteButton.classList.add("basic-btn");
-      deleteButton.classList.add("smaller-btn");
-      li.appendChild(deleteButton);
-      deleteButton.addEventListener("click", () => {
-        modalOpen("delete");
-        const confirmationButtonLink = document.getElementById(
-          "delete-confirm-link"
-        ); // aタグ
-        const url = `/delete/${item.id}`;
-        confirmationButtonLink.setAttribute("href", url);
-      });
+      if (uid === item.uid) {
+        const deleteButton = document.createElement("button");
+        deleteButton.innerText = "削除";
+        deleteButton.classList.add("channel-delete-btn");
+        li.appendChild(deleteButton);
+        deleteButton.addEventListener("click", () => {
+          modalOpen("delete");
+          const confirmationButtonLink = document.getElementById(
+            "delete-confirm-link"
+          ); // aタグ
+          const url = `/delete/${item.id}`;
+          confirmationButtonLink.setAttribute("href", url);
+        });
+      }
       /////
       ul.appendChild(li);
     });
   };
-
   // pagination内で現在選択されているページの番号に色を付ける
   const colorPaginationNum = () => {
     // <ul class="pagination"></ul>内の<li></li>を全て取得し、配列に入れる
