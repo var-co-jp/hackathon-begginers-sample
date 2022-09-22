@@ -37,19 +37,20 @@ const pagination = () => {
       a.setAttribute("href", url);
       li.appendChild(a);
       //// もしチャンネル作成者uidとuidが同じだったら削除ボタンを追加
-      console.log(item.uid);
-      const deleteButton = document.createElement("button");
-      deleteButton.innerText = "削除";
-      deleteButton.classList.add("channel-delete-btn");
-      li.appendChild(deleteButton);
-      deleteButton.addEventListener("click", () => {
-        modalOpen("delete");
-        const confirmationButtonLink = document.getElementById(
-          "delete-confirm-link"
-        ); // aタグ
-        const url = `/delete/${item.id}`;
-        confirmationButtonLink.setAttribute("href", url);
-      });
+      if (uid === item.uid) {
+        const deleteButton = document.createElement("button");
+        deleteButton.innerText = "削除";
+        deleteButton.classList.add("channel-delete-btn");
+        li.appendChild(deleteButton);
+        deleteButton.addEventListener("click", () => {
+          modalOpen("delete");
+          const confirmationButtonLink = document.getElementById(
+            "delete-confirm-link"
+          ); // aタグ
+          const url = `/delete/${item.id}`;
+          confirmationButtonLink.setAttribute("href", url);
+        });
+      }
       /////
       ul.appendChild(li);
     });
