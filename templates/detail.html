@@ -13,17 +13,14 @@
       <p id="chatroom-description">{{ channel.abstract }}</p>
       {% endif %}
     </div>
-    <div class="message-area">
-      {% if messages|length > 0 %}
-        {% for message in messages %}
-          {% if message.uid == uid %}
-            <div><p class="box box-right">{{ message.message }}</p></div>
-          {% else %}
-            <div><p class="box box-left">{{ message.message }}</p></div>
-          {% endif %}
-        {% endfor %}
+    <div id="message-area">
+      {% if messages|length > 0 %} {% for message in messages %} {% if
+      message.uid == uid %}
+      <div><p class="box box-right">{{ message.message }}</p></div>
       {% else %}
-        <div><p>まだメッセージがありません</p></div>
+      <div><p class="box box-left">{{ message.message }}</p></div>
+      {% endif %} {% endfor %} {% else %}
+      <div><p>まだメッセージがありません</p></div>
       {% endif %}
     </div>
     <div class="typing-box-wrapper">
