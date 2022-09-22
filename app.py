@@ -5,6 +5,7 @@ from util.user import User
 from datetime import timedelta
 import hashlib
 import uuid
+import re
 
 
 app = Flask(__name__)
@@ -24,22 +25,21 @@ def userSignup():
     password1 = request.form.get('password1')
     password2 = request.form.get('password2')
 
-    #送られてきた値が空かどうか？二つのパスワードはあっているか？問題なければそのまま進む
+    pattern = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+
     if name == '' or email =='' or password1 == '' or password2 == '':
         flash('空のフォームがあるようです')
     elif password1 != password2:
         flash('二つのパスワードの値が違っています')
+    elif re.match(pattern, email) is None:
+        flash('正しいメールアドレスの形式ではありません')
     else:
-        #パスワードを暗号化して変数に格納
         uid = uuid.uuid4()
         password = hashlib.sha256(password1.encode('utf-8')).hexdigest()
-        #Userクラスのインスタンスを作成
         user = User(uid, name, email, password)
-        #modelsにデータを送る
         dbConnect.createUser(user)
         UserId = str(uid)
         session['uid'] = UserId
-        #問題なければindex.htmlへとばす
         return redirect('/')
     return redirect('/signup')
 
