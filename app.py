@@ -1,7 +1,7 @@
 from flask import Flask, request, redirect, render_template, session, flash
 import flask_login
 from models import dbConnect
-from user import User
+from util.user import User
 from datetime import timedelta
 import hashlib
 import uuid
