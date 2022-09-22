@@ -75,3 +75,22 @@ class dbConnect:
         cur.execute(sql, (uid, cid, message))
         conn.commit()
         cur.close()
+
+    
+    def deleteMessage(message_id):
+        conn = DB.getConnection()
+        print(message_id)
+        cur = conn.cursor()
+        sql = "DELETE FROM messages WHERE id=%s;"
+        cur.execute(sql, (message_id))
+        conn.commit()
+        cur.close()
+
+    # def getUser(uid):
+    #     cur = conn.cursor()
+    #     sql = "select * from users where uid=%s;"
+    #     cur.execute(sql, (uid))
+    #     messages = cur.fetchone()
+    #     cur.close()
+    #     return messages
+
