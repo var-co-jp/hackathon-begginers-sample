@@ -148,7 +148,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "SELECT user_name, message, created_at FROM messages AS m INNER JOIN users AS u ON m.uid = u.uid WHERE cid = %s;"
+            sql = "SELECT id,u.uid, user_name, message FROM messages AS m INNER JOIN users AS u ON m.uid = u.uid WHERE cid = %s;"
             cur.execute(sql, (cid))
             messages = cur.fetchall()
             return messages
