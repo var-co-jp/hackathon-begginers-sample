@@ -6,7 +6,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "insert into users (uid, user_name, email, password) values (%s, %s, %s, %s);"
+            sql = "INSERT INTO users (uid, user_name, email, password) VALUES (%s, %s, %s, %s);"
             cur.execute(sql, (user.uid, user.name, user.email, user.password))
             conn.commit()
         except Exception as e:
@@ -50,7 +50,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "select * from channels;"
+            sql = "SELECT * FROM channels;"
             cur.execute(sql)
             channels = cur.fetchall()
             return channels
@@ -65,7 +65,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "select * from channels where id=%s;"
+            sql = "SELECT * FROM channels WHERE id=%s;"
             cur.execute(sql, (cid))
             channel = cur.fetchone()
             return channel
@@ -80,7 +80,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "select * from channels where name=%s;"
+            sql = "SELECT * FROM channels WHERE name=%s;"
             cur.execute(sql, (channel_name))
             channel = cur.fetchone()
             return channel
@@ -95,7 +95,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "insert into channels (uid, name, abstract) values (%s, %s, %s);"
+            sql = "INSERT INTO channels (uid, name, abstract) VALUES (%s, %s, %s);"
             cur.execute(sql, (uid, newChannelName, newChannelDescription))
             conn.commit()
         except Exception as e:
@@ -109,7 +109,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "select * from channels where name=%s;"
+            sql = "SELECT * FROM channels WHERE name=%s;"
             cur.execute(sql, (channel_name))
             channel = cur.fetchone()
         except Exception as e:
@@ -148,7 +148,7 @@ class dbConnect:
         try:
             conn = DB.getConnection()
             cur = conn.cursor()
-            sql = "select * from messages where cid=%s;"
+            sql = "SELECT id,u.uid, user_name, message FROM messages AS m INNER JOIN users AS u ON m.uid = u.uid WHERE cid = %s;"
             cur.execute(sql, (cid))
             messages = cur.fetchall()
             return messages
