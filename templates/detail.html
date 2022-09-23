@@ -38,7 +38,10 @@
                 </form>
               </div>
             {% else %}
-              <div><p class="box box-left">{{ message.message }}</p></div>
+              <div class="messages">
+                <p class="user-name">{{ message.user_name }}</p>
+                <p class="box box-left">{{ message.message }}</p>
+              </div>
             {% endif %}
           {% endfor %}
         {% else %}
