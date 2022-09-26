@@ -42,7 +42,6 @@
   border-top-left-radius: 999px;
   border-bottom-left-radius: 999px;
   background-color: var(--snow);
-  /* mix-blend-mode: plus-lighter; */
   display: flex;
   justify-content: center;
   align-items: center;
