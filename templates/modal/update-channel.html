@@ -1,14 +1,14 @@
-<div id="add-channel-modal" class="modal">
+<div id="update-channel-modal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
-      <h5>チャンネルを追加</h5>
+      <h5>チャンネル変更</h5>
       <img
         src="{{ url_for('static',filename='img/cat-on-bar.gif') }}"
         class="modal-gif"
       />
-      <span class="modalClose" id="add-page-close-btn">×</span>
+      <span class="modalClose" id="update-page-close-btn">×</span>
     </div>
-    <form class="modal-body" action="/" method="POST">
+    <form class="modal-body" action="/update_channel" method="POST">
       <input
         type="text"
         placeholder="チャンネル名"
@@ -21,7 +21,8 @@
         class="channel-form-input"
         name="channel-description"
       />
-      <button id="add-channel-confirmation-btn">登録</button>
+      <input type="hidden" name='cid' value='{{ channel.id }}'>
+        <button>変更</button>
     </form>
   </div>
 </div>

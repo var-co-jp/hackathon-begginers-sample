@@ -7,8 +7,6 @@
   width: 70px;
   background-image: url("../img/stripe-brick.jpg");
   background-size: cover;
-  /* background-image: url("../img/brick-wall.jpg"); */
-  /* box-shadow: 10px 0 0 var(--tiffany_green); */
   box-shadow: 10px 0 0 var(--carbon);
   overflow-x: hidden;
   transition: all 0.5s;
@@ -105,10 +103,4 @@
   .main-container {
     padding-left: 0;
   }
-}
-
-@media only screen and (min-width: 640px) and (max-width: 1023px) {
-}
-
-@media screen and (min-width: 1024px) {
 }

@@ -37,6 +37,12 @@ textarea {
   resize: none;
   height: 100%;
   width: 100%;
+  letter-spacing: 0.1em;
+  font-size: 16px;
+}
+
+input {
+  letter-spacing: 0.1em;
 }
 
 li {
@@ -45,6 +51,7 @@ li {
 
 a {
   text-decoration: none;
+  color: var(--snow);
 }
 
 input:hover,
@@ -58,6 +65,20 @@ button {
   border-radius: 999px;
   padding: 0.5em 3em;
   margin: 16px auto;
+}
+
+.basic-btn {
+  background-color: var(--navy);
+}
+
+.basic-btn:hover {
+  background-color: var(--carbon);
+}
+
+.smaller-btn {
+  margin: 0;
+  padding: 0.2em 3em;
+  font-size: 16px;
 }
 
 button.pink {

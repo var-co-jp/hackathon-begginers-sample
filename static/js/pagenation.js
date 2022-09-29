@@ -1,21 +1,3 @@
-const channels = [
-  { id: 1, name: "RareTECH" },
-  { id: 2, name: "mouseの会" },
-  { id: 3, name: "アニメを語ろう" },
-  { id: 4, name: "クソ漫画はこちら" },
-  { id: 5, name: "RareTECH" },
-  { id: 6, name: "RareTECH" },
-  { id: 7, name: "RareTECH" },
-  { id: 8, name: "RareTECH" },
-  { id: 9, name: "RareTECH" },
-  { id: 10, name: "RareTECH" },
-  { id: 11, name: "RareTECH" },
-  { id: 12, name: "RareTECH" },
-  { id: 13, name: "RareTECH" },
-  { id: 14, name: "RareTECH" },
-  { id: 15, name: "RareTECH" },
-];
-
 const pagination = () => {
   // 初期設定
   let page = 1; // 今何ページ目にいるか
@@ -45,14 +27,35 @@ const pagination = () => {
 
     const first = (page - 1) * STEP + 1;
     const last = page * STEP;
+    console.log(uid);
     channels.forEach((item, i) => {
       if (i < first - 1 || i > last - 1) return;
-      let li = document.createElement("li");
-      li.innerText = item.name;
+      const a = document.createElement("a");
+      const li = document.createElement("li");
+      const url = `/detail/${item.id}`;
+      a.innerText = item.name;
+      a.setAttribute("href", url);
+      li.appendChild(a);
+      //// もしチャンネル作成者uidとuidが同じだったら削除ボタンを追加
+      if (uid === item.uid) {
+        const deleteButton = document.createElement("button");
+        deleteButton.innerText = "削除";
+        deleteButton.classList.add("basic-btn");
+        deleteButton.classList.add("smaller-btn");
+        li.appendChild(deleteButton);
+        deleteButton.addEventListener("click", () => {
+          modalOpen("delete");
+          const confirmationButtonLink = document.getElementById(
+            "delete-confirm-link"
+          ); // aタグ
+          const url = `/delete/${item.id}`;
+          confirmationButtonLink.setAttribute("href", url);
+        });
+      }
+      /////
       ul.appendChild(li);
     });
   };
-
   // pagination内で現在選択されているページの番号に色を付ける
   const colorPaginationNum = () => {
     // <ul class="pagination"></ul>内の<li></li>を全て取得し、配列に入れる
