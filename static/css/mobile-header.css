@@ -59,18 +59,12 @@
 }
 
 @media screen and (max-width: 639px) {
-  /* #burger-icon {
-    display: block;
-  } */
   #mobile-header ul {
     margin: 45% auto;
   }
 }
 
 @media only screen and (min-width: 640px) and (max-width: 1023px) {
-  /* #burger-icon {
-    display: none;
-  } */
   #mobile-header ul {
     margin: 30% auto;
   }

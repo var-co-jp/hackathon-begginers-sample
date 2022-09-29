@@ -7,12 +7,10 @@
   height: 100%;
   width: 100%;
   overflow: auto;
-  /* background-color: rgba(0, 0, 0, 0.5); */
   background-color: rgba(240, 240, 240, 0.5);
 }
 
 .modal-content {
-  /* background-color: #f4f4f4; */
   background-color: var(--navy);
   margin: 20% auto;
   width: 70%;
@@ -113,6 +111,3 @@
     padding-left: 80px;
   }
 }
-
-/* @media screen and (min-width: 1024px) {
-} */
