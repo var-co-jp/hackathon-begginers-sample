@@ -176,7 +176,6 @@ class dbConnect:
     def deleteMessage(message_id):
         try:
             conn = DB.getConnection()
-            print(message_id)
             cur = conn.cursor()
             sql = "DELETE FROM messages WHERE id=%s;"
             cur.execute(sql, (message_id))
