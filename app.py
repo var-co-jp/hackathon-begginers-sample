@@ -93,7 +93,6 @@ def index():
 @app.route('/', methods=['POST'])
 def add_channel():
     uid = session.get('uid')
-    print(uid)
     if uid is None:
         return redirect('/login')
     channel_name = request.form.get('channel-title')
@@ -117,7 +116,7 @@ def update_channel():
     channel_name = request.form.get('channel-title')
     channel_description = request.form.get('channel-description')
 
-    res = dbConnect.updateChannel(uid, channel_name, channel_description, cid)
+    dbConnect.updateChannel(uid, channel_name, channel_description, cid)
     channel = dbConnect.getChannelById(cid)
     messages = dbConnect.getMessageAll(cid)
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
@@ -126,12 +125,10 @@ def update_channel():
 @app.route('/delete/<cid>')
 def delete_channel(cid):
     uid = session.get("uid")
-    print(uid)
     if uid is None:
         return redirect('/login')
     else:
         channel = dbConnect.getChannelById(cid)
-        print(channel["uid"] == uid)
         if channel["uid"] != uid:
             flash('チャンネルは作成者のみ削除可能です')
             return redirect ('/')
@@ -152,13 +149,6 @@ def detail(cid):
     messages = dbConnect.getMessageAll(cid)
 
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
-
-
-@app.route('/message', methods=['GET'])
-def show_message():
-    cid = 1
-    messages = dbConnect.getMessageAll(cid)
-    return render_template('hello.html', messages=messages)
 
 
 @app.route('/message', methods=['POST'])
@@ -187,7 +177,6 @@ def delete_message():
 
     message_id = request.form.get('message_id')
     cid = request.form.get('channel_id')
-    print(message_id)
     if message_id:
         dbConnect.deleteMessage(message_id)
 
