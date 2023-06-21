@@ -1,6 +1,6 @@
 :root {
   --baby_pink: #caaca6;
-  --middle_pink: #c18a80;
+  /* --middle_pink: #c18a80; */
   --dark_pink: #944d74a9;
   --tiffany_green: #4da49c;
   --middle_green: #3a7c76;
@@ -10,4 +10,10 @@
   --carbon: #3e4149;
   --navy: #4e5b66;
   --ash_grey: #f0f0f0;
+  --navy_blue: #122543;
+  --salmon_pink: #f57978;
+  --middle_pink: #f45554;
 }
+
+/* #122543 */
+/* #f8b6b5 */
