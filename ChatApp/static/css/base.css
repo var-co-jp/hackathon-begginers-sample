@@ -1,8 +1,8 @@
 * {
   float: none;
   position: static;
-  font-family: "Sawarabi Mincho", serif;
-  font-family: "DotGothic16", sans-serif;
+  font-family: "M PLUS 1", sans-serif;
+  font-family: "League Spartan", sans-serif;
   font-size: 20px;
   box-sizing: border-box;
 }
@@ -27,7 +27,6 @@ h1 {
 input,
 textarea,
 button {
-  font-family: inherit;
   font-size: inherit;
   border: none;
   outline: none;
@@ -62,9 +61,9 @@ button:hover {
 button {
   color: var(--snow);
   border: none;
-  border-radius: 999px;
-  padding: 0.5em 3em;
+  padding: 0.7em 3em;
   margin: 16px auto;
+  letter-spacing: 0.1rem;
 }
 
 .basic-btn {
@@ -82,7 +81,8 @@ button {
 }
 
 button.pink {
-  background-color: var(--baby_pink);
+  background-color: var(--salmon_pink);
+  /* background-color: var(--baby_pink); */
 }
 
 button.pink:hover {
@@ -94,6 +94,14 @@ button.green {
 }
 
 button.green:hover {
+  background-color: var(--middle_green);
+}
+
+button.navy {
+  background-color: var(--navy_blue);
+}
+
+button.navy:hover {
   background-color: var(--middle_green);
 }
 
