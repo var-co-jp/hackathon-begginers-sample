@@ -180,13 +180,6 @@
   font-size: 1.3rem;
 }
 
-#gif {
-  z-index: 100;
-  position: fixed;
-  bottom: 0;
-  left: 20px;
-}
-
 @media screen and (max-width: 550px) {
   #chatroom-description {
     display: none;
@@ -205,10 +198,6 @@
 
   .typing-box textarea {
     padding: 0;
-  }
-
-  #gif {
-    display: none;
   }
 }
 

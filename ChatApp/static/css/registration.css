@@ -117,6 +117,19 @@ button {
   color: red;
 }
 
+#gif {
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  left: 20px;
+}
+
+@media screen and (max-width: 639px) {
+  #gif {
+    display: none;
+  }
+}
+
 @media only screen and (min-width: 640px) and (max-width: 1023px) {
   .registration-main {
     font-size: 150px;
