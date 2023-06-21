@@ -1,11 +1,11 @@
 
 DROP DATABASE chatapp;
-DROP USER 'testuser'@'localhost';
+DROP USER 'testuser';
 
-CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'testuser';
+CREATE USER 'testuser' IDENTIFIED BY 'testuser';
 CREATE DATABASE chatapp;
 USE chatapp
-GRANT ALL PRIVILEGES ON chatapp.* TO 'testuser'@'localhost';
+GRANT ALL PRIVILEGES ON chatapp.* TO 'testuser';
 
 CREATE TABLE users (
     uid varchar(255) PRIMARY KEY,

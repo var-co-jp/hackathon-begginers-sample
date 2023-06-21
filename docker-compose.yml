@@ -1,0 +1,64 @@
+# docker-composeのバージョンを指定
+version: "3.9"
+
+# db(MySQL),app(Flask)のコンテナを作成
+services:
+  db:
+    # コンテナ名をmysqlに設定
+    container_name: MySQL
+    # MySQLのDockerfileをビルドする
+    build:
+      # ビルドコンテキストはカレントディレクトリ
+      context: .
+      dockerfile: Docker/MySQL/Dockerfile
+    # M1チップでも動くように
+    # Intel Macの場合あってもなくても動く
+    platform: linux/x86_64
+    # DBのボリュームを指定
+    # ローカルの/data/dbをコンテナの/var/lib/mysqlにマウントする
+    volumes:
+      - mysql_data:/var/lib/mysql
+    # コンテナ内の環境変数を設定
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=chatapp
+      - MYSQL_USER=testuser
+      - MYSQL_PASSWORD=testuser
+    # DBのコンテナのヘルスチェックを行う
+    # mysqladmin(MySQLサーバーの管理を行うクライアントを使ってDBコンテナ自身(127.0.0.1)にpingを送ってヘルスチェックを行う
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u$$MYSQL_USER -p$$MYSQL_PASSWORD
+      # ヘルスチェックのインターバルは10秒
+      interval: 10s
+      # タイムアウト時間は10秒
+      timeout: 10s
+      # リトライ回数は3回
+      retries: 3
+      # ヘルスチェックが失敗しても無視する時間は30秒
+      start_period: 30s
+
+  app:
+    # コンテナ名をFlaskに設定
+    container_name: Flask
+    # FlaskのDockerfileをビルドする
+    build:
+      # ビルドコンテキストはカレントディレクトリ
+      context: .
+      dockerfile: Docker/Flask/Dockerfile
+    # ボリュームを指定
+    # ローカルのカレントディレクトリをコンテナの/codeにマウントする
+    volumes:
+      - ./ChatApp:/code
+    # ローカルの5000番ポートとコンテナの5000番ポートをつなぐ
+    ports:
+      - "5000:5000"
+    # コマンドを実行
+    command:  bash -c "python app.py"
+    # 先にdbを起動してからappを起動する
+    depends_on:
+      db:
+        # dbのヘルスチェックが終わってからappを起動させる
+        condition: service_healthy
+
+volumes:
+  mysql_data:

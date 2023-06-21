@@ -28,7 +28,7 @@ class dbConnect:
             print(e + 'が発生しています')
             return None
         finally:
-            cur.close
+            cur.close()
 
 
     def getUser(email):
@@ -43,7 +43,7 @@ class dbConnect:
             print(e + 'が発生しています')
             return None
         finally:
-            cur.close
+            cur.close()
 
 
     def getChannelAll():
