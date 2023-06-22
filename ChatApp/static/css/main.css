@@ -3,93 +3,104 @@
   flex-direction: column;
 }
 
-.bg-img {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 0;
-  padding-bottom: 45%;
-  /* background-image: url("../img/brick-wall.jpg");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat; */
-  z-index: 1;
-
-  mask-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(202, 172, 166, 1));
-  -webkit-mask-image: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(rgba(0, 0, 0, 1)),
-    to(rgba(0, 0, 0, 0))
-  );
-}
-
-.bg-img::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 0;
-  z-index: 1;
-}
-
-.main-content {
-  z-index: 3;
+#channels-list {
+  /* z-index: 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  width: 70%;
 }
 
 .channel-title {
+  position: absolute;
+  top: 0;
+  left: 50px;
   display: flex;
+  align-items: center;
   gap: 24px;
+  background-color: var(--navy_blue);
+  color: var(--snow);
+  padding-left: 20px;
+  width: 100%;
+}
+
+.channel-title h1 {
+  margin: 10px 0;
+  font-size: 38px;
+  letter-spacing: -0.1em;
 }
 
 .channel-title button {
-  margin: 30px 0;
-  background-color: var(--navy);
+  margin: auto 0;
+  padding: 0.5em 1em;
+  background-color: var(--salmon_pink);
+  font-size: 12px;
+  border-radius: 50%;
+  z-index: 1000;
 }
 
 .channel-title button:hover {
-  background-color: var(--carbon);
+  background-color: var(--middle_pink);
+  cursor: pointer;
+}
+
+#channel-title-text {
+  margin: auto;
+  font-size: 106px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: -0.12em;
+  position: fixed;
+  z-index: 2;
+  line-height: 0.8;
+  top: 0;
+  left: 22%;
+  white-space: nowrap;
 }
 
 .channel-box {
-  background-color: transparent;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
   min-height: 50%;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   padding: 1rem;
 }
 
 .channel-box li {
   list-style: none;
-  margin-bottom: 5px;
-  padding-bottom: 3px;
-  padding-right: 16px;
-  box-sizing: border-box;
+  padding: 4px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.channel-box li:hover {
-  border-bottom: 1px solid lightgrey;
-  padding-bottom: 2px;
-  cursor: pointer;
+  height: 40px;
 }
 
 .channel-box li a {
   color: grey;
+  padding-left: 1rem;
 }
 
-.channel-box li a:hover {
-  color: var(--dark_pink);
+.channel-box li:hover {
+  cursor: pointer;
+  background-color: var(--navy);
+}
+
+.channel-box li:hover a {
+  color: var(--snow);
+}
+
+.delete-button {
+  margin: 0;
+  font-size: 16px;
+  background-color: var(--snow);
+  height: 40px;
+}
+.delete-button:hover {
+  background-color: var(--navy);
+}
+
+.delete-button:hover .channel-box li {
+  background-color: var(--snow) !important;
 }
 
 .pagination-container,
@@ -101,7 +112,7 @@
 
 .pagination-container {
   width: 100%;
-  border-bottom: 2px solid var(--grey);
+  border-bottom: 2px solid var(--navy);
   box-shadow: 0 32px 30px -30px var(--wood);
 }
 
@@ -131,13 +142,40 @@
   color: var(--snow);
 }
 
+#footer {
+  height: 38px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  background-color: var(--navy_blue);
+  z-index: 1;
+  border-top: 15px solid rgba(255, 255, 255, 0.2);
+}
+
+#footer-text {
+  margin: auto;
+  font-size: 50px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: -0.12em;
+  position: fixed;
+  z-index: 2;
+  line-height: 0.8;
+  bottom: 0;
+  left: 15%;
+  white-space: nowrap;
+}
+
 @media screen and (max-width: 639px) {
   .main-content {
     width: 90vw;
   }
+  #channels-list {
+    width: 90%;
+  }
   .channel-title {
-    flex-direction: column;
-    gap: 0;
+    left: 0;
   }
   .channel-title h1 {
     text-align: center;
@@ -148,21 +186,33 @@
   .channel-box li a {
     font-size: 16px;
   }
+  #channel-title-text {
+    left: 0;
+  }
+  #footer-text {
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .channel-title h1 {
+    font-size: 32px;
+  }
 }
 
 @media only screen and (min-width: 640px) and (max-width: 1023px) {
   .main-content {
     width: 70vw;
   }
-  .channel-title {
+  /* .channel-title {
     flex-direction: column;
-  }
+  } */
   .channel-title h1 {
     text-align: center;
   }
-  .channel-box {
+  /* .channel-box {
     width: 80%;
-  }
+  } */
   .channel-box li a {
     font-size: 16px;
   }
