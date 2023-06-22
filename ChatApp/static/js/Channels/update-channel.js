@@ -6,11 +6,18 @@ const updateChannel = () => {
   if (uid !== channel.uid) {
     return;
   } else {
-    modalOpen("update");
+    updateChannelModal.style.display = "flex";
   }
 };
+
 updateButton.addEventListener("click", updateChannel);
 
 updatePageButtonClose.addEventListener("click", () => {
-  modalClose("update");
+  updateChannelModal.style.display = "none";
+});
+
+addEventListener("click", (e) => {
+  if (e.target == updateChannelModal) {
+    updateChannelModal.style.display = "none";
+  }
 });

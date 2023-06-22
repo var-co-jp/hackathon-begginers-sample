@@ -16,7 +16,7 @@
   background-color: var(--navy);
   margin: 20% auto;
   width: 70%;
-  border: 4px solid var(--navy_blue);
+  border: 12px solid var(--navy_blue);
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
   animation-name: modalopen;
   animation-duration: 1s;
@@ -69,16 +69,25 @@
 .channel-form-input {
   width: 70%;
   background-color: transparent;
-  border-bottom: 1px solid lightgrey;
   margin-top: 8px;
   margin-bottom: 20px;
-  padding-bottom: 10px;
+  padding: 0.5rem;
   color: var(--snow);
 }
 
 .channel-form-input::placeholder {
-  color: lightgrey;
-  font-size: small;
+  color: var(--snow);
+  font-size: 12px;
+}
+
+.channel-form-input:hover {
+  background-color: var(--navy_blue);
+  color: var(--snow);
+}
+
+.channel-form-input:focus {
+  background-color: var(--navy_blue);
+  color: var(--snow);
 }
 
 #bar {
@@ -129,7 +138,7 @@
     padding-left: 60px;
   }
 }
-@media only screen and (min-width: 671px) and (max-width: 1023px) {
+@media only screen and (min-width: 671px) and (max-width: 1024px) {
   .modal-content {
     width: 80%;
   }
@@ -138,8 +147,14 @@
   }
 }
 
-@media screen and (min-width: 1023px) {
+@media screen and (min-width: 1024px) {
   .modal-content {
     width: 70%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .modal-content {
+    width: 50%;
   }
 }

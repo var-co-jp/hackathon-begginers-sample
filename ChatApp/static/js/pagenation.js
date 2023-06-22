@@ -1,3 +1,5 @@
+const deleteChannelModal = document.getElementById("delete-channel-modal");
+
 const pagination = () => {
   let page = 1; // 今何ページ目にいるか
   const STEP = 5; // ステップ数（1ページに表示する項目数）
@@ -56,7 +58,7 @@ const pagination = () => {
         deleteButton.classList.add("delete-button");
         li.appendChild(deleteButton);
         deleteButton.addEventListener("click", () => {
-          modalOpen("delete");
+          deleteChannelModal.style.display = "flex";
           const confirmationButtonLink = document.getElementById(
             "delete-confirm-link"
           );

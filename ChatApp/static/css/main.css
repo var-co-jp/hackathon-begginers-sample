@@ -28,7 +28,7 @@
   background-color: var(--salmon_pink);
   font-size: 12px;
   border-radius: 50%;
-  z-index: 1000;
+  z-index: 1;
 }
 
 .channel-title button:hover {
@@ -61,7 +61,7 @@
 
 .channel-box {
   padding: 1rem;
-  margin-top: 10vh;
+  margin: 15vh auto 0 auto;
   flex-grow: 1;
 }
 
@@ -85,6 +85,7 @@
 
 .channel-box li:hover a {
   color: var(--navy_blue);
+  transition: all 0.5s;
 }
 
 .delete-button {
@@ -126,6 +127,7 @@
 
 .pagination li {
   color: grey;
+  width: 20px;
 }
 
 .pagination li:hover {
@@ -136,6 +138,7 @@
 .pagination li.colored {
   color: var(--navy_blue);
   font-weight: 700;
+  transition: all 0.5s;
 }
 
 #prev,
@@ -150,6 +153,7 @@
 #next span {
   font-size: 8px;
   color: lightgrey;
+  vertical-align: middle;
 }
 
 #prev:hover,
@@ -239,15 +243,12 @@
   .main-content {
     width: 70vw;
   }
-  /* .channel-title {
-    flex-direction: column;
-  } */
   .channel-title h1 {
     text-align: center;
   }
-  /* .channel-box {
-    width: 80%;
-  } */
+  .channel-box {
+    width: 100%;
+  }
   .channel-box li a {
     font-size: 16px;
   }
