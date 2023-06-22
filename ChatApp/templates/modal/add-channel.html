@@ -1,7 +1,7 @@
 <div id="add-channel-modal" class="modal">
   <div class="modal-content">
     <div class="modal-header">
-      <h5>チャンネルを追加</h5>
+      <h5>ADD CHANNEL</h5>
       <img
         src="{{ url_for('static',filename='img/cat-on-bar.gif') }}"
         class="modal-gif"
@@ -11,13 +11,13 @@
     <form class="modal-body" action="/" method="POST">
       <input
         type="text"
-        placeholder="チャンネル名"
+        placeholder="Channel name"
         class="channel-form-input"
         name="channel-title"
       />
       <input
         type="text"
-        placeholder="チャンネルの説明"
+        placeholder="Channel explanation"
         class="channel-form-input"
         name="channel-description"
       />

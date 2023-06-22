@@ -16,22 +16,22 @@ const deleteChannelConfirmBtn = document.getElementById(
 );
 
 // モーダルを開く
-// <button id="add-channel-btn">チャンネル追加</button>ボタンがクリックされた時
+// チャンネル追加ボタンが押された時の処理
 addChannelBtn.addEventListener("click", () => {
   modalOpen("add");
 });
 
 function modalOpen(mode) {
   if (mode === "add") {
-    addChannelModal.style.display = "block";
+    addChannelModal.style.display = "flex";
   } else if (mode === "delete") {
-    deleteChannelModal.style.display = "block";
+    deleteChannelModal.style.display = "flex";
   } else if (mode === "update") {
-    updateChannelModal.style.display = "block";
+    updateChannelModal.style.display = "flex";
   }
 }
 
-// モーダル内のバツ印がクリックされた時
+// モーダル内のバツ印がクリックされた時の処理
 addPageButtonClose.addEventListener("click", () => {
   modalClose("add");
 });
@@ -49,7 +49,7 @@ function modalClose(mode) {
   }
 }
 
-// モーダルコンテンツ以外がクリックされた時
+// モーダルコンテンツ以外がクリックされた時の処理
 addEventListener("click", outsideClose);
 function outsideClose(e) {
   if (e.target == addChannelModal) {
