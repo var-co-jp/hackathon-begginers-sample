@@ -3,15 +3,6 @@
   flex-direction: column;
 }
 
-#channels-list {
-  /* z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
-  width: 70%;
-}
-
 .channel-title {
   position: absolute;
   top: 0;
@@ -59,11 +50,19 @@
   white-space: nowrap;
 }
 
+/* ========================================================== */
+
+#channels-list {
+  width: 70%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .channel-box {
-  min-height: 50%;
-  /* display: flex;
-  flex-direction: column; */
   padding: 1rem;
+  margin-top: 10vh;
+  flex-grow: 1;
 }
 
 .channel-box li {
@@ -82,11 +81,10 @@
 
 .channel-box li:hover {
   cursor: pointer;
-  background-color: var(--navy);
 }
 
 .channel-box li:hover a {
-  color: var(--snow);
+  color: var(--navy_blue);
 }
 
 .delete-button {
@@ -103,6 +101,9 @@
   background-color: var(--snow) !important;
 }
 
+/* ========================================================== */
+/* pagination */
+
 .pagination-container,
 .pagination {
   display: flex;
@@ -111,36 +112,67 @@
 }
 
 .pagination-container {
-  width: 100%;
-  border-bottom: 2px solid var(--navy);
-  box-shadow: 0 32px 30px -30px var(--wood);
+  margin-left: auto;
+}
+
+.pagination-container * {
+  margin: 0 auto;
 }
 
 .pagination {
   padding-left: 0;
+  max-width: 50vw;
+}
+
+.pagination li {
+  color: grey;
+}
+
+.pagination li:hover {
+  cursor: pointer;
+  color: var(--salmon_pink);
 }
 
 .pagination li.colored {
-  background-color: var(--navy);
-  color: var(--snow);
+  color: var(--navy_blue);
+  font-weight: 700;
 }
 
 #prev,
 #next,
 .pagination li {
-  padding: 16px;
+  padding: 4px;
+}
+
+#prev,
+#prev span,
+#next,
+#next span {
+  font-size: 8px;
+  color: lightgrey;
 }
 
 #prev:hover,
 #next:hover {
   cursor: pointer;
+  color: var(--navy_blue);
 }
 
-.prev:hover .next:hover {
-  cursor: pointer;
-  background-color: var(--navy);
-  color: var(--snow);
+#prev:hover span,
+#next:hover span {
+  color: var(--navy_blue);
 }
+
+#prev span {
+  padding-left: 0.3rem;
+  padding-right: 1rem;
+}
+#next span {
+  padding-right: 0.3em;
+  padding-left: 1rem;
+}
+
+/* ========================================================== */
 
 #footer {
   height: 38px;
@@ -185,6 +217,9 @@
   }
   .channel-box li a {
     font-size: 16px;
+  }
+  .delete-button {
+    padding: 0.7em 1em;
   }
   #channel-title-text {
     left: 0;
