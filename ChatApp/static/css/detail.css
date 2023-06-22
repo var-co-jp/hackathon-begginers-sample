@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 8vh;
+  top: 54px;
   right: 0;
   width: calc(100vw - 64px);
 }
@@ -60,11 +60,15 @@
   padding-right: 20px;
   padding-bottom: calc(20vh + 10px);
   padding-left: 20px;
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
 }
 
 .messages {
@@ -137,6 +141,19 @@
   height: 100%;
   border: 1px solid grey;
   content: "";
+}
+
+#no-message {
+  padding-top: 54px;
+  width: 100%;
+  height: calc(100vh - (54px + 15vh));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#no-message p {
+  display: inline;
 }
 
 /* ========================================================== */
