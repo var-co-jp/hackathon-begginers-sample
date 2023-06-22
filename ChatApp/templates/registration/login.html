@@ -7,6 +7,11 @@
       src="{{ url_for('static',filename='img/registration.png') }}"
       class="registration-main-pic"
     />
+    <img
+      src="{{ url_for('static',filename='img/mobile-registration.png') }}"
+      class="registration-mobile-pic"
+    />
+    <div class="registration-main-pic"></div>
     <div class="registration-form-wrapper">
       <div class="registration-logo">
         <img
@@ -34,8 +39,8 @@
             id="password-input"
           />
         </div>
-        <div class="register-button-container">
-          <button class="pink">LOGIN</button>
+        <div class="registration-button-container">
+          <button class="registration-button pink">LOGIN</button>
           {% with messages = get_flashed_messages() %} {% if messages %}
           <ul class="flashes">
             {% for message in messages %}
