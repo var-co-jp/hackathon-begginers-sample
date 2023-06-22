@@ -27,8 +27,10 @@
   padding: 0.5em 1em;
   background-color: var(--salmon_pink);
   font-size: 12px;
+  border: solid 6px var(--navy_blue);
   border-radius: 50%;
   z-index: 10;
+  box-shadow: 0 0 0 3px var(--salmon_pink);
 }
 
 .channel-title button:hover {
@@ -40,7 +42,7 @@
   margin: auto;
   font-size: 106px;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.1);
   letter-spacing: -0.12em;
   position: fixed;
   z-index: 2;
@@ -77,9 +79,10 @@
 .channel-box li a {
   color: grey;
   padding-left: 1rem;
+  flex-grow: 1;
 }
 
-.channel-box li:hover {
+.channel-box li a:hover {
   cursor: pointer;
 }
 
@@ -89,13 +92,17 @@
 }
 
 .delete-button {
-  margin: 0;
   font-size: 16px;
   background-color: var(--snow);
-  height: 40px;
+  height: 28px;
+  width: 28px;
+  padding: 3px;
+  border-radius: 50%;
+  border: solid 1px var(--salmon_pink);
 }
 .delete-button:hover {
-  background-color: var(--navy);
+  background-color: var(--navy_blue);
+  border: solid 1px var(--navy_blue);
 }
 
 .delete-button:hover .channel-box li {
@@ -152,7 +159,7 @@
 #next,
 #next span {
   font-size: 8px;
-  color: lightgrey;
+  color: var(--carbon);
   vertical-align: middle;
 }
 
@@ -174,6 +181,42 @@
 #next span {
   padding-right: 0.3em;
   padding-left: 1rem;
+}
+
+/* ========================================================== */
+/* Tooltip */
+
+.channel-description-tooltip {
+  position: relative;
+}
+
+.tooltip-body {
+  display: none;
+  position: absolute;
+  padding: 10px 16px;
+  font-size: 12px;
+  line-height: 1.6em;
+  color: var(--snow);
+  background: var(--navy_blue);
+  border-top: 2px solid var(--snow);
+  box-shadow: 0 -3px 0 2px var(--navy_blue);
+  min-width: 115px;
+}
+
+.tooltip-body:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 15px solid transparent;
+  border-top: 15px solid var(--navy_blue);
+  margin-left: -15px;
+}
+
+.channel-description-tooltip:hover .tooltip-body {
+  display: inline-block;
+  top: -60px;
+  left: -20px;
 }
 
 /* ========================================================== */
