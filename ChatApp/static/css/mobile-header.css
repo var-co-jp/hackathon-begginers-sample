@@ -1,22 +1,21 @@
 #burger-icon,
 #burger-close-icon {
   display: block;
-  height: 50px;
-  width: 50px;
+  height: 8vh;
+  width: 8vh;
   line-height: 50px;
-  background-color: var(--navy);
+  background-color: var(--navy_blue);
   color: var(--snow);
-  border-radius: 50%;
   text-align: center;
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 0;
+  right: 0;
   z-index: 5;
 }
 
 #burger-icon:hover,
 #burger-close-icon:hover {
-  background-color: var(--carbon);
+  background-color: var(--salmon_pink);
   cursor: pointer;
 }
 
@@ -67,6 +66,10 @@
 @media only screen and (min-width: 640px) and (max-width: 1023px) {
   #mobile-header ul {
     margin: 30% auto;
+  }
+  #burger-icon,
+  #burger-close-icon {
+    display: none;
   }
 }
 
