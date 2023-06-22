@@ -23,8 +23,7 @@ const pagination = () => {
     // ページネーションの数字部分が押された時にもページが変わるように処理
     pageNumber.addEventListener("click", (e) => {
       const targetPageNum = e.target.dataset.pageNum;
-      console.log(targetPageNum);
-      page = targetPageNum;
+      page = Number(targetPageNum);
       show(page, STEP);
       colorPaginationNum();
     });
@@ -67,7 +66,21 @@ const pagination = () => {
           confirmationButtonLink.setAttribute("href", channelURL);
         });
       }
-      ul.appendChild(li);
+
+      // もしチャンネルに説明文が登録されていたら吹き出しを作成（hover時に表示）
+      if (channel.abstract) {
+        const channelDescriptionTooltip = document.createElement("div");
+        channelDescriptionTooltip.style.display = "innerBlock";
+        channelDescriptionTooltip.classList.add("channel-description-tooltip");
+        channelDescriptionTooltip.appendChild(li);
+        const tooltipBody = document.createElement("div");
+        tooltipBody.classList.add("tooltip-body");
+        tooltipBody.innerHTML = channel.abstract;
+        channelDescriptionTooltip.appendChild(tooltipBody);
+        ul.appendChild(channelDescriptionTooltip);
+      } else {
+        ul.appendChild(li);
+      }
     });
   };
   // pagination内で現在選択されているページの番号に色を付ける
