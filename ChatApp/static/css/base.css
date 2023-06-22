@@ -3,7 +3,7 @@
   position: static;
   font-family: "M PLUS 1", sans-serif;
   font-family: "League Spartan", sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   box-sizing: border-box;
 }
 
@@ -66,12 +66,16 @@ button {
   letter-spacing: 0.1rem;
 }
 
+:hover {
+  transition: all 0.5s;
+}
+
 .basic-btn {
-  background-color: var(--navy);
+  background-color: var(--navy_blue);
 }
 
 .basic-btn:hover {
-  background-color: var(--carbon);
+  background-color: var(--salmon_pink);
 }
 
 .smaller-btn {
@@ -82,40 +86,23 @@ button {
 
 button.pink {
   background-color: var(--salmon_pink);
-  /* background-color: var(--baby_pink); */
 }
 
 button.pink:hover {
   background-color: var(--middle_pink);
 }
 
-button.green {
-  background-color: var(--tiffany_green);
-}
-
-button.green:hover {
-  background-color: var(--middle_green);
-}
-
-button.navy {
+/* button.navy {
   background-color: var(--navy_blue);
 }
 
 button.navy:hover {
   background-color: var(--middle_green);
-}
-
-.text-pink {
-  color: var(--baby_pink);
-}
-
-.text-green {
-  color: var(--tiffany_green);
-}
+} */
 
 .main-container {
   min-height: 100vh;
-  padding-left: 70px;
+  padding-left: 50px;
   position: relative;
   display: flex;
   justify-content: center;

@@ -74,7 +74,8 @@
 
 .user-name {
   font-size: 8px;
-  color: var(--wood);
+  color: grey;
+  margin: 1px 0;
 }
 
 .my-messages {
@@ -181,7 +182,7 @@
 
 #add-message-btn {
   position: absolute;
-  background-color: var(--carbon);
+  background-color: var(--navy_blue);
   height: 40px;
   width: 40px;
   line-height: 47px;

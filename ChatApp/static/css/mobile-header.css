@@ -10,7 +10,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 5;
+  z-index: 30;
 }
 
 #burger-icon:hover,
@@ -26,7 +26,7 @@
 #mobile-header {
   display: none;
   position: fixed;
-  z-index: 4;
+  z-index: 20;
   left: 0;
   top: 0;
   height: 100%;
@@ -50,7 +50,7 @@
 }
 
 #mobile-header li a {
-  color: var(--carbon);
+  color: var(--navy_blue);
 }
 
 #mobile-header li a:hover {

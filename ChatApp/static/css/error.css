@@ -14,7 +14,7 @@
   height: 70%;
   width: 70%;
   margin: auto;
-  color: var(--carbon);
+  color: var(--navy_blue);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,8 +37,8 @@
   content: "";
   position: absolute;
   height: 5px;
-  border-bottom: 1px solid var(--carbon);
-  border-top: 1px solid var(--carbon);
+  border-bottom: 1px solid var(--navy_blue);
+  border-top: 1px solid var(--navy_blue);
   top: 0;
   width: 200px;
 }
