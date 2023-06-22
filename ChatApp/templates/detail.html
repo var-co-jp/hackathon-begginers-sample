@@ -9,9 +9,12 @@
       {% if channel.abstract is not none %}
       <p id="chatroom-description">{{ channel.abstract }}</p>
       {% endif %} {% if uid == channel.uid %}
-      <button id="channel-update" class="basic-btn smaller-btn">編集</button>
+      <button id="channel-update">
+        <ion-icon name="brush" style="color: #ffffff"></ion-icon>
+      </button>
       {% include 'modal/update-channel.html' %} {% endif %}
     </div>
+    <div id="header-line"></div>
     <div id="message-area">
       {% if messages|length > 0 %} {% for message in messages %} {% if
       message.uid == uid %}
@@ -24,7 +27,10 @@
             name="message_id"
             value="{{ message.id }}"
           >
-            <ion-icon name="trash-bin-outline"></ion-icon>
+            <ion-icon
+              name="trash-bin-outline"
+              style="color: #122543"
+            ></ion-icon>
           </button>
         </form>
       </div>
@@ -50,8 +56,10 @@
 </div>
 {% endblock %} {% block script %}
 <script type="text/javascript">
-  const channel = JSON.parse("{{ channel|tojson }}");
-  const uid = JSON.parse("{{ uid|tojson }}");
+  // prettier-ignore
+  const channel = JSON.parse('{{ channel|tojson }}');
+  // prettier-ignore
+  const uid = JSON.parse('{{ uid|tojson }}');
 </script>
 <script
   src="{{url_for('static',filename='js/scroll-message.js')}}"

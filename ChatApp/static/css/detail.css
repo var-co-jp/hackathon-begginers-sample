@@ -2,27 +2,29 @@
   min-height: 100vh;
   width: 100%;
   background-color: var(--snow);
-  box-shadow: 0 0 30px var(--wood);
   z-index: 2;
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
+  position: absolute;
+  top: 8vh;
+  right: 0;
+  width: calc(100vw - 64px);
 }
 
 #chat-header {
-  background-color: var(--baby_pink);
+  background-color: var(--navy_blue);
+  color: var(--snow);
   height: 8vh;
-  width: calc(100vw - 70px);
+  width: calc(100vw - 50px);
   position: fixed;
   top: 0;
-  color: var(--snow);
+  right: 0;
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 2rem;
   padding-left: 20px;
   z-index: 2;
-  box-shadow: 0px 10px 10px 0px var(--wood);
 }
 
 #chatroom-name {
@@ -30,7 +32,23 @@
 }
 
 #chatroom-description {
-  font-size: small;
+  font-size: 12px;
+  font-weight: 200;
+  letter-spacing: 0.15em;
+}
+
+#channel-update {
+  margin: auto 0;
+  padding: 0.5em 1em;
+  background-color: var(--salmon_pink);
+  font-size: 12px;
+  border-radius: 50%;
+  z-index: 1000;
+}
+
+#channel-update:hover {
+  background-color: var(--middle_pink);
+  cursor: pointer;
 }
 
 /* メッセージエリア */
@@ -38,11 +56,11 @@
 #message-area {
   min-height: 100vh;
   width: 100%;
-  padding-top: calc(8vh + 10px);
+  padding-top: 20px;
   padding-right: 20px;
   padding-bottom: calc(20vh + 10px);
   padding-left: 20px;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -64,7 +82,7 @@
 }
 
 .delete-message-btn {
-  background-color: var(--carbon);
+  background-color: var(--snow);
   height: 40px;
   width: 40px;
   line-height: 47px;
@@ -83,22 +101,19 @@
   width: 60%;
   margin: 0;
   padding: 0.7em 0 0.4em 1em;
-  border-radius: 10px;
-  color: var(--snow);
-  font-weight: bold;
   font-size: 14px;
   line-height: 1.5;
   letter-spacing: 0.1em;
 }
 
 .box-left {
-  border: 1px solid var(--dark_pink);
-  background-color: var(--baby_pink);
+  background-color: rgba(18, 37, 67, 0.2);
+  color: var(--navy_blue);
 }
 
 .box-right {
-  border: 1px solid var(--middle_green);
-  background-color: var(--tiffany_green);
+  background-color: rgba(18, 37, 67, 0.4);
+  color: var(--snow);
   margin-left: auto;
   margin-right: 10px;
 }
@@ -109,8 +124,7 @@
   left: 3px;
   width: 100%;
   height: 100%;
-  border-radius: 10px;
-  border: 2px solid #333;
+  border: 1px solid grey;
   content: "";
 }
 
@@ -120,8 +134,7 @@
   right: 3px;
   width: 100%;
   height: 100%;
-  border-radius: 10px;
-  border: 2px solid #333;
+  border: 1px solid grey;
   content: "";
 }
 
@@ -130,11 +143,12 @@
 .typing-box-wrapper {
   position: fixed;
   bottom: 0;
-  width: calc(100vw - 70px);
+  width: calc(100vw - 50px);
   height: 15vh;
-  background-color: rgba(211, 211, 211, 0.75);
+  /* background-color: rgba(211, 211, 211, 0.75); */
+  background-color: var(--snow);
   background-size: contain;
-  border-top: 3px solid black;
+  border-top: 3px solid lightgrey;
   display: flex;
   align-items: center;
   justify-content: start;
@@ -148,7 +162,8 @@
   margin: auto;
   position: relative;
   background-color: var(--snow);
-  border-radius: 16px;
+  border-radius: 8px;
+  border: solid 1px lightgrey;
 }
 
 .typing-box textarea {
@@ -156,7 +171,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   width: 100%;
-  padding: 4px 55px 4px 12px;
+  padding: 0.5em;
   border-radius: 16px;
 }
 
@@ -189,15 +204,12 @@
 @media screen and (max-width: 639px) {
   .chat-box {
     padding-left: 0;
+    width: 100%;
   }
 
   .typing-box-wrapper,
   #chat-header {
     width: 100%;
-  }
-
-  .typing-box textarea {
-    padding: 0;
   }
 }
 
