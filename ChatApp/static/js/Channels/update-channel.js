@@ -1,13 +1,9 @@
-const updateButton = document.getElementById("channel-update");
+const updateButton = document.getElementById("channel-update-button");
 const updateChannelModal = document.getElementById("update-channel-modal");
 const updatePageButtonClose = document.getElementById("update-page-close-btn");
 
 const updateChannel = () => {
-  if (uid !== channel.uid) {
-    return;
-  } else {
-    updateChannelModal.style.display = "flex";
-  }
+  updateChannelModal.style.display = "flex";
 };
 
 updateButton.addEventListener("click", updateChannel);

@@ -2,7 +2,6 @@
   min-height: 100vh;
   width: 100%;
   background-color: var(--snow);
-  z-index: 2;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -37,17 +36,20 @@
   letter-spacing: 0.15em;
 }
 
-#channel-update {
+#channel-update-button {
   margin: auto 0;
-  padding: 0.5em 1em;
+  padding: 0.2em 0.6em;
   background-color: var(--salmon_pink);
   font-size: 12px;
+  border: solid 6px var(--navy_blue);
   border-radius: 50%;
-  z-index: 1;
+  z-index: 10;
+  box-shadow: 0 0 0 3px var(--salmon_pink);
 }
 
-#channel-update:hover {
+#channel-update-button:hover {
   background-color: var(--middle_pink);
+  box-shadow: 0 0 0 3px var(--middle_pink);
   cursor: pointer;
 }
 
@@ -56,7 +58,7 @@
 #message-area {
   min-height: 100vh;
   width: 100%;
-  padding-top: 20px;
+  padding-top: 74px;
   padding-right: 20px;
   padding-bottom: calc(20vh + 10px);
   padding-left: 20px;
@@ -120,7 +122,6 @@
   background-color: rgba(18, 37, 67, 0.4);
   color: var(--snow);
   margin-left: auto;
-  margin-right: 10px;
 }
 
 .box-left:before {

@@ -9,7 +9,7 @@
       {% if channel.abstract is not none %}
       <p id="chatroom-description">{{ channel.abstract }}</p>
       {% endif %} {% if uid == channel.uid %}
-      <button id="channel-update">
+      <button id="channel-update-button">
         <ion-icon name="brush" style="color: #ffffff"></ion-icon>
       </button>
       {% include 'modal/update-channel.html' %} {% endif %}
@@ -43,7 +43,12 @@
       {% endif %}
     </div>
     <div class="typing-box-wrapper">
-      <form class="typing-box" action="/message" method="POST">
+      <form
+        class="typing-box"
+        action="/message"
+        method="POST"
+        onsubmit="return false"
+      >
         <textarea name="message" id="message" autofocus></textarea>
         <input type="hidden" name="channel_id" value="{{ channel.id }}" />
         <button type="submit" id="add-message-btn">
@@ -55,8 +60,6 @@
 </div>
 {% endblock %} {% block script %}
 <script type="text/javascript">
-  // prettier-ignore
-  const channel = JSON.parse('{{ channel|tojson }}');
   // prettier-ignore
   const uid = JSON.parse('{{ uid|tojson }}');
 </script>
