@@ -38,18 +38,21 @@
   cursor: pointer;
 }
 
-#channel-title-text {
+.channel-title-text {
   margin: auto;
   font-size: 106px;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.1);
   letter-spacing: -0.12em;
   position: fixed;
-  z-index: 2;
   line-height: 0.8;
-  top: 0;
+  top: -4px;
   left: 22%;
   white-space: nowrap;
+}
+
+.channel-title-text.detail-title {
+  font-size: 100px;
 }
 
 /* ========================================================== */
@@ -268,7 +271,7 @@
   .delete-button {
     padding: 0.7em 1em;
   }
-  #channel-title-text {
+  .channel-title-text {
     left: 0;
   }
   #footer-text {
@@ -304,6 +307,9 @@
   .channel-title {
     flex-direction: row;
     justify-content: space-around;
+  }
+  .channel-title-text.detail-title {
+    left: 32%;
   }
   .channel-box {
     width: 80%;

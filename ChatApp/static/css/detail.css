@@ -58,7 +58,7 @@
 #message-area {
   min-height: 100vh;
   width: 100%;
-  padding-top: 74px;
+  padding-top: 10vh;
   padding-right: 20px;
   padding-bottom: calc(20vh + 10px);
   padding-left: 20px;
