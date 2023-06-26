@@ -48,7 +48,7 @@
         class="typing-box"
         action="/message"
         method="POST"
-        onsubmit="return false"
+        name="newMessageForm"
       >
         <textarea name="message" id="message" autofocus></textarea>
         <input type="hidden" name="channel_id" value="{{ channel.id }}" />
@@ -70,6 +70,10 @@
 ></script>
 <script
   src="{{url_for('static',filename='js/Channels/update-channel.js')}}"
+  type="text/javascript"
+></script>
+<script
+  src="{{url_for('static',filename='js/keyboardSendMessage.js')}}"
   type="text/javascript"
 ></script>
 {% endblock %}
