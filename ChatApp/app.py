@@ -95,10 +95,10 @@ def add_channel():
     uid = session.get('uid')
     if uid is None:
         return redirect('/login')
-    channel_name = request.form.get('channel-title')
+    channel_name = request.form.get('channelTitle')
     channel = dbConnect.getChannelByName(channel_name)
     if channel == None:
-        channel_description = request.form.get('channel-description')
+        channel_description = request.form.get('channelDescription')
         dbConnect.addChannel(uid, channel_name, channel_description)
         return redirect('/')
     else:
@@ -113,8 +113,8 @@ def update_channel():
         return redirect('/login')
 
     cid = request.form.get('cid')
-    channel_name = request.form.get('channel-title')
-    channel_description = request.form.get('channel-description')
+    channel_name = request.form.get('channelTitle')
+    channel_description = request.form.get('channelDescription')
 
     dbConnect.updateChannel(uid, channel_name, channel_description, cid)
     channel = dbConnect.getChannelById(cid)

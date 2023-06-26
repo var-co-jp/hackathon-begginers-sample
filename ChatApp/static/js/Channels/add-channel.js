@@ -18,3 +18,32 @@ addEventListener("click", (e) => {
     addChannelModal.style.display = "none";
   }
 });
+
+// add-channel-modalが表示されている時に Ctl + Enterで送信
+// Enterで自動送信を防ぐ
+
+document.addEventListener("keydown", keydownEvent);
+
+function keydownEvent(e) {
+  const newChannelTitle = document.addChannelForm.channelTitle.value;
+
+  const addChannelModal = document.getElementById("add-channel-modal");
+  const addChannelModalStyle = getComputedStyle(
+    addChannelModal,
+    null
+  ).getPropertyValue("display");
+
+  if (e.code === "Enter") {
+    e.preventDefault();
+  }
+
+  if (e.ctrlKey) {
+    if (e.code === "Enter") {
+      if (addChannelModalStyle !== "none") {
+        if (newChannelTitle !== "") {
+          document.addChannelForm.submit();
+        }
+      }
+    }
+  }
+}

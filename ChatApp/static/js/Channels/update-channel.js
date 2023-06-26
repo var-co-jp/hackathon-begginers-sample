@@ -17,3 +17,12 @@ addEventListener("click", (e) => {
     updateChannelModal.style.display = "none";
   }
 });
+
+// update-channel-modalが表示されている時に Ctl + Enter で送信
+function sendUpdateForm() {
+  const newChannelTitle = document.updateChannelForm.channelTitle.value;
+
+  if (newChannelTitle !== "") {
+    document.updateChannelForm.submit();
+  }
+}

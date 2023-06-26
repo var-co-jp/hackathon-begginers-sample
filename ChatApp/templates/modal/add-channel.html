@@ -2,24 +2,20 @@
   <div class="modal-content">
     <div class="modal-header">
       <h5>Add channel</h5>
-      <!-- <img
-        src="{{ url_for('static',filename='img/cat-on-bar.gif') }}"
-        class="modal-gif"
-      /> -->
       <span class="modalClose" id="add-page-close-btn">×</span>
     </div>
-    <form class="modal-body" action="/" method="POST">
+    <form name="addChannelForm" class="modal-body" action="/" method="POST">
       <input
         type="text"
         placeholder="Channel name"
         class="channel-form-input"
-        name="channel-title"
+        name="channelTitle"
       />
       <input
         type="text"
         placeholder="Channel description"
         class="channel-form-input"
-        name="channel-description"
+        name="channelDescription"
       />
       <button id="add-channel-confirmation-btn">登録</button>
     </form>

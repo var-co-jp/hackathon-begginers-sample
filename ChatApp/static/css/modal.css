@@ -1,5 +1,4 @@
 .modal {
-  display: none;
   position: fixed;
   z-index: 20;
   left: 0;
@@ -10,6 +9,12 @@
   background-color: rgba(240, 240, 240, 0.85);
   justify-content: center;
   align-items: center;
+}
+
+#add-channel-modal,
+#update-channel-modal,
+#delete-channel-modal {
+  display: none;
 }
 
 .modal-content {

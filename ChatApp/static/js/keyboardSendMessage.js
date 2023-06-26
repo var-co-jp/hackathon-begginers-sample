@@ -2,16 +2,31 @@
 // Ctl ＋ Enter が押された時にフォームを送信する
 
 document.addEventListener("keydown", keydownEvent);
-const addMessageButton = document.getElementById("add-message-btn");
 
 function keydownEvent(e) {
   const newMessageBody = document.newMessageForm.message;
+  const updateChannelModal = document.getElementById("update-channel-modal");
+  const updateChannelModalStyle = getComputedStyle(
+    updateChannelModal,
+    null
+  ).getPropertyValue("display");
+
+  if (e.code === "Enter") {
+    if (updateChannelModalStyle !== "none") {
+      e.preventDefault();
+    }
+  }
 
   if (e.ctrlKey) {
+    // Ctrl + Enterが同時押しされた時の処理
     if (e.code === "Enter") {
-      // Ctrl + Enterが同時押しされた時の処理
-      if (newMessageBody.value) {
-        document.newMessageForm.submit();
+      // update-channel-modalが表示されていない時
+      if (updateChannelModalStyle === "none") {
+        if (newMessageBody.value) {
+          document.newMessageForm.submit();
+        }
+      } else {
+        sendUpdateForm();
       }
     }
   }
