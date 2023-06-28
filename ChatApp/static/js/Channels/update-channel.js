@@ -6,11 +6,9 @@ const updatePageButtonClose = document.getElementById("update-page-close-btn");
 // モーダルが存在するページのみ（uidとチャンネルidが同じ時のみ）
 if (updateChannelModal) {
   // モーダル表示ボタンが押された時にモーダルを表示する
-  const showUpdateChannelModal = () => {
+  updateButton.addEventListener("click", () => {
     updateChannelModal.style.display = "flex";
-  };
-
-  updateButton.addEventListener("click", showUpdateChannelModal);
+  });
 
   // モーダル内のXボタンが押された時にモーダルを非表示にする
   updatePageButtonClose.addEventListener("click", () => {

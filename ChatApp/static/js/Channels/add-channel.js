@@ -5,14 +5,17 @@ const addChannelConfirmBtn = document.getElementById(
   "add-channel-confirmation-btn"
 );
 
+// モーダル表示ボタンが押された時にモーダルを表示する
 addChannelBtn.addEventListener("click", () => {
   addChannelModal.style.display = "flex";
 });
 
+// モーダル内のXボタンが押された時にモーダルを非表示にする
 addPageButtonClose.addEventListener("click", () => {
   addChannelModal.style.display = "none";
 });
 
+// 画面のどこかが押された時にモーダルを非表示にする
 addEventListener("click", (e) => {
   if (e.target == addChannelModal) {
     addChannelModal.style.display = "none";
@@ -21,7 +24,6 @@ addEventListener("click", (e) => {
 
 // add-channel-modalが表示されている時に Ctl + Enterで送信
 // Enterで自動送信を防ぐ
-
 document.addEventListener("keydown", keydownEvent);
 
 function keydownEvent(e) {

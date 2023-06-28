@@ -56,10 +56,11 @@ const pagination = () => {
           '<ion-icon name="trash-bin-outline" style="color: #f57978"></ion-icon>';
         deleteButton.classList.add("delete-button");
         li.appendChild(deleteButton);
+        // ゴミ箱ボタンが押された時にdeleteモーダルを表示させる
         deleteButton.addEventListener("click", () => {
           deleteChannelModal.style.display = "flex";
           const confirmationButtonLink = document.getElementById(
-            "delete-confirm-link"
+            "delete-confirmation-link"
           );
           // aタグにhrefを追加
           const channelURL = `/delete/${channel.id}`;
