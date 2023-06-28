@@ -135,7 +135,7 @@ def delete_channel(cid):
         else:
             dbConnect.deleteChannel(cid)
             channels = dbConnect.getChannelAll()
-            return render_template('index.html', channels=channels, uid=uid)
+            return redirect('/')
 
 
 # uidもmessageと一緒に返す
