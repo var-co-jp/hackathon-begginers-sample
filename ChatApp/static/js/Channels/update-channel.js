@@ -1,22 +1,29 @@
 const updateButton = document.getElementById("channel-update-button");
-const updateChannelModal = document.getElementById("update-channel-modal");
+const updateChannelModal =
+  document.getElementById("update-channel-modal") || null;
 const updatePageButtonClose = document.getElementById("update-page-close-btn");
 
-const updateChannel = () => {
-  updateChannelModal.style.display = "flex";
-};
+// モーダルが存在するページのみ（uidとチャンネルidが同じ時のみ）
+if (updateChannelModal) {
+  // モーダル表示ボタンが押された時にモーダルを表示する
+  const showUpdateChannelModal = () => {
+    updateChannelModal.style.display = "flex";
+  };
 
-updateButton.addEventListener("click", updateChannel);
+  updateButton.addEventListener("click", showUpdateChannelModal);
 
-updatePageButtonClose.addEventListener("click", () => {
-  updateChannelModal.style.display = "none";
-});
-
-addEventListener("click", (e) => {
-  if (e.target == updateChannelModal) {
+  // モーダル内のXボタンが押された時にモーダルを非表示にする
+  updatePageButtonClose.addEventListener("click", () => {
     updateChannelModal.style.display = "none";
-  }
-});
+  });
+
+  // 画面のどこかが押された時にモーダルを非表示にする
+  addEventListener("click", (e) => {
+    if (e.target == updateChannelModal) {
+      updateChannelModal.style.display = "none";
+    }
+  });
+}
 
 // update-channel-modalが表示されている時に Ctl + Enter で送信
 function sendUpdateForm() {
