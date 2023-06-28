@@ -21,7 +21,7 @@
       <div class="my-messages">
         <p class="box box-right">{{ message.message }}</p>
         <form action="/delete_message" method="POST">
-          <input type="hidden" value="{{ channel.id }}" name="channel_id" />
+          <input type="hidden" value="{{ channel.id }}" name="cid" />
           <button
             class="delete-message-btn"
             name="message_id"
@@ -51,7 +51,7 @@
         name="newMessageForm"
       >
         <textarea name="message" id="message" autofocus></textarea>
-        <input type="hidden" name="channel_id" value="{{ channel.id }}" />
+        <input type="hidden" name="cid" value="{{ channel.id }}" />
         <button type="submit" id="add-message-btn">
           <ion-icon name="paper-plane"></ion-icon>
         </button>

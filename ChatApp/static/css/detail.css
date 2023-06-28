@@ -164,7 +164,6 @@
   bottom: 0;
   width: calc(100vw - 50px);
   height: 15vh;
-  /* background-color: rgba(211, 211, 211, 0.75); */
   background-color: var(--snow);
   background-size: contain;
   border-top: 3px solid lightgrey;

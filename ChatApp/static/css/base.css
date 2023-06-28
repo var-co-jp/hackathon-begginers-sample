@@ -92,14 +92,6 @@ button.pink:hover {
   background-color: var(--middle_pink);
 }
 
-/* button.navy {
-  background-color: var(--navy_blue);
-}
-
-button.navy:hover {
-  background-color: var(--middle_green);
-} */
-
 .main-container {
   min-height: 100vh;
   padding-left: 60px;
