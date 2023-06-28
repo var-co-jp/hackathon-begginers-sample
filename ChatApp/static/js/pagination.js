@@ -2,7 +2,7 @@ const deleteChannelModal = document.getElementById("delete-channel-modal");
 
 const pagination = () => {
   let page = 1; // 今何ページ目にいるか
-  const STEP = 5; // ステップ数（1ページに表示する項目数）
+  const STEP = 7; // ステップ数（1ページに表示する項目数）
 
   // 全ページ数を計算
   // チャンネルの総数/ステップ数の余りの有無で場合分け
