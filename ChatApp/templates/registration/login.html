@@ -39,7 +39,6 @@
           />
         </div>
         <div class="registration-button-container">
-          <button class="registration-button pink">LOGIN</button>
           {% with messages = get_flashed_messages() %} {% if messages %}
           <ul class="flashes">
             {% for message in messages %}
@@ -47,6 +46,7 @@
             {% endfor %}
           </ul>
           {% endif %} {% endwith %}
+          <button class="registration-button pink">LOGIN</button>
           <a class="switch-register-mode" href="{{ url_for('signup') }}">
             Not registered yet?
           </a>

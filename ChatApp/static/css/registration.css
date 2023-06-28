@@ -129,24 +129,18 @@
   color: grey;
   line-height: 32px;
   font-size: small;
-  padding: 0 20px 1px 20px;
 }
 
 .switch-register-mode:hover {
   color: var(--navy_blue);
-  border-bottom: 1px solid lightgrey;
-  padding-bottom: 0;
 }
 
 .flashes {
-  line-height: 40px;
-  margin-top: 0;
-  position: fixed;
-  right: 40px;
-  bottom: 20px;
+  margin: 0;
+  padding-inline-start: 0;
   text-align: center;
   font-size: 18px;
-  color: red;
+  color: rgb(198, 8, 8);
 }
 
 @media screen and (max-width: 639px) {
@@ -168,9 +162,6 @@
   .registration-mobile-pic {
     display: block;
     height: 25%;
-  }
-  .registration-title {
-    margin-bottom: 3rem;
   }
   .registration-button {
     margin-bottom: 0;
