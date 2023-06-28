@@ -12,11 +12,13 @@ app.secret_key = uuid.uuid4().hex
 app.permanent_session_lifetime = timedelta(days=30)
 
 
+# サインアップページの表示
 @app.route('/signup')
 def signup():
     return render_template('registration/signup.html')
 
 
+# サインアップ処理
 @app.route('/signup', methods=['POST'])
 def userSignup():
     name = request.form.get('name')
@@ -48,11 +50,13 @@ def userSignup():
     return redirect('/signup')
 
 
+# ログインページの表示
 @app.route('/login')
 def login():
     return render_template('registration/login.html')
 
 
+# ログイン処理
 @app.route('/login', methods=['POST'])
 def userLogin():
     email = request.form.get('email')
@@ -74,12 +78,14 @@ def userLogin():
     return redirect('/login')
 
 
+# ログアウト
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect('/login')
 
 
+# チャンネル一覧ページの表示
 @app.route('/')
 def index():
     uid = session.get("uid")
@@ -90,6 +96,7 @@ def index():
     return render_template('index.html', channels=channels, uid=uid)
 
 
+# チャンネルの追加
 @app.route('/', methods=['POST'])
 def add_channel():
     uid = session.get('uid')
@@ -106,6 +113,7 @@ def add_channel():
         return render_template('error/error.html', error_message=error)
 
 
+# チャンネルの更新
 @app.route('/update_channel', methods=['POST'])
 def update_channel():
     uid = session.get("uid")
@@ -117,11 +125,10 @@ def update_channel():
     channel_description = request.form.get('channelDescription')
 
     dbConnect.updateChannel(uid, channel_name, channel_description, cid)
-    channel = dbConnect.getChannelById(cid)
-    messages = dbConnect.getMessageAll(cid)
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    return redirect('/detail/{cid}'.format(cid = cid))
 
 
+# チャンネルの削除
 @app.route('/delete/<cid>')
 def delete_channel(cid):
     uid = session.get("uid")
@@ -138,12 +145,13 @@ def delete_channel(cid):
             return redirect('/')
 
 
-# uidもmessageと一緒に返す
+# チャンネル詳細ページの表示
 @app.route('/detail/<cid>')
 def detail(cid):
     uid = session.get("uid")
     if uid is None:
         return redirect('/login')
+
     cid = cid
     channel = dbConnect.getChannelById(cid)
     messages = dbConnect.getMessageAll(cid)
@@ -151,6 +159,7 @@ def detail(cid):
     return render_template('detail.html', messages=messages, channel=channel, uid=uid)
 
 
+# メッセージの投稿
 @app.route('/message', methods=['POST'])
 def add_message():
     uid = session.get("uid")
@@ -158,17 +167,15 @@ def add_message():
         return redirect('/login')
 
     message = request.form.get('message')
-    channel_id = request.form.get('channel_id')
+    cid = request.form.get('cid')
 
     if message:
-        dbConnect.createMessage(uid, channel_id, message)
+        dbConnect.createMessage(uid, cid, message)
 
-    channel = dbConnect.getChannelById(channel_id)
-    messages = dbConnect.getMessageAll(channel_id)
-
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    return redirect('/detail/{cid}'.format(cid = cid))
 
 
+# メッセージの削除
 @app.route('/delete_message', methods=['POST'])
 def delete_message():
     uid = session.get("uid")
@@ -176,14 +183,12 @@ def delete_message():
         return redirect('/login')
 
     message_id = request.form.get('message_id')
-    cid = request.form.get('channel_id')
+    cid = request.form.get('cid')
+
     if message_id:
         dbConnect.deleteMessage(message_id)
 
-    channel = dbConnect.getChannelById(cid)
-    messages = dbConnect.getMessageAll(cid)
-
-    return render_template('detail.html', messages=messages, channel=channel, uid=uid)
+    return redirect('/detail/{cid}'.format(cid = cid))
 
 
 @app.errorhandler(404)
