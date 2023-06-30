@@ -134,11 +134,11 @@
   right: 0;
   width: calc(100% - 60px);
   padding-top: 3vh;
-  padding-right: 15vw;
+  /* padding-right: 15vw; */
 }
 
 #pagination-wrapper > div {
-  margin-left: auto;
+  margin: auto;
   width: fit-content;
 }
 
@@ -313,9 +313,9 @@
   .channel-box li a {
     font-size: 16px;
   }
-  #pagination-wrapper {
+  /* #pagination-wrapper {
     padding-right: 10vw;
-  }
+  } */
 }
 
 @media screen and (min-width: 1024px) {
@@ -326,9 +326,9 @@
 }
 
 @media screen and (min-width: 1400px) {
-  #pagination-wrapper {
+  /* #pagination-wrapper {
     padding-right: 20vw;
-  }
+  } */
   .channel-box {
     width: 60%;
     margin: auto;
