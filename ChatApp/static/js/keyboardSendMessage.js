@@ -26,7 +26,10 @@ function keydownEvent(e) {
     }
   }
 
-  if (e.ctrlKey) {
+  if (
+    ((e.ctrlKey && !e.metaKey) || (!e.ctrlKey && e.metaKey)) &&
+    e.keyCode == 13
+  ) {
     // Ctrl + Enterが同時押しされた時の処理
     if (e.code === "Enter") {
       // updateモーダルが存在していないページ or updateモーダルはあるが表示されていない時

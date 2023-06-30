@@ -39,7 +39,10 @@ function keydownEvent(e) {
     e.preventDefault();
   }
 
-  if (e.ctrlKey) {
+  if (
+    ((e.ctrlKey && !e.metaKey) || (!e.ctrlKey && e.metaKey)) &&
+    e.keyCode == 13
+  ) {
     if (e.code === "Enter") {
       if (addChannelModalStyle !== "none") {
         if (newChannelTitle !== "") {
