@@ -1,7 +1,9 @@
 const updateButton = document.getElementById("channel-update-button");
 const updateChannelModal =
   document.getElementById("update-channel-modal") || null;
-const updatePageButtonClose = document.getElementById("update-page-close-btn");
+const updatePageButtonClose = document.getElementById(
+  "update-page-close-button"
+);
 
 // モーダルが存在するページのみ（uidとチャンネルidが同じ時のみ）
 if (updateChannelModal) {

@@ -88,7 +88,7 @@
   display: flex;
 }
 
-.delete-message-btn {
+.delete-message-button {
   background-color: var(--snow);
   height: 40px;
   width: 40px;
@@ -99,7 +99,7 @@
   right: 8px;
 }
 
-.delete-message-btn ion-icon {
+.delete-message-button ion-icon {
   font-size: 1rem;
 }
 
@@ -197,7 +197,7 @@
   cursor: pointer;
 }
 
-#add-message-btn {
+#add-message-button {
   position: absolute;
   background-color: var(--navy_blue);
   height: 40px;
@@ -209,7 +209,7 @@
   right: 8px;
 }
 
-#add-message-btn ion-icon {
+#add-message-button ion-icon {
   font-size: 1.3rem;
 }
 

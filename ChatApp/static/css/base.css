@@ -70,15 +70,15 @@ button {
   transition: all 0.5s;
 }
 
-.basic-btn {
+.basic-button {
   background-color: var(--navy_blue);
 }
 
-.basic-btn:hover {
+.basic-button:hover {
   background-color: var(--salmon_pink);
 }
 
-.smaller-btn {
+.smaller-button {
   margin: 0;
   padding: 0.2em 3em;
   font-size: 16px;

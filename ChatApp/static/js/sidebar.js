@@ -10,21 +10,21 @@ list.forEach((item) => {
 
 // バーガーメニュー用（モバイルサイズ用）
 // メニューを開く
-const openBurgerBtn = document.getElementById("burger-icon");
-const closeBurgerBtn = document.getElementById("burger-close-icon");
+const openBurgerButton = document.getElementById("burger-icon");
+const closeBurgerButton = document.getElementById("burger-close-icon");
 const menu = document.getElementById("mobile-header");
 
-openBurgerBtn.addEventListener("click", openMenu);
+openBurgerButton.addEventListener("click", openMenu);
 function openMenu() {
-  openBurgerBtn.style.display = "none";
-  closeBurgerBtn.style.display = "block";
+  openBurgerButton.style.display = "none";
+  closeBurgerButton.style.display = "block";
   menu.style.display = "block";
 }
 
 // メニューを閉じる
-closeBurgerBtn.addEventListener("click", closeMenu);
+closeBurgerButton.addEventListener("click", closeMenu);
 function closeMenu() {
-  closeBurgerBtn.style.display = "none";
-  openBurgerBtn.style.display = "block";
+  closeBurgerButton.style.display = "none";
+  openBurgerButton.style.display = "block";
   menu.style.display = "none";
 }

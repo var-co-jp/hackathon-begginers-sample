@@ -1,6 +1,8 @@
-const deletePageButtonClose = document.getElementById("delete-page-close-btn");
-const deleteChannelConfirmBtn = document.getElementById(
-  "delete-channel-confirmation-btn"
+const deletePageButtonClose = document.getElementById(
+  "delete-page-close-button"
+);
+const deleteChannelConfirmButton = document.getElementById(
+  "delete-channel-confirmation-button"
 );
 
 // モーダル内のXボタンが押された時にモーダルを非表示にする
