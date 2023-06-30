@@ -127,8 +127,10 @@
 
 .switch-register-mode {
   color: grey;
-  line-height: 32px;
-  font-size: small;
+  line-height: 28px;
+  font-size: 14px;
+  border-bottom: solid 2px lightgrey;
+  padding: 0.5rem 2rem 0 2rem;
 }
 
 .switch-register-mode:hover {
