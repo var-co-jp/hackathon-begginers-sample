@@ -93,6 +93,7 @@ def index():
         return redirect('/login')
     else:
         channels = dbConnect.getChannelAll()
+        channels.reverse()
     return render_template('index.html', channels=channels, uid=uid)
 
 
