@@ -52,9 +52,15 @@
       >
         <textarea name="message" id="message" autofocus></textarea>
         <input type="hidden" name="cid" value="{{ channel.id }}" />
-        <button type="submit" id="add-message-button">
-          <ion-icon name="paper-plane"></ion-icon>
-        </button>
+        <div id="message-send-tooltip">
+          <button type="submit" id="add-message-button">
+            <ion-icon name="paper-plane"></ion-icon>
+          </button>
+          <div id="message-send-tooltip-description">
+            <p>Command + Enter または</p>
+            <p>Ctl + Enter</p>
+          </div>
+        </div>
       </form>
     </div>
   </div>
