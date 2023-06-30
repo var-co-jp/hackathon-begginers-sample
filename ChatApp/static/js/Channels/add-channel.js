@@ -1,14 +1,18 @@
 const addChannelModal = document.getElementById("add-channel-modal");
-const addPageButtonClose = document.getElementById("add-page-close-btn");
-const addChannelBtn = document.getElementById("add-channel-btn");
-const addChannelConfirmBtn = document.getElementById(
-  "add-channel-confirmation-btn"
+const addPageButtonClose = document.getElementById("add-page-close-button");
+const addChannelConfirmButton = document.getElementById(
+  "add-channel-confirmation-button"
 );
 
-// モーダル表示ボタンが押された時にモーダルを表示する
-addChannelBtn.addEventListener("click", () => {
-  addChannelModal.style.display = "flex";
-});
+// pagination.jsでチャンネル一覧が表示されるのを待ってから読みこまれる
+const loadAddChannelButton = () => {
+  const addChannelButton = document.getElementById("add-channel-button");
+
+  // モーダル表示ボタンが押された時にモーダルを表示する
+  addChannelButton.addEventListener("click", () => {
+    addChannelModal.style.display = "flex";
+  });
+};
 
 // モーダル内のXボタンが押された時にモーダルを非表示にする
 addPageButtonClose.addEventListener("click", () => {

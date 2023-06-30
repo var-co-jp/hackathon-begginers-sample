@@ -1,8 +1,11 @@
 const deleteChannelModal = document.getElementById("delete-channel-modal");
 
-const pagination = () => {
+// paginationでチャンネル一覧を追加した後、「チャンネル登録ボタン」を追加
+// ボタンを追加した後に「loadAddChannelButton関数（add-channel.js内）」を呼び出したい
+// なのでここのpagination関数はasyncにしている
+const pagination = async () => {
   let page = 1; // 今何ページ目にいるか
-  const STEP = 7; // ステップ数（1ページに表示する項目数）
+  const STEP = 6; // ステップ数（1ページに表示する項目数）
 
   // 全ページ数を計算
   // チャンネルの総数/ステップ数の余りの有無で場合分け
@@ -80,9 +83,16 @@ const pagination = () => {
         channelDescriptionTooltip.appendChild(tooltipBody);
         ul.appendChild(channelDescriptionTooltip);
       } else {
+        // チャンネルに説明文が登録されていない場合はツールチップなしでulにliを追加する
         ul.appendChild(li);
       }
     });
+    // チャンネル追加ボタンを付け加える
+    const addChannelButton = document.createElement("ion-icon");
+    addChannelButton.id = "add-channel-button";
+    addChannelButton.name = "add-circle-outline";
+    addChannelButton.style = "color: #122543";
+    ul.appendChild(addChannelButton);
   };
   // pagination内で現在選択されているページの番号に色を付ける
   const colorPaginationNum = () => {
@@ -116,6 +126,8 @@ const pagination = () => {
   });
 };
 
+// 画面がロードされる時の処理
 window.onload = () => {
-  pagination();
+  // pagination関数（asyncが完了したらチャンネル追加ボタンを読み込む）
+  pagination().then(loadAddChannelButton);
 };
