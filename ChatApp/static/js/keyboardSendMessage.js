@@ -30,7 +30,7 @@ function keydownEvent(e) {
     ((e.ctrlKey && !e.metaKey) || (!e.ctrlKey && e.metaKey)) &&
     e.keyCode == 13
   ) {
-    // Ctrl + Enterが同時押しされた時の処理
+    // Ctrl/Command + Enterが同時押しされた時の処理
     if (e.code === "Enter") {
       // updateモーダルが存在していないページ or updateモーダルはあるが表示されていない時
       if (!updateChannelModal || updateChannelModalStyle === "none") {

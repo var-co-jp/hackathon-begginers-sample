@@ -73,7 +73,6 @@
 
 #channels-list {
   width: 70%;
-  min-height: 60vh;
   display: flex;
   flex-direction: column;
 }
@@ -134,7 +133,6 @@
   right: 0;
   width: calc(100% - 60px);
   padding-top: 3vh;
-  /* padding-right: 15vw; */
 }
 
 #pagination-wrapper > div {
@@ -313,9 +311,6 @@
   .channel-box li a {
     font-size: 16px;
   }
-  /* #pagination-wrapper {
-    padding-right: 10vw;
-  } */
 }
 
 @media screen and (min-width: 1024px) {
@@ -326,9 +321,6 @@
 }
 
 @media screen and (min-width: 1400px) {
-  /* #pagination-wrapper {
-    padding-right: 20vw;
-  } */
   .channel-box {
     width: 60%;
     margin: auto;
