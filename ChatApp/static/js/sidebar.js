@@ -18,7 +18,7 @@ openBurgerButton.addEventListener("click", openMenu);
 function openMenu() {
   openBurgerButton.style.display = "none";
   closeBurgerButton.style.display = "block";
-  menu.style.display = "block";
+  menu.style.display = "flex";
 }
 
 // メニューを閉じる
