@@ -1,0 +1,339 @@
+/* チャンネル一覧ページのCSS */
+
+.channel-title {
+  position: fixed;
+  top: 0;
+  left: 50px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background-color: var(--navy_blue);
+  color: var(--snow);
+  padding-left: 20px;
+  width: 100%;
+  height: 11vh;
+  z-index: 10;
+}
+
+.channel-title h1 {
+  margin: 10px 0;
+  font-size: 38px;
+  letter-spacing: -0.1em;
+}
+
+.channel-title button {
+  margin: auto 0;
+  padding: 0.5em 1em;
+  background-color: var(--salmon_pink);
+  font-size: 12px;
+  border: solid 6px var(--navy_blue);
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 0 3px var(--salmon_pink);
+}
+
+.channel-title button:hover {
+  background-color: var(--middle_pink);
+  cursor: pointer;
+}
+
+.channel-title-text {
+  margin: auto;
+  font-size: 16vh;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.1);
+  letter-spacing: -0.12em;
+  position: fixed;
+  line-height: 0.8;
+  top: -1.4vh;
+  left: calc(50% + 30px);
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.channel-title-text.detail-title {
+  font-size: 13vh;
+  top: -2.3vh;
+  left: calc(50% + 30px);
+  transform: translateX(-50%);
+}
+
+/* ========================================================== */
+
+#channels-list-container {
+  padding-top: 13vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: calc(100vh - 11vh);
+  margin-top: 11vh;
+  margin-left: auto;
+  padding-bottom: 38px;
+}
+
+#channels-list {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-box {
+  padding: 0;
+}
+
+.channel-box li {
+  list-style: none;
+  padding: 4px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+
+.channel-box li a {
+  color: grey;
+  flex-grow: 1;
+}
+
+.channel-box li a:hover {
+  cursor: pointer;
+}
+
+.channel-box li:hover a {
+  color: var(--navy_blue);
+  transition: all 0.5s;
+}
+
+.delete-button {
+  font-size: 16px;
+  background-color: var(--snow);
+  height: 28px;
+  width: 28px;
+  padding: 3px;
+  border-radius: 50%;
+  border: solid 1px var(--salmon_pink);
+}
+.delete-button:hover {
+  background-color: var(--navy_blue);
+  border: solid 1px var(--navy_blue);
+}
+
+.delete-button:hover .channel-box li {
+  background-color: var(--snow) !important;
+}
+
+#add-channel-button {
+  font-size: 22px;
+  padding: 4px 0;
+}
+
+#add-channel-button:hover {
+  cursor: pointer;
+}
+
+/* ========================================================== */
+/* pagination */
+
+#pagination-wrapper {
+  background-color: var(--snow);
+  z-index: 6;
+  position: fixed;
+  top: 11vh;
+  right: 0;
+  width: calc(100% - 60px);
+  padding-top: 3vh;
+}
+
+#pagination-wrapper > div {
+  margin: auto;
+  width: fit-content;
+}
+
+.pagination-container,
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-container {
+  margin-left: auto;
+  margin-top: 5vh;
+}
+
+.pagination-container * {
+  margin: 0 auto;
+}
+
+.pagination {
+  padding-left: 0;
+  max-width: 50vw;
+}
+
+.pagination li {
+  color: grey;
+  width: 20px;
+}
+
+.pagination li:hover {
+  cursor: pointer;
+  color: var(--salmon_pink);
+}
+
+.pagination li.colored {
+  color: var(--navy_blue);
+  font-weight: 700;
+  transition: all 0.5s;
+}
+
+#prev,
+#next,
+.pagination li {
+  padding: 4px;
+}
+
+#prev,
+#prev span,
+#next,
+#next span {
+  font-size: 8px;
+  color: var(--carbon);
+  vertical-align: middle;
+}
+
+#prev:hover,
+#next:hover {
+  cursor: pointer;
+  color: var(--navy_blue);
+}
+
+#prev:hover span,
+#next:hover span {
+  color: var(--navy_blue);
+}
+
+#prev span {
+  padding-left: 0.3rem;
+  padding-right: 1rem;
+}
+#next span {
+  padding-right: 0.3em;
+  padding-left: 1rem;
+}
+
+/* ========================================================== */
+/* Tooltip */
+
+.channel-description-tooltip {
+  position: relative;
+}
+
+.tooltip-body {
+  display: none;
+  position: absolute;
+  padding: 10px 16px;
+  font-size: 12px;
+  line-height: 1.6em;
+  color: var(--snow);
+  background: var(--navy_blue);
+  border-top: 2px solid var(--snow);
+  box-shadow: 0 -3px 0 2px var(--navy_blue);
+  min-width: 115px;
+  z-index: 8;
+}
+
+.tooltip-body:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 15px solid transparent;
+  border-top: 15px solid var(--navy_blue);
+  margin-left: -15px;
+}
+
+.channel-description-tooltip:hover .tooltip-body {
+  display: inline-block;
+  top: -60px;
+  left: -20px;
+}
+
+/* ========================================================== */
+
+#footer {
+  height: 38px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  background-color: var(--navy_blue);
+  z-index: 1;
+  border-top: 15px solid rgba(255, 255, 255, 0.2);
+}
+
+#footer-text {
+  margin: auto;
+  font-size: 50px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: -0.12em;
+  position: fixed;
+  z-index: 2;
+  line-height: 0.8;
+  bottom: 0;
+  left: calc(50% - (669px / 2) + 30px);
+  white-space: nowrap;
+}
+
+/* ========================================================== */
+/* レスポンシブ */
+
+@media screen and (max-width: 639px) {
+  #channels-list {
+    width: 90%;
+  }
+  .channel-title {
+    left: 0;
+  }
+  .channel-box {
+    width: 100%;
+  }
+  .channel-box li a {
+    font-size: 16px;
+  }
+  #pagination-wrapper {
+    width: 100%;
+    padding-right: 3vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .channel-title h1 {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 1023px) {
+  .channel-box {
+    width: 100%;
+  }
+  .channel-box li a {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .channel-box {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .channel-box {
+    width: 60%;
+    margin: auto;
+  }
+}

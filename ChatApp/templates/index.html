@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block title %}
+<title>home</title>
+{% endblock %} {% block body %}
+<div class="main-container">
+  <div class="channel-title">
+    <h1>CHANNELS</h1>
+    <p class="channel-title-text">CHANNELS</p>
+  </div>
+  <div id="channels-list-container">
+    <div id="channels-list">
+      <div id="pagination-wrapper">
+        <div>
+          <div class="pagination-container">
+            <p id="prev">
+              <
+              <span>PREV</span>
+            </p>
+            <ul class="pagination"></ul>
+            <p id="next">
+              <span>NEXT</span>
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <ul class="channel-box"></ul>
+    </div>
+  </div>
+  <div id="footer">
+    <p id="footer-text">PLAUDERN FROM RARETECH</p>
+  </div>
+  {% include 'modal/add-channel.html' %} {% include 'modal/delete-channel.html'
+  %}
+</div>
+{% endblock %} {% block script %}
+<script type="text/javascript">
+  // prettier-ignore
+  const channels = JSON.parse('{{ channels|tojson }}');
+  // prettier-ignore
+  const uid = JSON.parse('{{ uid|tojson }}');
+</script>
+<script
+  src="{{url_for('static',filename='js/Channels/add-channel.js')}}"
+  type="text/javascript"
+></script>
+<script
+  src="{{url_for('static',filename='js/pagination.js')}}"
+  type="text/javascript"
+></script>
+<script
+  src="{{url_for('static',filename='js/Channels/delete-channel.js')}}"
+  type="text/javascript"
+></script>
+{% endblock %}

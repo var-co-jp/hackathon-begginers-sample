@@ -1,0 +1,136 @@
+/* 404/500/その他エラー画面のCSS */
+
+.error {
+  margin: 0;
+}
+
+.error-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(248 248 252);
+}
+
+.error-content {
+  height: 70%;
+  width: 70%;
+  margin: auto;
+  color: var(--navy_blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-title {
+  line-height: 0.5;
+  text-align: center;
+}
+
+.error-title span {
+  display: inline-block;
+  position: relative;
+  font-size: 36px;
+  font-weight: 900;
+}
+.error-title span:before,
+.error-title span:after {
+  content: "";
+  position: absolute;
+  height: 5px;
+  border-bottom: 1px solid var(--navy_blue);
+  border-top: 1px solid var(--navy_blue);
+  top: 0;
+  width: 200px;
+}
+.error-title span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.error-title span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+.error-description {
+  text-align: center;
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error404or500 {
+  margin-top: 20px;
+}
+
+.error-description p {
+  margin: 10px auto;
+}
+
+.error-button {
+  padding: 0.7em 3em;
+  margin: 16px auto;
+}
+
+.error-button a {
+  color: var(--snow);
+}
+
+.error-gif {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+
+/* 500, 400ページ */
+
+.error-num {
+  font-size: 6em;
+  font-weight: 900;
+}
+
+.eye {
+  background: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  height: 100px;
+  position: relative;
+  width: 100px;
+}
+
+.eye::after {
+  background: #000;
+  border-radius: 50%;
+  bottom: 56.1px;
+  content: " ";
+  height: 33px;
+  position: absolute;
+  right: 33px;
+  width: 33px;
+}
+
+/* ========================================================== */
+/* レスポンシブ */
+
+@media screen and (max-width: 440px) {
+  .error-num {
+    font-size: 5em;
+    font-weight: 900;
+  }
+  .eye {
+    background: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    height: 90px;
+    position: relative;
+    width: 90px;
+  }
+  .error-description {
+    margin-top: 20px;
+  }
+  .error-description p {
+    margin: 10px auto;
+  }
+}

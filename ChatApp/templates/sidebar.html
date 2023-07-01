@@ -1,0 +1,24 @@
+<div class="navigation">
+  <div id="navigation-logo-container">
+    <div id="navigation-logo">
+      <img
+        src="{{ url_for('static',filename='img/plaudern-logo.png') }}"
+        alt="logo"
+      />
+    </div>
+  </div>
+  <ul>
+    <li class="list active">
+      <a href="{{ url_for('index') }}">
+        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+        <span class="title">チャンネル一覧</span>
+      </a>
+    </li>
+    <li class="list">
+      <a href="{{ url_for('logout') }}">
+        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+        <span class="title">サインアウト</span>
+      </a>
+    </li>
+  </ul>
+</div>

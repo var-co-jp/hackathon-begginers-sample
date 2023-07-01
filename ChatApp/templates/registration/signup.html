@@ -1,0 +1,74 @@
+{% extends 'registration/base.html' %} {% block title %}
+<title>signup</title>
+{% endblock %} {% block body %}
+<div class="registration-wrapper">
+  <div class="registration-container">
+    <img
+      src="{{ url_for('static',filename='img/registration.png') }}"
+      class="registration-main-pic"
+    />
+    <div class="registration-form-wrapper">
+      <div class="registration-logo">
+        <img
+          src="{{ url_for('static',filename='img/plaudern-logo.png') }}"
+          alt="logo"
+        />
+      </div>
+      <form class="registration-form signup" method="post">
+        <h1 class="registration-title">HI THERE!</h1>
+        <div>
+          <label for="signup-name-input">Name</label>
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            id="signup-name-input"
+          />
+        </div>
+        <div>
+          <label for="signup-email-input">Email</label>
+          <input
+            type="text"
+            placeholder="Email"
+            name="email"
+            id="signup-email-input"
+          />
+        </div>
+        <div>
+          <label for="signup-password-input">Password</label>
+          <input
+            type="password"
+            placeholder="Password"
+            name="password1"
+            id="signup-password-input"
+          />
+        </div>
+        <div>
+          <label for="signup-password-confirmation-input">
+            Password Confirmation
+          </label>
+          <input
+            type="password"
+            placeholder="Password Confirmation"
+            name="password2"
+            id="signup-password-confirmation-input"
+          />
+        </div>
+        <div class="registration-button-container">
+          {% with messages = get_flashed_messages() %} {% if messages %}
+          <ul class="flashes">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %} {% endwith %}
+          <button class="registration-button pink">SIGN UP</button>
+          <a class="switch-register-mode" href="{{ url_for('login') }}">
+            ログインする
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
