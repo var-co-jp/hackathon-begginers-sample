@@ -1,0 +1,282 @@
+/* 各チャンネル詳細ページのCSS */
+
+.chat-box {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--snow);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 54px;
+  right: 0;
+  width: calc(100vw - 64px);
+}
+
+#chat-header {
+  background-color: var(--navy_blue);
+  color: var(--snow);
+  height: 8vh;
+  width: calc(100vw - 50px);
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-left: 20px;
+  z-index: 2;
+}
+
+#chatroom-name {
+  font-size: larger;
+}
+
+#chatroom-description {
+  font-size: 12px;
+  font-weight: 200;
+  letter-spacing: 0.15em;
+}
+
+#channel-update-button {
+  margin: auto 0;
+  padding: 0.2em 0.6em;
+  background-color: var(--salmon_pink);
+  font-size: 12px;
+  border: solid 6px var(--navy_blue);
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 0 0 3px var(--salmon_pink);
+}
+
+#channel-update-button:hover {
+  background-color: var(--middle_pink);
+  box-shadow: 0 0 0 3px var(--middle_pink);
+  cursor: pointer;
+}
+
+/* メッセージエリア */
+
+#message-area {
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 10vh;
+  padding-right: 20px;
+  padding-bottom: calc(20vh + 10px);
+  padding-left: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 8px;
+  color: grey;
+  margin: 1px 0;
+}
+
+.my-messages {
+  display: flex;
+}
+
+.delete-message-button {
+  background-color: var(--snow);
+  height: 40px;
+  width: 40px;
+  line-height: 47px;
+  padding: 0;
+  margin: 0;
+  bottom: 8px;
+  right: 8px;
+}
+
+.delete-message-button ion-icon {
+  font-size: 1rem;
+}
+
+.box {
+  position: relative;
+  width: 60%;
+  margin: 0;
+  padding: 0.7em 0 0.4em 1em;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  white-space: pre-wrap;
+}
+
+.box-left {
+  background-color: rgba(18, 37, 67, 0.2);
+  color: var(--navy_blue);
+}
+
+.box-right {
+  background-color: rgba(18, 37, 67, 0.4);
+  color: var(--snow);
+  margin-left: auto;
+}
+
+.box-left:before {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid grey;
+  content: "";
+}
+
+.box-right:before {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid grey;
+  content: "";
+}
+
+#no-message {
+  padding-top: 54px;
+  width: 100%;
+  height: calc(100vh - (54px + 15vh));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#no-message p {
+  display: inline;
+}
+
+/* ========================================================== */
+
+.typing-box-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: calc(100vw - 50px);
+  height: 15vh;
+  background-color: var(--snow);
+  background-size: contain;
+  border-top: 3px solid lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.typing-box {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  position: relative;
+  background-color: var(--snow);
+  border-radius: 8px;
+  border: solid 1px lightgrey;
+  display: flex;
+}
+
+.typing-box textarea {
+  background-color: transparent;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  width: 100%;
+  padding: 0.5em;
+  border-radius: 16px;
+  flex-grow: 1;
+}
+
+.typing-box textarea:focus {
+  cursor: pointer;
+}
+
+#add-message-button {
+  background-color: var(--navy_blue);
+  height: 100%;
+  width: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+#add-message-button ion-icon {
+  font-size: 1.3rem;
+}
+
+/* ========================================================== */
+/* Tooltip */
+
+#message-send-tooltip {
+  position: relative;
+}
+
+#message-send-tooltip-description {
+  display: none;
+  position: absolute;
+  padding: 10px 16px;
+  font-size: 12px;
+  line-height: 1.6em;
+  color: var(--snow);
+  background: var(--navy_blue);
+  min-width: 182px;
+  z-index: 8;
+}
+
+#message-send-tooltip-description p {
+  font-size: 12px;
+  margin: 0;
+}
+
+#message-send-tooltip-description:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  border: 15px solid transparent;
+  border-top: 15px solid var(--navy_blue);
+  margin-left: -15px;
+}
+
+#message-send-tooltip:hover #message-send-tooltip-description {
+  display: inline-block;
+  top: calc(-1 * (15vh * 0.7));
+  left: -94px;
+}
+
+/* ========================================================== */
+/* レスポンシブ */
+
+@media screen and (max-width: 550px) {
+  #chatroom-description {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .chat-box {
+    padding-left: 0;
+    width: 100%;
+  }
+
+  .typing-box-wrapper,
+  #chat-header {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .box {
+    width: 40%;
+  }
+}

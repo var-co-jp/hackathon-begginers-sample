@@ -1,0 +1,88 @@
+/* 639px以下で表示されるメニュー画面のCSS */
+
+#burger-icon,
+#burger-close-icon {
+  display: block;
+  height: 8vh;
+  width: 8vh;
+  line-height: 50px;
+  background-color: var(--navy_blue);
+  color: var(--snow);
+  text-align: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 30;
+}
+
+#burger-icon:hover,
+#burger-close-icon:hover {
+  background-color: var(--salmon_pink);
+  cursor: pointer;
+}
+
+#burger-close-icon {
+  display: none;
+}
+
+/* バーガーアイコンを押した時に表示される箇所 */
+/* 画面いっぱいに広がる */
+/* 表示/非表示はJSで管理 */
+#mobile-header {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 20;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(240, 240, 240, 1);
+}
+
+#mobile-header ul {
+  padding-left: 0;
+}
+
+#mobile-header ul li {
+  margin-bottom: 30px;
+  width: fit-content;
+}
+
+#mobile-header ul li:hover {
+  cursor: pointer;
+}
+
+#mobile-header li a {
+  color: var(--navy_blue);
+}
+
+#mobile-header li a:hover {
+  color: var(--dark_pink);
+}
+
+.page-links .icon {
+  vertical-align: middle;
+  padding-right: 0.5rem;
+}
+
+/* ========================================================== */
+/* レスポンシブ */
+
+@media only screen and (min-width: 640px) and (max-width: 1023px) {
+  #mobile-header,
+  #burger-icon,
+  #burger-close-icon {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  #mobile-header,
+  #burger-icon,
+  #burger-close-icon {
+    display: none;
+  }
+}

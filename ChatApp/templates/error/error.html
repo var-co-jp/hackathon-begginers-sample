@@ -1,0 +1,16 @@
+{% extends 'error/base.html' %} {% block title %} error {% endblock %} {% block
+body %}
+<body class="error">
+  <div class="error-wrapper">
+    <div class="error-content">
+      <div class="error-title"><span>SORRY</span></div>
+      <div class="error-description">
+        <p>{{ error_message }}</p>
+        <button class="error-button pink">
+          <a href="{{ url_for('index') }}">戻る</a>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock %}

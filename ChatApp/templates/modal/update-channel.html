@@ -1,0 +1,29 @@
+<div id="update-channel-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5>Edit Channel</h5>
+      <span class="modalClose" id="update-page-close-button">×</span>
+    </div>
+    <form
+      name="updateChannelForm"
+      class="modal-body"
+      action="/update_channel"
+      method="POST"
+    >
+      <input
+        type="text"
+        placeholder="Channel name"
+        class="channel-form-input"
+        name="channelTitle"
+      />
+      <input
+        type="text"
+        placeholder="Channel description"
+        class="channel-form-input"
+        name="channelDescription"
+      />
+      <input type="hidden" name="cid" value="{{ channel.id }}" />
+      <button>EDIT</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+/* 色を使い回しできるように変数にする */
+
+:root {
+  --snow: #ffffff;
+  --carbon: #3e4149;
+  --navy: #4e5b66;
+  --ash_grey: #f0f0f0;
+  --navy_blue: #122543;
+  --salmon_pink: #f57978;
+  --middle_pink: #f45554;
+}

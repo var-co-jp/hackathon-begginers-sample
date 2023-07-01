@@ -1,0 +1,88 @@
+* {
+  float: none;
+  position: static;
+  font-family: "M PLUS 1", sans-serif;
+  font-family: "League Spartan", sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  min-height: 100vh;
+  width: 100vw;
+  color: var(--carbon);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 900;
+}
+
+input,
+textarea,
+button {
+  font-size: inherit;
+  border: none;
+  outline: none;
+}
+
+textarea {
+  resize: none;
+  height: 100%;
+  width: 100%;
+  letter-spacing: 0.1em;
+  font-size: 16px;
+}
+
+input {
+  letter-spacing: 0.1em;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--snow);
+}
+
+input:hover,
+button:hover {
+  cursor: pointer;
+}
+
+button {
+  color: var(--snow);
+  border: none;
+  padding: 0.7em 3em;
+  letter-spacing: 0.1rem;
+}
+
+:hover {
+  transition: all 0.5s;
+}
+
+button.pink {
+  background-color: var(--salmon_pink);
+}
+
+button.pink:hover {
+  background-color: var(--middle_pink);
+}
+
+.main-container {
+  min-height: 100vh;
+  padding-left: 60px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}

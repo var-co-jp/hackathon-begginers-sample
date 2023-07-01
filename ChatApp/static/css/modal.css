@@ -1,0 +1,165 @@
+/* 各モーダルのCSS */
+
+.modal {
+  position: fixed;
+  z-index: 20;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(240, 240, 240, 0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+#add-channel-modal,
+#update-channel-modal,
+#delete-channel-modal {
+  display: none;
+}
+
+.modal-content {
+  background-color: var(--navy);
+  margin: 20% auto;
+  width: 70%;
+  border: 12px solid var(--navy_blue);
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: 1s;
+  position: relative;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-header h1 {
+  margin: 1rem 0;
+}
+
+.modal-header {
+  background: var(--ash_grey);
+  padding: 3px 15px 3px 32px;
+  color: var(--navy);
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-header h5,
+.modal-header span {
+  z-index: 4;
+}
+
+.modalClose {
+  font-size: 2rem;
+}
+
+.modalClose:hover {
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--snow);
+  border-radius: 0 0 20px 20px;
+}
+
+.channel-form-input {
+  width: 70%;
+  background-color: transparent;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  padding: 0.5rem;
+  color: var(--snow);
+}
+
+.channel-form-input::placeholder {
+  color: var(--snow);
+  font-size: 12px;
+}
+
+.channel-form-input:hover {
+  background-color: var(--navy_blue);
+  color: var(--snow);
+}
+
+.channel-form-input:focus {
+  background-color: var(--navy_blue);
+  color: var(--snow);
+}
+
+.modal-gif {
+  position: absolute;
+  z-index: 2;
+  top: -65px;
+  left: 30%;
+}
+
+.modal-body p,
+.modal-body a {
+  width: 70%;
+}
+
+.modal-body button {
+  width: 70%;
+  background-color: var(--salmon_pink);
+}
+
+#delete-channel-confirmation-button {
+  width: 100%;
+}
+
+.modal-body button:hover {
+  background-color: var(--middle_pink);
+}
+
+/* ========================================================== */
+/* レスポンシブ */
+
+@media screen and (max-width: 639px) {
+  .modal-content {
+    margin: 35% auto;
+    width: 95%;
+  }
+  #modal-gif {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 640px) and (max-width: 670px) {
+  .modal-content {
+    width: 95%;
+  }
+  .modal {
+    padding-left: 60px;
+  }
+}
+@media only screen and (min-width: 671px) and (max-width: 1024px) {
+  .modal-content {
+    width: 80%;
+  }
+  .modal {
+    padding-left: 60px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .modal-content {
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .modal-content {
+    width: 50%;
+  }
+}
