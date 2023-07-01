@@ -25,7 +25,7 @@ if (updateChannelModal) {
   });
 }
 
-// update-channel-modalが表示されている時に Ctl + Enter で送信
+// update-channel-modalが表示されている時に Ctrl + Enter で送信
 function sendUpdateForm() {
   const newChannelTitle = document.updateChannelForm.channelTitle.value;
 

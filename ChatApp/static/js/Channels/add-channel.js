@@ -26,7 +26,7 @@ addEventListener("click", (e) => {
   }
 });
 
-// add-channel-modalが表示されている時に Ctl + Enterで送信
+// add-channel-modalが表示されている時に Ctrl + Enterで送信
 // Enterで自動送信を防ぐ
 document.addEventListener("keydown", keydownEvent);
 

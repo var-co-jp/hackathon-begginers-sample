@@ -1,5 +1,5 @@
 // detailページ内
-// Ctl ＋ Enter が押された時にフォームを送信する
+// Ctrl ＋ Enter が押された時にフォームを送信する
 
 document.addEventListener("keydown", keydownEvent);
 
