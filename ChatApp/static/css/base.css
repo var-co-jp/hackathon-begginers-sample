@@ -62,26 +62,11 @@ button {
   color: var(--snow);
   border: none;
   padding: 0.7em 3em;
-  margin: 16px auto;
   letter-spacing: 0.1rem;
 }
 
 :hover {
   transition: all 0.5s;
-}
-
-.basic-button {
-  background-color: var(--navy_blue);
-}
-
-.basic-button:hover {
-  background-color: var(--salmon_pink);
-}
-
-.smaller-button {
-  margin: 0;
-  padding: 0.2em 3em;
-  font-size: 16px;
 }
 
 button.pink {
