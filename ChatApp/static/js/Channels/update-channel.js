@@ -1,3 +1,5 @@
+// チャンネルを更新する時の処理
+
 const updateButton = document.getElementById("channel-update-button");
 const updateChannelModal =
   document.getElementById("update-channel-modal") || null;
@@ -25,7 +27,7 @@ if (updateChannelModal) {
   });
 }
 
-// update-channel-modalが表示されている時に Ctrl + Enter で送信
+// update-channel-modalが表示されている時に Ctrl/Command + Enter で送信
 function sendUpdateForm() {
   const newChannelTitle = document.updateChannelForm.channelTitle.value;
 

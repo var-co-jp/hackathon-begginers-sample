@@ -1,3 +1,5 @@
+// チャンネルを削除する時の処理
+
 const deletePageButtonClose = document.getElementById(
   "delete-page-close-button"
 );

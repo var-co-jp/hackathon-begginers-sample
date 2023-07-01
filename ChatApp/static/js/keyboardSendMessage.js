@@ -1,5 +1,5 @@
 // detailページ内
-// Ctrl ＋ Enter が押された時にフォームを送信する
+// Ctrl/Command ＋ Enter が押された時にフォームを送信する
 
 document.addEventListener("keydown", keydownEvent);
 
@@ -9,6 +9,7 @@ function keydownEvent(e) {
   // 「updateChannelModalにモーダル、updateChannelModalStyleにモーダルのdisplay属性の状態」を格納
   // 違う場合は
   // 「updateChannelModalにnull、updateChannelModalStyleに"none"」を格納
+  // nullを入れていないと自分が作成していないチャンネルページ内でエラーになるため
   const updateChannelModal =
     document.getElementById("update-channel-modal") || null;
   let updateChannelModalStyle = "none";
@@ -34,7 +35,6 @@ function keydownEvent(e) {
     if (e.code === "Enter") {
       // updateモーダルが存在していないページ or updateモーダルはあるが表示されていない時
       if (!updateChannelModal || updateChannelModalStyle === "none") {
-        // if (updateChannelModalStyle === "none") {
         if (newMessageBody.value) {
           document.newMessageForm.submit();
         }

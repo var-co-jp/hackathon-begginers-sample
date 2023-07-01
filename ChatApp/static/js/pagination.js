@@ -1,21 +1,24 @@
+// チャンネル一覧ページでレスポンスが返ってきた後、
+// 送られてきたチャンネル一覧の配列をもとにページネーションの追加/チャンネルリストの表示を行う処理。
+
 const deleteChannelModal = document.getElementById("delete-channel-modal");
 
 // paginationでチャンネル一覧を追加した後、「チャンネル登録ボタン」を追加
-// ボタンを追加した後に「loadAddChannelButton関数（add-channel.js内）」を呼び出したい
-// なのでここのpagination関数はasyncにしている
+// ボタンを追加した後に「loadAddChannelButton関数（add-channel.js内）」を呼び出したい。
+// なのでここのpagination関数はasyncにしている。
 const pagination = async () => {
   let page = 1; // 今何ページ目にいるか
   const STEP = 6; // ステップ数（1ページに表示する項目数）
 
   // 全ページ数を計算
-  // チャンネルの総数/ステップ数の余りの有無で場合分け
+  // 「チャンネルの総数/(割る)ステップ数」の余りの有無で場合分け
   // 余りがある場合は１ページ余分に追加する
   const TOTAL =
     channels.length % STEP == 0
       ? channels.length / STEP
       : Math.floor(channels.length / STEP) + 1;
 
-  // ページネーションで表示される数字部分の要素を作成
+  // ページネーションで表示される数字部分(ページ数)の要素を作成
   const paginationUl = document.querySelector(".pagination");
   let pageCount = 0;
   while (pageCount < TOTAL) {
@@ -71,7 +74,7 @@ const pagination = async () => {
         });
       }
 
-      // もしチャンネルに説明文が登録されていたら吹き出しを作成（hover時に表示）
+      // もしチャンネルに説明文が登録されていたら吹き出しを作成（hover時に表示される）
       if (channel.abstract) {
         const channelDescriptionTooltip = document.createElement("div");
         channelDescriptionTooltip.style.display = "innerBlock";
@@ -101,7 +104,7 @@ const pagination = async () => {
     paginationArr.forEach((page) => {
       page.classList.remove("colored");
     });
-    // 選択されているページに　class="colored"を追加（文字色が変わる）
+    // 選択されているページにclass="colored"を追加（文字色が変わる）
     paginationArr[page - 1].classList.add("colored");
   };
 

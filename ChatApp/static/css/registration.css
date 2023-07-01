@@ -1,3 +1,5 @@
+/* サインアップ/ログイン画面のCSS */
+
 .registration-wrapper {
   width: 100vw;
   min-height: 100vh;
@@ -144,6 +146,9 @@
   font-size: 18px;
   color: rgb(198, 8, 8);
 }
+
+/* ========================================================== */
+/* レスポンシブ */
 
 @media screen and (max-width: 639px) {
   .registration-container {

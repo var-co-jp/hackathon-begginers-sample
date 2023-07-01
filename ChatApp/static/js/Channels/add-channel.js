@@ -1,3 +1,5 @@
+// チャンネルを登録する時の処理
+
 const addChannelModal = document.getElementById("add-channel-modal");
 const addPageButtonClose = document.getElementById("add-page-close-button");
 const addChannelConfirmButton = document.getElementById(
@@ -5,6 +7,7 @@ const addChannelConfirmButton = document.getElementById(
 );
 
 // pagination.jsでチャンネル一覧が表示されるのを待ってから読みこまれる
+// (チャンネル一覧を表示する処理が終わるまでaddChannnelButtonは存在しないためundefinedになる)
 const loadAddChannelButton = () => {
   const addChannelButton = document.getElementById("add-channel-button");
 
@@ -26,7 +29,7 @@ addEventListener("click", (e) => {
   }
 });
 
-// add-channel-modalが表示されている時に Ctrl + Enterで送信
+// add-channel-modalが表示されている時に Ctrl/Command + Enterで送信
 // Enterで自動送信を防ぐ
 document.addEventListener("keydown", keydownEvent);
 

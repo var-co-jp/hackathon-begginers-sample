@@ -1,3 +1,5 @@
+/* 各モーダルのCSS */
+
 .modal {
   position: fixed;
   z-index: 20;
@@ -95,11 +97,6 @@
   color: var(--snow);
 }
 
-#bar {
-  height: 39px;
-  width: 32px;
-}
-
 .modal-gif {
   position: absolute;
   z-index: 2;
@@ -124,6 +121,9 @@
 .modal-body button:hover {
   background-color: var(--middle_pink);
 }
+
+/* ========================================================== */
+/* レスポンシブ */
 
 @media screen and (max-width: 639px) {
   .modal-content {
