@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, session, flash
+from flask import Flask, request, redirect, render_template, session, flash, abort
 from models import dbConnect
 from util.user import User
 from datetime import timedelta
@@ -110,7 +110,7 @@ def add_channel():
         dbConnect.addChannel(uid, channel_name, channel_description)
         return redirect('/')
     else:
-        error = '既に同じチャンネルが存在しています'
+        error = '既に同じ名前のチャンネルが存在しています'
         return render_template('error/error.html', error_message=error)
 
 
@@ -194,13 +194,12 @@ def delete_message():
 
 @app.errorhandler(404)
 def show_error404(error):
-    return render_template('error/404.html')
+    return render_template('error/404.html'),404
 
 
 @app.errorhandler(500)
 def show_error500(error):
-    return render_template('error/500.html')
-
+    return render_template('error/500.html'),500
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", debug=False)

@@ -1,6 +1,7 @@
 import pymysql
 from util.DB import DB
 
+
 class dbConnect:
     def createUser(user):
         try:
@@ -11,7 +12,7 @@ class dbConnect:
             conn.commit()
         except Exception as e:
             print(e + 'が発生しています')
-            return None
+            abort(500)
         finally:
             cur.close()
 
@@ -26,7 +27,7 @@ class dbConnect:
             return id
         except Exception as e:
             print(e + 'が発生しています')
-            return None
+            abort(500)
         finally:
             cur.close()
 
@@ -41,7 +42,7 @@ class dbConnect:
             return user
         except Exception as e:
             print(e + 'が発生しています')
-            return None
+            abort(500)
         finally:
             cur.close()
 
@@ -56,7 +57,7 @@ class dbConnect:
             return channels
         except Exception as e:
             print(e + 'が発生しています')
-            return None
+            abort(500)
         finally:
             cur.close()
 
@@ -71,7 +72,7 @@ class dbConnect:
             return channel
         except Exception as e:
             print(e + 'が発生しています')
-            return None
+            abort(500)
         finally:
             cur.close()
 
@@ -86,7 +87,7 @@ class dbConnect:
             return channel
         except Exception as e:
             print(e + 'が発生しています')
-            return None
+            abort(500)
         finally:
             cur.close()
 
@@ -100,7 +101,7 @@ class dbConnect:
             conn.commit()
         except Exception as e:
             print(e + 'が発生しています')
-            return None
+            abort(500)
         finally:
             cur.close()
 
@@ -114,24 +115,29 @@ class dbConnect:
             channel = cur.fetchone()
         except Exception as e:
             print(e + 'が発生しました')
-            return None
+            abort(500)
         finally:
             cur.close()
             return channel
 
 
     def updateChannel(uid, newChannelName, newChannelDescription, cid):
-        conn = DB.getConnection()
-        cur = conn.cursor()
-        sql = "UPDATE channels SET uid=%s, name=%s, abstract=%s WHERE id=%s;"
-        cur.execute(sql, (uid, newChannelName, newChannelDescription, cid))
-        conn.commit()
-        cur.close()
+        try:
+            conn = DB.getConnection()
+            cur = conn.cursor()
+            sql = "UPDATE channels SET uid=%s, name=%s, abstract=%s WHERE id=%s;"
+            cur.execute(sql, (uid, newChannelName, newChannelDescription, cid))
+            conn.commit()
+        except Exception as e:
+            print(e + 'が発生しました')
+            abort(500)
+        finally:
+            cur.close()
 
 
     #deleteチャンネル関数
     def deleteChannel(cid):
-        try: 
+        try:
             conn = DB.getConnection()
             cur = conn.cursor()
             sql = "DELETE FROM channels WHERE id=%s;"
@@ -139,7 +145,7 @@ class dbConnect:
             conn.commit()
         except Exception as e:
             print(e + 'が発生しています')
-            return None
+            abort(500)
         finally:
             cur.close()
 
@@ -154,7 +160,7 @@ class dbConnect:
             return messages
         except Exception as e:
             print(e + 'が発生しています')
-            return None
+            abort(500)
         finally:
             cur.close()
 
@@ -168,7 +174,7 @@ class dbConnect:
             conn.commit()
         except Exception as e:
             print(e + 'が発生しています')
-            return None
+            abort(500)
         finally:
             cur.close()
 
@@ -182,7 +188,6 @@ class dbConnect:
             conn.commit()
         except Exception as e:
             print(e + 'が発生しています')
-            return None
+            abort(500)
         finally:
             cur.close()
-    
