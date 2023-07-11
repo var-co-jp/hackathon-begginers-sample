@@ -35,9 +35,9 @@
 {% endblock %} {% block script %}
 <script type="text/javascript">
   // prettier-ignore
-  const channels = channels|tojson;
+  const channels = JSON.parse('{{ channels|tojson }}');
   // prettier-ignore
-  const uid = uid|tojson;
+  const uid = JSON.parse('{{ uid|tojson }}');
 </script>
 <script
   src="{{url_for('static',filename='js/Channels/add-channel.js')}}"
