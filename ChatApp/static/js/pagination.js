@@ -118,6 +118,7 @@ const pagination = async () => {
     page = page - 1;
     show(page, STEP);
     colorPaginationNum();
+    loadAddChannelButton();
   });
 
   // 次ページ遷移
@@ -126,6 +127,7 @@ const pagination = async () => {
     page = page + 1;
     show(page, STEP);
     colorPaginationNum();
+    loadAddChannelButton();
   });
 };
 
