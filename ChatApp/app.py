@@ -37,13 +37,12 @@ def userSignup():
     else:
         uid = uuid.uuid4()
         password = hashlib.sha256(password1.encode('utf-8')).hexdigest()
-        user = User(uid, name, email, password)
         DBuser = dbConnect.getUser(email)
 
         if DBuser != None:
             flash('既に登録されているようです')
         else:
-            dbConnect.createUser(user)
+            dbConnect.createUser(uid, name, email, password)
             UserId = str(uid)
             session['uid'] = UserId
             return redirect('/')
