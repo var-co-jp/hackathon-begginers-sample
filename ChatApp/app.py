@@ -1,11 +1,10 @@
 from flask import Flask, request, redirect, render_template, session, flash, abort
-from models import dbConnect
-from util.user import User
 from datetime import timedelta
 import hashlib
 import uuid
 import re
 
+from models import dbConnect
 
 app = Flask(__name__)
 app.secret_key = uuid.uuid4().hex
