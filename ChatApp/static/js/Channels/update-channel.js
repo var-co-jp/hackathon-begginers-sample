@@ -1,8 +1,7 @@
 // チャンネルを更新する時の処理
 
 const updateButton = document.getElementById("channel-update-button");
-const updateChannelModal =
-  document.getElementById("update-channel-modal") || null;
+const updateChannelModal = document.getElementById("update-channel-modal");
 const updatePageButtonClose = document.getElementById(
   "update-page-close-button"
 );
