@@ -1,11 +1,10 @@
 from flask import Flask, request, redirect, render_template, session, flash, abort
-from models import dbConnect
-from util.user import User
 from datetime import timedelta
 import hashlib
 import uuid
 import re
 
+from models import dbConnect
 
 app = Flask(__name__)
 app.secret_key = uuid.uuid4().hex
@@ -37,13 +36,12 @@ def userSignup():
     else:
         uid = uuid.uuid4()
         password = hashlib.sha256(password1.encode('utf-8')).hexdigest()
-        user = User(uid, name, email, password)
         DBuser = dbConnect.getUser(email)
 
         if DBuser != None:
             flash('既に登録されているようです')
         else:
-            dbConnect.createUser(user)
+            dbConnect.createUser(uid, name, email, password)
             UserId = str(uid)
             session['uid'] = UserId
             return redirect('/')
