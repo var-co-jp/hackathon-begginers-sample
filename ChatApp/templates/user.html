@@ -1,0 +1,93 @@
+{% extends 'base.html' %} {% block title %}
+<title>home</title>
+{% endblock %} {% block body %}
+<div class="user-container">
+  <div class="logo">
+    <img
+      src="{{ url_for('static',filename='img/logo.png') }}"
+      height="128"
+      width="128"
+      alt="アプリのロゴ"
+    />
+  </div>
+  <div class="tabnav">
+    <div class="tab">
+      <ul class="tab__menu">
+        <li class="tab__menu-item is-active" data-tab="01">chatroom</li>
+        <li class="tab__menu-item" data-tab="02">menu</li>
+      </ul>
+      <div class="tab__panel">
+        <div class="tab__panel-box tab__panel-box001 is-show" data-panel="01">
+          <p class="tab__panel-text"></p>
+          <div class="registration-wrapper">
+            <div class="registration-container">
+              <img
+                src="{{ url_for('static',filename='img/registration.png') }}"
+                class="registration-main-pic"
+              />
+              <img
+                src="{{ url_for('static',filename='img/mobile-registration.png') }}"
+                class="registration-mobile-pic"
+              />
+              <div class="registration-form-wrapper">
+                <div class="registration-logo">
+                  <img
+                    src="{{ url_for('static',filename='img/plaudern-logo.png') }}"
+                    alt="logo"
+                  />
+                </div>
+                <form class="registration-form" method="post">
+                  <h1 class="registration-title">WELCOME BACK!</h1>
+                  <div>
+                    <label for="email-input">Email</label>
+                    <input
+                      type="text"
+                      placeholder="Email"
+                      name="email"
+                      id="email-input"
+                    />
+                  </div>
+                  <div>
+                    <label for="password-input">Password</label>
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      name="password"
+                      id="password-input"
+                    />
+                  </div>
+                  <div class="registration-button-container">
+                    {% with messages = get_flashed_messages() %} {% if messages
+                    %}
+                    <ul class="flashes">
+                      {% for message in messages %}
+                      <li>{{ message }}</li>
+                      {% endfor %}
+                    </ul>
+                    {% endif %} {% endwith %}
+                    <button class="registration-button pink">LOGIN</button>
+                    <a
+                      class="switch-register-mode"
+                      href="{{ url_for('signup') }}"
+                    >
+                      登録はこちら
+                    </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab__panel-box tab__panel-box002" data-panel="02">
+          <p class="tab__panel-text"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script
+  src="{{url_for('static',filename='js/tabmenu.js')}}"
+  type="text/javascript"
+></script>
+{% endblock %}

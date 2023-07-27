@@ -1,5 +1,48 @@
 /* チャンネル一覧ページのCSS */
 
+.home-container {
+  background: #bcdebe;
+  display: grid;
+  min-height: 100vh;
+  grid-template:
+    "head   head   logo"
+    "tab    obj   obj" 1fr
+    "tab    obj   obj" 1fr;
+  gap: 16px;
+}
+
+.header {
+  grid-area: head;
+  height: 56px;
+  width: 2fr;
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  padding: 16px;
+  gap: 16px;
+}
+
+.logo {
+  grid-area: logo;
+  justify-self: end;
+  width: 128px;
+  height: 128px;
+}
+
+.tabnav {
+  grid-area: tab;
+  margin-left: 8px;
+}
+
+.bed-obj {
+  grid-area: obj;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+  padding-top: 216px;
+}
+
 .channel-title {
   position: fixed;
   top: 0;
@@ -61,16 +104,16 @@
 /* ========================================================== */
 
 #channels-list-container {
-  padding-top: 13vh;
+  /* padding-top: 13vh; */
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   width: 100%;
-  min-height: calc(100vh - 11vh);
-  margin-top: 11vh;
+  /* min-height: calc(100vh - 11vh); */
+  /* margin-top: 11vh; */
   margin-left: auto;
-  padding-bottom: 38px;
+  /* padding-bottom: 38px; */
 }
 
 #channels-list {
@@ -86,6 +129,7 @@
 .channel-box li {
   list-style: none;
   padding: 4px 0;
+  margin: 0 -4px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -137,13 +181,15 @@
 /* pagination */
 
 #pagination-wrapper {
-  background-color: var(--snow);
-  z-index: 6;
-  position: fixed;
-  top: 11vh;
-  right: 0;
-  width: calc(100% - 60px);
-  padding-top: 3vh;
+  background-color: #fffaed;
+  /* z-index: 6;
+  position: fixed; */
+  /* top: 0vh; */
+  /* bottom: 16vh;
+  left: 27vh; */
+  /* width: calc(100% - 60px); */
+  /* padding-top: 3vh; */
+  margin-top: 100px;
 }
 
 #pagination-wrapper > div {

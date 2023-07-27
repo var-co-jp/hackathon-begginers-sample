@@ -1,20 +1,33 @@
 {% extends 'base.html' %} {% block title %}
 <title>chatroom</title>
 {% endblock %} {% block body %}
-<div class="main-container">
-  <div class="chat-box">
-    <div id="chat-header">
-      <p class="channel-title-text detail-title">PLAUDERN</p>
-      <!-- もしuidとチャンネル作成者が同じならタイトル、説明を編集可能にする -->
-      <p id="chatroom-name">{{ channel.name }}</p>
-      {% if channel.abstract is not none %}
-      <p id="chatroom-description">{{ channel.abstract }}</p>
-      {% endif %} {% if uid == channel.uid %}
-      <button id="channel-update-button">
-        <ion-icon name="brush" style="color: #ffffff"></ion-icon>
-      </button>
-      {% include 'modal/update-channel.html' %} {% endif %}
+<div class="detail-container">
+  <div class="flower-obj">
+    <div class="tulip">
+      <img
+        src="{{ url_for('static',filename='img/tulip.png') }}"
+        width="192"
+        height="360"
+        alt=""
+      />
     </div>
+    <div class="sleep">
+      <img src="{{ url_for('static',filename='img/zzz.png') }}" alt="" />
+    </div>
+    <div class="notice"><p>11時だよ！お花は寝るね～！</p></div>
+  </div>
+  <div id="chat-header">
+    <a href="{{ url_for('index') }}" class="back">&lt;</a>
+    <p id="chatroom-name">{{ channel.name }}</p>
+    {% if channel.abstract is not none %}
+    <p id="chatroom-description">{{ channel.abstract }}</p>
+    {% endif %} {% if uid == channel.uid %}
+    <button id="channel-update-btn">
+      <ion-icon name="brush" style="color: #fff"></ion-icon>
+    </button>
+    {% include 'modal/update-channel.html' %} {% endif %}
+  </div>
+  <div class="chat-box">
     <div id="message-area">
       {% if messages|length > 0 %} {% for message in messages %} {% if
       message.uid == uid %}
@@ -23,7 +36,7 @@
         <form action="/delete_message" method="POST">
           <input type="hidden" value="{{ channel.id }}" name="cid" />
           <button
-            class="delete-message-button"
+            class="delete-message-btn"
             name="message_id"
             value="{{ message.id }}"
           >
@@ -33,14 +46,14 @@
             ></ion-icon>
           </button>
         </form>
+        {% else %}
       </div>
-      {% else %}
       <div class="messages">
         <p class="user-name">{{ message.user_name }}</p>
         <p class="box box-left">{{ message.message }}</p>
       </div>
       {% endif %} {% endfor %} {% else %}
-      <div id="no-message"><p>まだメッセージがありません</p></div>
+      <div id="no-message"><p>No Message</p></div>
       {% endif %}
     </div>
     <div class="typing-box-wrapper">
@@ -51,13 +64,13 @@
         name="newMessageForm"
       >
         <textarea name="message" id="message" autofocus></textarea>
-        <input type="hidden" name="cid" value="{{ channel.id }}" />
+        <input type="hidden" name="cid" value="channel-id" />
         <div id="message-send-tooltip">
-          <button type="submit" id="add-message-button">
+          <button type="submit" id="add-message-btn">
             <ion-icon name="paper-plane"></ion-icon>
           </button>
           <div id="message-send-tooltip-description">
-            <p>Command + Enter または</p>
+            <p>Command + Enter</p>
             <p>Ctrl + Enter</p>
           </div>
         </div>
@@ -65,6 +78,7 @@
     </div>
   </div>
 </div>
+
 {% endblock %} {% block script %}
 <script type="text/javascript">
   // prettier-ignore

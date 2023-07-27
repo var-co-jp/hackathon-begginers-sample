@@ -1,31 +1,33 @@
-/* 各チャンネル詳細ページのCSS */
-
-.chat-box {
-  min-height: 100vh;
-  width: 100%;
-  background-color: var(--snow);
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 54px;
-  right: 0;
-  width: calc(100vw - 64px);
+.detail-container {
+  height: 100vh;
+  display: grid;
+  grid-template:
+    "head head head head"
+    "obj chat chat chat" 1fr
+    "obj chat chat chat" 1fr;
 }
 
 #chat-header {
+  grid-area: head;
+  width: 100%;
   background-color: var(--navy_blue);
   color: var(--snow);
   height: 8vh;
-  width: calc(100vw - 50px);
   position: fixed;
   top: 0;
-  right: 0;
+  /* right: 0; */
   font-weight: 600;
   display: flex;
   align-items: center;
   gap: 2rem;
   padding-left: 20px;
   z-index: 2;
+}
+
+.back {
+  font-size: 32px;
+  text-decoration: none;
+  color: #555;
 }
 
 #chatroom-name {
@@ -38,7 +40,7 @@
   letter-spacing: 0.15em;
 }
 
-#channel-update-button {
+#channel-update-btn {
   margin: auto 0;
   padding: 0.2em 0.6em;
   background-color: var(--salmon_pink);
@@ -49,16 +51,71 @@
   box-shadow: 0 0 0 3px var(--salmon_pink);
 }
 
-#channel-update-button:hover {
+#channel-update-btn:hover {
   background-color: var(--middle_pink);
   box-shadow: 0 0 0 3px var(--middle_pink);
   cursor: pointer;
 }
 
+.flower-obj {
+  max-width: 400px;
+  margin: 0;
+  /* padding: 0 64px 0 0; */
+  grid-area: obj;
+  display: flex;
+  flex-direction: column-reverse;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+  /* gap: 8px; */
+}
+
+.tulip {
+  align-self: center;
+}
+
+.notice {
+  position: relative;
+  background-color: #5dab73;
+  /* width: 50%; */
+  text-align: center;
+  padding: 5px;
+  margin: 88px 0 0;
+  /*角丸の設定*/
+  border-radius: 20px;
+  align-self: center;
+}
+
+.notice::before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  /*三角形を作る*/
+  border-right: 20px solid transparent;
+  border-left: 20px solid transparent;
+  border-top: 20px solid #5dab73;
+  /*三角形の位置を指定*/
+  bottom: -20px;
+  left: calc(50% - 20px);
+}
+
+.sleep {
+  margin: 0;
+  align-self: flex-end;
+}
+
+.chat-box {
+  grid-area: chat;
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+}
+
 /* メッセージエリア */
 
 #message-area {
-  min-height: 100vh;
   width: 100%;
   padding-top: 10vh;
   padding-right: 20px;
@@ -90,7 +147,7 @@
   display: flex;
 }
 
-.delete-message-button {
+.delete-message-btn {
   background-color: var(--snow);
   height: 40px;
   width: 40px;
@@ -101,7 +158,7 @@
   right: 8px;
 }
 
-.delete-message-button ion-icon {
+.delete-message-btn ion-icon {
   font-size: 1rem;
 }
 
@@ -165,21 +222,20 @@
 .typing-box-wrapper {
   position: fixed;
   bottom: 0;
-  width: calc(100vw - 50px);
+  width: 72%;
   height: 15vh;
   background-color: var(--snow);
   background-size: contain;
   border-top: 3px solid lightgrey;
   display: flex;
   align-items: center;
-  justify-content: start;
 }
 
 .typing-box {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   height: 80%;
-  width: 80%;
+  width: 60%;
   margin: auto;
   position: relative;
   background-color: var(--snow);
@@ -202,7 +258,7 @@
   cursor: pointer;
 }
 
-#add-message-button {
+#add-message-btn {
   background-color: var(--navy_blue);
   height: 100%;
   width: 40px;
@@ -210,7 +266,7 @@
   margin: 0;
 }
 
-#add-message-button ion-icon {
+#add-message-btn ion-icon {
   font-size: 1.3rem;
 }
 
@@ -269,9 +325,8 @@
     width: 100%;
   }
 
-  .typing-box-wrapper,
-  #chat-header {
-    width: 100%;
+  .typing-box-wrapper {
+    width: 72%;
   }
 }
 

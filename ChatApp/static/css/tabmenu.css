@@ -1,0 +1,80 @@
+.tab {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+/* タブメニュー */
+.tab__menu {
+  display: flex;
+  align-items: flex-end; /* メニューを下揃え&高さを調整 */
+  justify-content: center;
+  /* flex-direction: row-reverse; */
+  min-height: 50px; /* メニュー切替時にタブがズレないように */
+  padding: 0;
+  margin: 0;
+}
+
+.tab__menu-item {
+  list-style: none;
+  width: 200px;
+  padding: 8px 0; /* メニューに高さを付ける */
+  margin: 0;
+  text-align: center;
+  background-color: #e8f9d4;
+  color: #5dab73;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s; /* アニメーション */
+}
+
+.tab__menu-item:last-of-type {
+  margin-right: 0px;
+}
+
+/* is-activeがついている時のスタイル */
+.tab__menu-item.is-active {
+  background-color: #fffaed;
+  color: #5dab73;
+  padding: 12px 0;
+  margin: 0;
+}
+
+/* タブパネル */
+.tab__panel {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.tab__panel-box {
+  min-height: 400px; /* テキスト量が多くなっても対応できるように */
+  padding: 10px 30px;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.tab__panel-box001 {
+  background-color: rgb(205, 246, 246);
+  display: none;
+}
+
+.tab__panel-box002 {
+  background-color: rgb(249 227 243);
+  display: none;
+}
+
+.icon {
+  background: #5dab73;
+}
+
+.title {
+  color: black;
+  font-weight: bold;
+}
+
+/* is-showがついている時のスタイル */
+.tab__panel-box.is-show {
+  display: block;
+  background: #fffaed;
+}
